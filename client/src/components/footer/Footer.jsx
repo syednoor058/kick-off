@@ -21,8 +21,8 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2">
             <div className="font-bold uppercase text-xl">Customer Services</div>
-            <div className="">(+880)1400020036</div>
-            <div>(+880)1782734573</div>
+            <div className="">+(880)1400020036</div>
+            <div>+(880)1782734573</div>
             <div>SUNDAY - THURSDAY (09:00 AM - 11:00 PM)</div>
           </div>
         </div>

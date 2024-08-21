@@ -1,4 +1,6 @@
 // import React from 'react'
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { Link } from "react-router-dom";
 import FeatureCard from "./FeatureCard";
 
 export default function Feature() {
@@ -7,7 +9,7 @@ export default function Feature() {
       <div className="w-full font-bold uppercase text-center text-4xl">
         Top Categories
       </div>
-      <div className="w-full grid grid-cols-4 gap-5">
+      <div className="w-full grid grid-cols-4 gap-5 place-items-center">
         <FeatureCard
           image="https://e0.365dm.com/23/05/1600x900/skysports-liverpool-salah-mo_6144407.jpg?20230505081723"
           title="Club Football Jersey"
@@ -25,6 +27,15 @@ export default function Feature() {
           title="Football Boots"
         />
       </div>
+      <Link
+        to="/collection"
+        className="w-full text-end underline underline-offset-2 flex gap-1 justify-end items-center uppercase"
+      >
+        Explore our collection
+        <span className="flex justify-center items-center">
+          <ArrowRightIcon fontSize="large" />
+        </span>
+      </Link>
     </div>
   );
 }

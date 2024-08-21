@@ -2,7 +2,7 @@
 
 export default function featureCard(props) {
   return (
-    <div className="w-[250px] h-[250px] rounded bg-secondaryColor relative">
+    <div className="w-[250px] h-[250px] rounded bg-secondaryColor relative shadow-md">
       <img
         className="w-full h-full object-cover rounded"
         src={props.image}

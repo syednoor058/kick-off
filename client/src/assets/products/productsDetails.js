@@ -1,0 +1,135 @@
+export const products = [
+    {
+        _id: "2510878",
+        name: "Real Madrid FC 2024 Home Kit - Player Edition",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 1280,
+        image: ["https://clubjerseys.in/wp-content/uploads/2024/06/442436714_17885697297026859_199132435502113806_n-700x700.jpg"],
+        category: "football jersey",
+        type: "player edition",
+        sizes: ["S", "M", "L"],
+        date: 1716634345448,
+        bestseller: true
+    },
+    {
+        _id: "2510879",
+        name: "FC Barcelona 2024 Away Kit - Fan Edition",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 1080,
+        image: ["https://static.wixstatic.com/media/01a779_5c4e472f20a4448fba17a95404d8dd97~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/01a779_5c4e472f20a4448fba17a95404d8dd97~mv2.jpg"],
+        category: "football jersey",
+        type: "fan edition",
+        sizes: ["M", "L", "XL"],
+        date: 1716621345448,
+        bestseller: true
+    },
+    {
+        _id: "2510880",
+        name: "Liverpool FC 2024 Home Kit - Thai Premium Edition",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 750,
+        image: ["https://clubjerseys.in/wp-content/uploads/2024/06/417566623_17871133914026859_7033060119520143108_n-700x700.jpg", "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/6eb7192a-8e56-443c-9f31-85dc56d01990/LFC+Y+NK+DF+JSY+SS+STAD+HM.png", "https://vintagejoint.co.za/cdn/shop/files/fn9154g_5_1800x1800.jpg?v=1720025458", "https://www.minejerseys.ru/html/upload/temp_img/202405/64714/017162866033e25bccbLiverpoolHomeJerseyPlayerVersion202425bMineJerseys.jpg"],
+        category: "football jersey",
+        type: "thai premium",
+        sizes: ["S", "L", "XL"],
+        date: 1716234545448,
+        bestseller: true
+    },
+    {
+        _id: "2510881",
+        name: "Manchester City 2024 Home Kit - Deshi Edition",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 400,
+        image: ["https://thekitmarket.com/wp-content/uploads/2023/08/Manchester-city-23-24-away-Kit-6-1.webp"],
+        category: "football jersey",
+        type: "deshi premium",
+        sizes: ["S", "M", "XXL"],
+        date: 1716621345448,
+        bestseller: true
+    },
+    {
+        _id: "2510882",
+        name: "Bangladesh National Team Jersey - Thai Premium",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 750,
+        image: ["https://www.jerseybdclub.com/wp-content/uploads/2024/03/Bangladesh-T20-World-Cup-Jersey-2024-600x800.jpg"],
+        category: "cricket jersey",
+        type: "thai premium",
+        sizes: ["M", "L", "XL"],
+        date: 1716622345448,
+        bestseller: true
+    },
+    {
+        _id: "2510883",
+        name: "Australia National Team Jersey - Player Edition",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 1180,
+        image: ["https://m.media-amazon.com/images/I/41NkWR7JvXL._SX569_.jpg"],
+        category: "cricket jersey",
+        type: "player edition",
+        sizes: ["S", "L", "XL"],
+        date: 1716623423448,
+        bestseller: true
+    },
+    {
+        _id: "2510884",
+        name: "Newzealand National Team Jersey - Player Edition",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 1180,
+        image: ["https://m.media-amazon.com/images/I/4199oxb05cL.jpg"],
+        category: "cricket jersey",
+        type: "player edition",
+        sizes: ["S", "L", "XL"],
+        date: 1716621542448,
+        bestseller: false
+    },
+    {
+        _id: "2510885",
+        name: "Customized Cricket Team Jersey - BD Premium",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 480,
+        image: ["https://diadye.com/wp-content/uploads/2022/12/Custom-Teamwear-Diadye-Half-Sleeve-Cricket-Jersey-510x510.jpg"],
+        category: "cricket jersey",
+        type: "deshi premium",
+        sizes: ["S", "M", "L", "XL"],
+        date: 1716622345448,
+        bestseller: false
+    },
+    {
+        _id: "2510886",
+        name: "High Quality Men Football Boots Adults Low-Top Soccer Shoes -White",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 2050,
+        image: ["https://admindeal.s3.ap-southeast-1.amazonaws.com/uploads/all/GAYySWQwfeZhzkOxIrrJyKtyt1Bpssi2t1kcX8Z5.jpg"],
+        category: "boot",
+        type: "player edition",
+        sizes: ["M", "L", "XL"],
+        date: 1716621235448,
+        bestseller: false
+    },
+    {
+        _id: "2510887",
+        name: "Professional Anti-Slip Football Boots for Men",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 1899,
+        image: ["https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/0cac8c333e70dd7f88823f49871a01ad.jpg?imageView2/2/w/800/q/70/format/webp"],
+        category: "boot",
+        type: "player edition",
+        sizes: ["S", "L", "XL"],
+        date: 1716622235448,
+        bestseller: false
+    },
+    {
+        _id: "2510888",
+        name: "High Top Anti-skid and Wear-resistant Football Boot",
+        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garcricket jerseyt.",
+        price: 1299,
+        image: ["https://m.media-amazon.com/images/I/61CZYlv-tgL._AC_SX679_.jpg"],
+        category: "boot",
+        type: "thai premium",
+        sizes: ["S", "M", "L"],
+        date: 1716623345448,
+        bestseller: false
+    }
+
+]

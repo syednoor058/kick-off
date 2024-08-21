@@ -1,16 +1,17 @@
 // import React from 'react'
 import Feature from "../../components/feature/Feature";
-import Footer from "../../components/footer/Footer";
 import Hero from "../../components/hero/Hero";
-import Navbar from "../../components/navbar/Navbar";
+
+import Newsletter from "../../components/newsletter/Newsletter";
+import Products from "../../components/products/Products";
 
 export default function Home() {
   return (
     <div className="w-full h-full overflow-hidden">
-      <Navbar />
       <Hero />
       <Feature />
-      <Footer />
+      <Newsletter />
+      <Products />
     </div>
   );
 }
