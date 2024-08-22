@@ -10,10 +10,19 @@ const ProductContextProvider = (props) => {
   const deliveryCharge = 200;
 
   const [cartItem, setCartItem] = useState({});
-  const [total, setTotal] = useState(0);
+  const [relatedProducts, setRelatedProducts] = useState({});
 
-  const updateTotal = async (price) => {
-    setTotal(total + price);
+  const getRelatedProducts = (itemName) => {
+    const targetKeys = itemName.toLowerCase().split(" ");
+    const productList = products.filter((product) => {
+      if (product.name.toLowerCase() === itemName.toLowerCase()) {
+        return false;
+      }
+      return targetKeys.some((key) => product.name.toLowerCase().includes(key));
+    });
+
+    setRelatedProducts(productList);
+    localStorage.setItem("relatedProducts", JSON.stringify(productList));
   };
 
   const updateQuantity = async (itemId, size, quantity) => {
@@ -79,10 +88,9 @@ const ProductContextProvider = (props) => {
     addToCart,
     getCartCount,
     updateQuantity,
-    updateTotal,
-    total,
-
     cartTotalAmount,
+    relatedProducts,
+    getRelatedProducts,
   };
 
   return (

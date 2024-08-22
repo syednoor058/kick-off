@@ -3,28 +3,47 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import StraightenOutlinedIcon from "@mui/icons-material/StraightenOutlined";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContext";
-
-import { useState } from "react";
+import RelatedProducts from "../relatedProducts/RelatedProducts";
 
 export default function ProductDetails(props) {
   const [largeImg, setLargeImg] = useState(props.item.image[0]);
   const [size, setSize] = useState("");
   useEffect(() => setLargeImg(props.item.image[0]), [props.item.image]);
-  const { addToCart } = useContext(ProductContext);
+  const { addToCart, getRelatedProducts } = useContext(ProductContext);
+  const [relatedProducts, setRelatedProducts] = useState({});
+
+  // Effect to load related products on mount
+  useEffect(() => {
+    // Check if there's already related product data in localStorage
+    const storedRelatedProducts = localStorage.getItem("relatedProducts");
+
+    if (storedRelatedProducts) {
+      setRelatedProducts(JSON.parse(storedRelatedProducts));
+    } else {
+      // Get related products and save them to state and localStorage
+      getRelatedProducts(props.item.name);
+      const related = localStorage.getItem("relatedProducts");
+      setRelatedProducts(JSON.parse(related));
+    }
+  }, [getRelatedProducts, props.item.name]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [relatedProducts]);
 
   return (
     <div>
-      <div className="w-full h-full px-20 pt-20 flex flex-col gap-20">
+      <div className="w-full h-full px-5 sm:px-10 md:px-10 lg:px-20 pt-10 md:pt-20 flex flex-col gap-10 md:gap-20">
         <div className="w-full flex flex-col md:flex-row gap-10">
-          <div className="w-full md:w-[50%] flex flex-row gap-5">
+          <div className="w-full md:w-[65%] lg:w-[50%] flex flex-row gap-5">
             <div className="">
               <div className="w-full h-full grid grid-rows-4 gap-3">
                 {props.item.image.map((itemImg, index) => (
                   <div
-                    className="w-[120px] h-[120px] overflow-hidden rounded shadow-lg"
+                    className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] overflow-hidden rounded shadow-lg"
                     key={index}
                   >
                     <img
@@ -46,12 +65,12 @@ export default function ProductDetails(props) {
             </div>
           </div>
           <div className="w-full md:w-[50%]">
-            <div className="w-full flex flex-col gap-7">
-              <div className="w-full flex flex-col gap-5">
-                <div className="text-4xl font-bold uppercase">
+            <div className="w-full flex flex-col gap-5 md:gap-7">
+              <div className="w-full flex flex-col gap-4 md:gap-5">
+                <div className="text-2xl sm:text-3xl md:text-2xl lg:text-4xl font-bold uppercase">
                   {props.item.name}
                 </div>
-                <div className="flex flex-col gap-3 text-sm text-gray-700 capitalize">
+                <div className="flex flex-col gap-2 md:gap-3 text-sm text-gray-700 capitalize">
                   <div>Product ID: {props.item._id}</div>
                   <div>Type: {props.item.type}</div>
                   <div>Category: {props.item.category}</div>
@@ -108,9 +127,6 @@ export default function ProductDetails(props) {
                   </Link>
                 </div>
                 <div className="w-[20%] flex justify-center">
-                  {/* <div className="flex p-2 border border-secondaryColor rounded-full">
-                    <FavoriteBorderIcon fontSize="large" />
-                  </div> */}
                   <FavoriteIcon
                     fontSize="large"
                     className="p-2 rounded-full border border-secondaryColor"
@@ -122,7 +138,7 @@ export default function ProductDetails(props) {
         </div>
         <div className="w-full flex flex-col gap-7">
           <div className="text-2xl font-semibold uppercase">Description</div>
-          <div>
+          <div className="text-sm md:text-base">
             {props.item.description} Lorem ipsum dolor sit amet consectetur,
             adipisicing elit. Esse tempore, eos illo excepturi atque soluta
             delectus quisquam tempora temporibus fuga quidem commodi nam? Ipsa
@@ -159,6 +175,9 @@ export default function ProductDetails(props) {
             voluptatem porro obcaecati aliquam quam at dolorem? Voluptates harum
             labore delectus repudiandae perferendis corrupti, culpa ratione.
           </div>
+        </div>
+        <div>
+          <RelatedProducts products={relatedProducts} />
         </div>
       </div>
     </div>

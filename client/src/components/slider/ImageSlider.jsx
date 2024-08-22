@@ -20,7 +20,7 @@ export default function ImageSlider({ slides }) {
   };
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full overflow-hidden relative">
       <div className="absolute top-[50%] left-5">
         <span
           className="p-2 text-2xl rounded-[50%] bg-primaryColor text-secondaryColor flex justify-center items-center cursor-pointer"
@@ -39,7 +39,7 @@ export default function ImageSlider({ slides }) {
       </div>
       <div className="w-full h-auto rounded">
         <img
-          className="w-full object-cover"
+          className="w-full h-full object-cover"
           src={slides[currentIndex].url}
           alt=""
         />

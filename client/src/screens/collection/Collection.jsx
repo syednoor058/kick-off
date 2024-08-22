@@ -81,13 +81,17 @@ export default function Collection() {
     applyFilter();
   }, [applyFilter]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="w-full h-full p-20 flex flex-col gap-20">
-      <div className="w-full flex flex-col gap-8">
-        <div className="text-center w-full text-4xl uppercase font-bold">
+    <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 flex flex-col gap-10 md:gap-20">
+      <div className="w-full flex flex-col gap-4 md:gap-8">
+        <div className="text-center w-full text-2xl sm:text-3xl md:text-4xl uppercase font-bold">
           Explore Our Premium Sportswear Collection
         </div>
-        <div className="w-full text-center">
+        <div className="w-full text-xs sm:text-sm md:text-base text-center">
           Discover top-quality sportswear designed to elevate your performance
           and style. From high-tech running gear to versatile training apparel,
           our collection offers the perfect blend of comfort and innovation.
@@ -97,7 +101,7 @@ export default function Collection() {
         </div>
         <div className="flex items-center justify-center gap-5">
           <input
-            className="w-[50%] border-none outline-none bg-gray-200 rounded px-5 py-3"
+            className=" w-[80%] sm:w-[70%] lg:w-[50%] border-none outline-none bg-gray-200 rounded px-5 py-3"
             placeholder="Search products here"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
@@ -110,7 +114,7 @@ export default function Collection() {
           </span>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8">
         <div className="min-w-60 uppercase flex flex-col gap-5 ">
           <p
             className="flex flex-row gap-1 items-center cursor-pointer sm:cursor-default"
@@ -118,7 +122,7 @@ export default function Collection() {
           >
             Filters{" "}
             <span
-              className={`flex justify-center items-center sm:hidden ${
+              className={`flex justify-center items-center md:hidden ${
                 showFilter ? "rotate-90" : ""
               } duration-300`}
             >
@@ -128,7 +132,7 @@ export default function Collection() {
           <div
             className={`border border-gray-300 px-5 py-3 ${
               showFilter ? "" : "hidden"
-            } sm:block duration-300 rounded shadow-lg`}
+            } md:block duration-300 rounded shadow-lg`}
           >
             <div className="flex flex-col gap-2">
               <p className="font-medium">Categories</p>
@@ -164,7 +168,7 @@ export default function Collection() {
           <div
             className={`border border-gray-300 px-5 py-3 ${
               showFilter ? "" : "hidden"
-            } sm:block duration-300 rounded shadow-lg`}
+            } md:block duration-300 rounded shadow-lg`}
           >
             <div className="flex flex-col gap-2">
               <p className="font-medium">Types</p>
@@ -209,7 +213,7 @@ export default function Collection() {
           <div
             className={`border border-gray-300 px-5 py-3 ${
               showFilter ? "" : "hidden"
-            } sm:block duration-300 rounded shadow-lg`}
+            } md:block duration-300 rounded shadow-lg`}
           >
             <div className="flex flex-col gap-2">
               <p className="font-medium">Football Clubs</p>
@@ -298,7 +302,7 @@ export default function Collection() {
           <div
             className={`border border-gray-300 px-5 py-3 ${
               showFilter ? "" : "hidden"
-            } sm:block duration-300 rounded shadow-lg`}
+            } md:block duration-300 rounded shadow-lg`}
           >
             <div className="flex flex-col gap-2">
               <p className="font-medium">Football National Team</p>
@@ -387,7 +391,7 @@ export default function Collection() {
         </div>
         <div className="w-full flex flex-col gap-8">
           <div className="w-full flex flex-row justify-between">
-            <div className="w-full font-bold uppercase text-4xl">
+            <div className="w-full font-bold uppercase text-2xl sm:text-3xl md:text-4xl">
               All Collection
             </div>
             <div className="flex flex-row gap-2 items-center">
@@ -402,7 +406,7 @@ export default function Collection() {
               </select>
             </div>
           </div>
-          <div className="w-full h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 gap-y-6">
+          <div className="w-full h-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-6">
             {filterProducts.map((item, index) => (
               <ProductCard
                 key={index}

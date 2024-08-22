@@ -20,18 +20,18 @@ export default function CartList(props) {
   };
 
   return (
-    <div className="w-full flex flex-row gap-5 p-3 border rounded">
+    <div className="w-full flex flex-row gap-3 md:gap-5 p-3 border rounded">
       <div className="w-[10%] flex items-center justify-center">
         {props.item._id}
       </div>
-      <div className="w-[55%] flex flex-row gap-5">
-        <img className="w-16" src={props.item.image[0]} alt="" />
+      <div className="w-[55%] flex flex-row gap-3 md:gap-5">
+        <img className="w-16 h-16" src={props.item.image[0]} alt="" />
         {props.item.name}
       </div>
       <div className="w-[10%] flex items-center justify-center">
         {props.cart.size}
       </div>
-      <div className="w-[10%] flex flex-row gap-3 items-center justify-center">
+      <div className="w-[10%] flex flex-row gap-0 md:gap-2 items-center justify-center">
         <div
           className="cursor-pointer p-2"
           onClick={() => subtractionHandler()}

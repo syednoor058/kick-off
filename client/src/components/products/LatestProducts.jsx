@@ -1,23 +1,22 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 // import React from 'react'
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import ProductCard from "./ProductCard";
 
-export default function products() {
+export default function LatestProducts() {
   const { products } = useContext(ProductContext);
-  const [trendyProducts, setTrendyProducts] = useState([]);
+  const [latestProducts, setLatestProducts] = useState([]);
   useEffect(() => {
-    setTrendyProducts(products.slice(0, 4));
+    setLatestProducts(products.slice(0, 8));
   }, [products]);
 
   return (
     <div className="w-full h-full py-10 md:py-20 flex flex-col gap-8 items-center">
       <div className="w-full font-bold uppercase text-center text-4xl">
-        Trendy Products
+        Latest Products
       </div>
       <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7 justify-center place-items-center">
-        {trendyProducts.map((item, index) => (
+        {latestProducts.map((item, index) => (
           <ProductCard
             key={index}
             id={item._id}

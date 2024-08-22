@@ -5,11 +5,11 @@ import FeatureCard from "./FeatureCard";
 
 export default function Feature() {
   return (
-    <div className="w-full h-full p-20 flex flex-col gap-8 items-center">
-      <div className="w-full font-bold uppercase text-center text-4xl">
+    <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 flex flex-col gap-8 items-center">
+      <div className="w-full font-bold uppercase text-center text-2xl  lg:text-4xl">
         Top Categories
       </div>
-      <div className="w-full grid grid-cols-4 gap-5 place-items-center">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 place-items-center">
         <FeatureCard
           image="https://e0.365dm.com/23/05/1600x900/skysports-liverpool-salah-mo_6144407.jpg?20230505081723"
           title="Club Football Jersey"
@@ -32,7 +32,7 @@ export default function Feature() {
         className="w-full text-end underline underline-offset-2 flex gap-1 justify-end items-center uppercase"
       >
         Explore our collection
-        <span className="flex justify-center items-center">
+        <span className="flex justify-end items-center">
           <ArrowRightIcon fontSize="large" />
         </span>
       </Link>

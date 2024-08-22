@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContext";
 
 export default function ProductCard({ id, image, name, price }) {
-  const { currency } = useContext(ProductContext);
+  const { currency, getRelatedProducts } = useContext(ProductContext);
 
   return (
     <Link
       to={`/product/${id}`}
+      onClick={() => getRelatedProducts(name)}
       className="w-full h-full flex flex-col gap-5 rounded overflow-hidden group"
     >
       <div className="w-full h-[320px] shadow-md overflow-hidden">
