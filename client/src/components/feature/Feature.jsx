@@ -5,7 +5,7 @@ import FeatureCard from "./FeatureCard";
 
 export default function Feature() {
   return (
-    <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 flex flex-col gap-8 items-center">
+    <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 flex flex-col gap-8 items-center">
       <div className="w-full font-bold uppercase text-center text-2xl  lg:text-4xl">
         Top Categories
       </div>

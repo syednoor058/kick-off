@@ -15,11 +15,9 @@ export default function ProductDetail() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full flex flex-col gap-10 md:gap-20 pb-10 md:pb-20">
       <ProductDetails item={product[0]} />
-      <div>
-        <Products />
-      </div>
+      <Products />
     </div>
   );
 }

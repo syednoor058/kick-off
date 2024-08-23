@@ -2,7 +2,7 @@
 
 export default function featureCard(props) {
   return (
-    <div className="w-[180px] h-[180px] rounded bg-secondaryColor relative shadow-md group overflow-hidden">
+    <div className="w-full aspect-square rounded bg-secondaryColor relative shadow-md group overflow-hidden">
       <img
         className="w-full h-full object-cover rounded group-hover:scale-[1.1] duration-300"
         src={props.image}

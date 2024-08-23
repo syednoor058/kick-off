@@ -82,11 +82,11 @@ export default function Cart() {
           </div>
         </div>
       ) : (
-        <div className=" w-full px-10 py-20 md:px-20 flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300 leading-none">
+        <div className=" w-full px-10 py-20 md:px-20 flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300">
           No product in your cart!
         </div>
       )}
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col gap-10 md:gap-20">
         <Products />
         <LatestProducts />
       </div>

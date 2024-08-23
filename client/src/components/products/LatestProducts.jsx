@@ -11,7 +11,7 @@ export default function LatestProducts() {
   }, [products]);
 
   return (
-    <div className="w-full h-full py-10 md:py-20 flex flex-col gap-8 items-center">
+    <div className="w-full h-full flex flex-col gap-8 items-center">
       <div className="w-full font-bold uppercase text-center text-4xl">
         Latest Products
       </div>

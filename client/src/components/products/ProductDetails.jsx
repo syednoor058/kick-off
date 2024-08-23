@@ -38,12 +38,12 @@ export default function ProductDetails(props) {
     <div>
       <div className="w-full h-full px-5 sm:px-10 md:px-10 lg:px-20 pt-10 md:pt-20 flex flex-col gap-10 md:gap-20">
         <div className="w-full flex flex-col md:flex-row gap-10">
-          <div className="w-full md:w-[65%] lg:w-[50%] flex flex-row gap-5">
-            <div className="">
-              <div className="w-full h-full grid grid-rows-4 gap-3">
+          <div className="w-full md:w-[60%] flex flex-row gap-5">
+            <div className="w-[25%] md:w-[15%]">
+              <div className="w-full flex flex-col gap-5">
                 {props.item.image.map((itemImg, index) => (
                   <div
-                    className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] overflow-hidden rounded shadow-lg"
+                    className="w-full aspect-square overflow-hidden rounded shadow-lg"
                     key={index}
                   >
                     <img
@@ -56,7 +56,7 @@ export default function ProductDetails(props) {
                 ))}
               </div>
             </div>
-            <div className=" rounded">
+            <div className="w-[75%] md:w-[85%] aspect-square rounded">
               <img
                 src={largeImg}
                 className="w-full h-full object-cover"
@@ -64,7 +64,7 @@ export default function ProductDetails(props) {
               />
             </div>
           </div>
-          <div className="w-full md:w-[50%]">
+          <div className="w-full md:w-[40%]">
             <div className="w-full flex flex-col gap-5 md:gap-7">
               <div className="w-full flex flex-col gap-4 md:gap-5">
                 <div className="text-2xl sm:text-3xl md:text-2xl lg:text-4xl font-bold uppercase">
@@ -116,14 +116,12 @@ export default function ProductDetails(props) {
               </div>
               <div className="flex flex-row gap-5">
                 <div className="w-[80%] flex flex-col gap-3">
-                  <div
+                  <Link
+                    to="/cart"
                     className="w-full flex justify-center items-center px-5 py-3 bg-secondaryColor rounded hover:bg-primaryColor hover:border hover:border-secondaryColor uppercase text-primaryColor hover:text-secondaryColor cursor-pointer"
                     onClick={() => addToCart(props.item._id, size)}
                   >
                     Add to cart
-                  </div>
-                  <Link className="w-full flex justify-center items-center px-5 py-3 hover:bg-secondaryColor rounded border border-secondaryColor uppercase hover:text-primaryColor">
-                    Buy it now
                   </Link>
                 </div>
                 <div className="w-[20%] flex justify-center">

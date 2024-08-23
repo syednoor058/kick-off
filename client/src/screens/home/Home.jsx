@@ -12,7 +12,7 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="w-full h-full overflow-hidden">
+    <div className="w-full h-full flex flex-col gap-10 md:gap-20 overflow-hidden pb-10 md:pb-20">
       <Hero />
       <Feature />
       <Products />

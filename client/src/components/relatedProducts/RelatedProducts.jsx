@@ -15,7 +15,7 @@ export default function RelatedProducts(props) {
   }, [props.products]);
 
   return (
-    <div className="w-full h-full py-10 md:py-20 flex flex-col gap-5 md:gap-8 items-center">
+    <div className="w-full h-full flex flex-col gap-5 md:gap-8 items-center">
       <div className="w-full font-bold uppercase text-center text-2xl sm:text-3xl md:text-4xl">
         Related Products
       </div>

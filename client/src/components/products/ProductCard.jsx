@@ -14,7 +14,7 @@ export default function ProductCard({ id, image, name, price }) {
       onClick={() => getRelatedProducts(name)}
       className="w-full h-full flex flex-col gap-5 rounded overflow-hidden group"
     >
-      <div className="w-full h-[320px] shadow-md overflow-hidden">
+      <div className="w-full aspect-square shadow-md overflow-hidden">
         <img
           className="w-full h-full object-cover object-center group-hover:scale-[1.1] duration-300"
           src={image}

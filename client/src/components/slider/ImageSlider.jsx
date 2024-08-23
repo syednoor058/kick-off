@@ -37,7 +37,7 @@ export default function ImageSlider({ slides }) {
           <MdOutlineKeyboardArrowRight />
         </span>
       </div>
-      <div className="w-full h-auto rounded">
+      <div className="w-full aspect-video rounded">
         <img
           className="w-full h-full object-cover"
           src={slides[currentIndex].url}
