@@ -29,7 +29,7 @@ export default function Feature() {
       </div>
       <Link
         to="/collection"
-        className="w-full text-end underline underline-offset-2 flex gap-1 justify-end items-center uppercase"
+        className="text-end border border-gray-400 rounded-sm flex gap-1 justify-end items-center uppercase ps-3"
       >
         Explore our collection
         <span className="flex justify-end items-center">
