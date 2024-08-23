@@ -48,7 +48,10 @@ export default function Checkout() {
                     id="countries"
                     className="text-base border border-gray-300 rounded-sm block w-full px-5 py-3 outline-none"
                   >
-                    <option selected className="text-gray-300 disabled:">
+                    <option
+                      defaultValue={"Choose your city/region"}
+                      className="text-gray-300 disabled:"
+                    >
                       Choose your city/region
                     </option>
                     <option value="khu">Khulna</option>

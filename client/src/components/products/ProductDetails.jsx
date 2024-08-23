@@ -117,7 +117,7 @@ export default function ProductDetails(props) {
               <div className="flex flex-row gap-5">
                 <div className="w-[80%] flex flex-col gap-3">
                   <Link
-                    to="/cart"
+                    to={size && "/cart"}
                     className="w-full flex justify-center items-center px-5 py-3 bg-secondaryColor rounded hover:bg-primaryColor hover:border hover:border-secondaryColor uppercase text-primaryColor hover:text-secondaryColor cursor-pointer"
                     onClick={() => addToCart(props.item._id, size)}
                   >
