@@ -1,6 +1,7 @@
 // import React from 'react'
 
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import CartList from "../../components/cartList/CartList";
 import LatestProducts from "../../components/products/LatestProducts";
 import Products from "../../components/products/Products";
@@ -66,12 +67,18 @@ export default function Cart() {
             <div className="text-xs text-gray-400">
               Tax included and shipping calculated at checkout
             </div>
-            <div className="p-3 bg-secondaryColor rounded-sm text-primaryColor text-center uppercase text-base md:text-lg hover:bg-transparent hover:border border-secondaryColor hover:text-secondaryColor cursor-pointer duration-300">
+            <Link
+              to="/checkout"
+              className="p-3 bg-secondaryColor rounded-sm text-primaryColor text-center uppercase text-base md:text-lg hover:bg-transparent hover:border border-secondaryColor hover:text-secondaryColor cursor-pointer duration-300"
+            >
               Proceed to Checkout
-            </div>
-            <div className="p-3 hover:bg-secondaryColor rounded-sm hover:text-primaryColor text-center uppercase text-base md:text-lg border border-secondaryColor cursor-pointer duration-300">
+            </Link>
+            <Link
+              to="/collection"
+              className="p-3 hover:bg-secondaryColor rounded-sm hover:text-primaryColor text-center uppercase text-base md:text-lg border border-secondaryColor cursor-pointer duration-300"
+            >
               Continue Shopping
-            </div>
+            </Link>
           </div>
         </div>
       ) : (

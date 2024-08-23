@@ -6,6 +6,7 @@ import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Cart from "./screens/cart/Cart";
+import Checkout from "./screens/checkout/Checkout";
 import Collection from "./screens/collection/Collection";
 import Home from "./screens/home/Home";
 import LoginSignup from "./screens/loginSignup/LoginSignup";
@@ -32,6 +33,7 @@ function App() {
             />
             <Route exact path="/login" element={<LoginSignup />} />
             <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/checkout" element={<Checkout />} />
           </Routes>
         </div>
 
