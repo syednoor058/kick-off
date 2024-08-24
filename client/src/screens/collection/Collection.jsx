@@ -406,7 +406,7 @@ export default function Collection() {
               </select>
             </div>
           </div>
-          <div className="w-full h-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-6">
+          <div className="w-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filterProducts.map((item, index) => (
               <ProductCard
                 key={index}
