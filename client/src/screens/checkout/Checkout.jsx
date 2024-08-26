@@ -31,7 +31,7 @@ export default function Checkout() {
   return (
     <>
       {cartData.length > 0 ? (
-        <div className="w-full h-full flex flex-col-reverse gap-7 lg:gap-0 lg:flex-row">
+        <div className="w-full h-full flex flex-col-reverse gap-7 lg:gap-0 lg:flex-row mt-[104px]">
           <div className=" w-full lg:w-[55%] px-4 sm:px-6 md:px-10 py-10 md:py-20">
             <form className="w-full flex flex-col gap-7">
               <div className="w-full flex flex-col gap-2">

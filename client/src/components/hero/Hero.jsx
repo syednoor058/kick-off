@@ -1,10 +1,11 @@
 // import React from 'react'
-import Slider from "../slider/Slider";
+// import Slider from "../slider/Slider";
+import HeroSlider from "../slider/HeroSlider";
 
 export default function Hero() {
   return (
     <div>
-      <Slider />
+      <HeroSlider />
     </div>
   );
 }

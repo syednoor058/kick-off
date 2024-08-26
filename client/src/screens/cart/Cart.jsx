@@ -31,7 +31,7 @@ export default function Cart() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="min-h-screen  py-10 md:py-20 flex flex-col gap-10 md:gap-20">
+    <div className="min-h-screen  py-10 md:py-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
       {cartData.length > 0 ? (
         <div className="flex flex-col md:flex-row gap-10 md:gap-5 lg:gap-10 px-2 sm:px-5 md:px-10 lg:px-20">
           <div className="w-full md:w-[70%] text-[10px] sm:text-xs flex flex-col gap-5 ">

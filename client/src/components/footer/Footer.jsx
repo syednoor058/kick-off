@@ -1,11 +1,17 @@
 // import React from 'react'
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
+import { useLocation } from "react-router-dom";
 
 export default function Footer() {
+  let location = useLocation();
   return (
     <>
-      <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 bg-secondaryAccentColor flex flex-col lg:flex-row gap-10 lg:justify-between lg:gap-0 text-primaryColor items-center">
+      <div
+        className={`${
+          location.pathname.includes("/dashboard") ? "hidden" : "visible"
+        } w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 bg-secondaryAccentColor flex flex-col lg:flex-row gap-10 lg:justify-between lg:gap-0 text-primaryColor items-center`}
+      >
         <div className="flex flex-row gap-6 md:gap-10 lg:gap-16">
           <div className="flex flex-col gap-2">
             <div className="font-medium uppercase text-lg md:text-xl">
@@ -46,7 +52,11 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full pb-5 text-center text-sm text-gray-300 bg-secondaryAccentColor">
+      <div
+        className={`${
+          location.pathname.includes("/dashboard") ? "hidden" : "visible"
+        } w-full pb-5 text-center text-sm text-gray-300 bg-secondaryAccentColor`}
+      >
         © 2024. All rights reserved by Syed Shaeduzzaman Noor
       </div>
     </>

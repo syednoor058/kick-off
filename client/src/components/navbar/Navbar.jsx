@@ -3,13 +3,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContext";
 
 export default function Navbar() {
+  let location = useLocation();
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {
     setToggle(!toggle);
@@ -18,7 +20,11 @@ export default function Navbar() {
   const [cartNum, setCartNum] = useState();
   useEffect(() => setCartNum(() => getCartCount()), [getCartCount]);
   return (
-    <div className="w-full bg-primaryColor text-secondaryColor px-5 sm:px-10 md:px-16 lg:px-20 py-3 flex items-center shadow-lg">
+    <div
+      className={`${
+        location.pathname.includes("/dashboard") ? "hidden" : "visible"
+      } w-full h-16 bg-primaryColor text-secondaryColor px-5 sm:px-10 md:px-16 lg:px-20 flex items-center shadow-lg`}
+    >
       <div className="w-full flex flex-row justify-between">
         <Link className="w-[33%] flex flex-col" to="/">
           <div className="font-bold text-xl md:text-2xl">Kick-Off</div>
@@ -50,11 +56,14 @@ export default function Navbar() {
               <FavoriteBorderIcon />
             </span>
           </div>
-          <div className="flex items-center gap-1">
+          <Link to="/collection" className="flex items-center gap-1">
             <span>
-              <PermIdentityIcon />
+              <SearchIcon />
             </span>
-          </div>
+          </Link>
+          <Link to="/account" className="flex items-center gap-1">
+            <PermIdentityIcon />
+          </Link>
           <div
             className="lg:hidden flex items-center px-3 bg-secondaryColor text-primaryColor rounded cursor-pointer"
             onClick={() => handleToggle()}
