@@ -1,10 +1,20 @@
 {
   "version": 2,
-  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/index.js"
     }
-  ]
+  ],
+  "env": {
+    "PORT": "8080",
+    "MONGO_URI": "mongodb+srv://kickoffjersey59:7OCH0gQrVW58CePQ@cluster0-off-database.lynq8ef.mongodb.net/kick_off_jersey_galleria?retryWrites=true&w=majority&appName=Cluster0-off-database",
+    "JWT_SECRET": "akjdnvcer32165fdvt65b65rfbdsafaer54gf"
+  }
 }
