@@ -19,10 +19,9 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const name = firstName + " " + lastName;
       const res = await axios.post(
         `${import.meta.env.VITE_APP_API}/api/v1/auth/register`,
-        { name, email, password, phone, address }
+        { firstName, lastName, email, password, phone, address }
       );
       if (res.data.success) {
         toast.success(res.data.message);

@@ -4,8 +4,6 @@ import Search from "@mui/icons-material/Search";
 import { useCallback, useContext, useEffect, useState } from "react";
 import ProductCard from "../../components/products/ProductCard";
 import { ProductContext } from "../../context/ProductContext";
-// import products from './../../components/products/Products';
-// import default from './../../../tailwind.config';
 
 export default function Collection() {
   const { products } = useContext(ProductContext);

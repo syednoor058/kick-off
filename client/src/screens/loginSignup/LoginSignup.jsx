@@ -7,9 +7,11 @@ export default function LoginSignup() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="w-full min-h-screen mt-[104px] flex flex-row">
-      <div className="w-[50%] top-0 bottom-0 bg-secondaryColor">way</div>
-      <div className="w-[50%] px-20 py-10 flex justify-center items-center">
+    <div className="w-full min-h-screen mt-[104px] flex flex-col-reverse lg:flex-row">
+      <div className="w-full lg:w-[50%] top-0 bottom-0 bg-secondaryColor">
+        .
+      </div>
+      <div className="w-full lg:w-[50%] px-20 py-10 flex justify-center items-center">
         <Outlet />
       </div>
     </div>

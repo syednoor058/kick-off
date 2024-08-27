@@ -7,18 +7,37 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const [userMenuToggle, setUserMenuToggle] = useState(false);
+  const { auth, setAuth } = useContext(AuthContext);
   let location = useLocation();
   const [toggle, setToggle] = useState(false);
+  const handleUserMenuToggle = () => {
+    setUserMenuToggle(!userMenuToggle);
+  };
   const handleToggle = () => {
     setToggle(!toggle);
+  };
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("kickoffLoginAuth");
+    navigate("/account/login");
   };
   const { getCartCount } = useContext(ProductContext);
   const [cartNum, setCartNum] = useState();
   useEffect(() => setCartNum(() => getCartCount()), [getCartCount]);
+  useEffect(() => {
+    setUserMenuToggle(false);
+  }, [auth]);
   return (
     <div
       className={`${
@@ -61,9 +80,50 @@ export default function Navbar() {
               <SearchIcon />
             </span>
           </Link>
-          <Link to="/account" className="flex items-center gap-1">
-            <PermIdentityIcon />
-          </Link>
+          <div className="flex justify-center items-center">
+            {auth.user ? (
+              <div className="h-full">
+                <div
+                  className="h-full aspect-square text-primaryColor text-2xl uppercase font-bold rounded-full bg-accentColor flex justify-center items-center cursor-pointer"
+                  onClick={() => handleUserMenuToggle()}
+                >
+                  {auth.user.name[0]}
+                </div>
+                <AnimatePresence>
+                  {userMenuToggle && (
+                    <motion.div
+                      initial={{ x: "100%", opacity: 1 }}
+                      animate={{
+                        x: 0,
+                        opacity: 1,
+                        transition: { duration: 0.5 },
+                      }}
+                      exit={{
+                        x: "100%",
+                        opacity: 1,
+                        transition: { duration: 0.5 },
+                      }}
+                      className="w-[35%] h-screen bg-secondaryColor px-5 sm:px-10 md:px-16 lg:px-20 absolute right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-7 text-xl top-[104px]"
+                    >
+                      <Link to="" className="cursor-pointer">
+                        {auth.user.role === 1 ? "Dashboard" : "My Order"}
+                      </Link>
+                      <div
+                        onClick={() => handleLogout()}
+                        className="cursor-pointer"
+                      >
+                        Logout
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link to="/account" className="flex items-center gap-1">
+                <PermIdentityIcon />
+              </Link>
+            )}
+          </div>
           <div
             className="lg:hidden flex items-center px-3 bg-secondaryColor text-primaryColor rounded cursor-pointer"
             onClick={() => handleToggle()}
