@@ -16,9 +16,9 @@ import Checkout from "./screens/checkout/Checkout";
 import Collection from "./screens/collection/Collection";
 import Dashboard from "./screens/dashboard/Dashboard";
 import Home from "./screens/home/Home";
-import Index from "./screens/loginSignup";
 import Login from "./screens/loginSignup/Login";
 import LoginSignup from "./screens/loginSignup/LoginSignup";
+import LoginSignupIndex from "./screens/loginSignup/LoginSignupIndex";
 import Signup from "./screens/loginSignup/Signup";
 import ProductDetail from "./screens/productDetail/ProductDetail";
 
@@ -51,7 +51,7 @@ function App() {
               <Route exact path="messages" element={<Message />} />
             </Route>
             <Route exact path="/account" element={<LoginSignup />}>
-              <Route index element={<Index />} />
+              <Route index element={<LoginSignupIndex />} />
               <Route path="register" element={<Signup />} />
               <Route path="login" element={<Login />} />
             </Route>

@@ -1,7 +1,7 @@
 // import React from 'react'
 import { Link } from "react-router-dom";
 
-export default function Index() {
+export default function LoginSignupIndex() {
   return (
     <div className="flex flex-col gap-10">
       <div className="text-2xl font-semibold uppercase text-center">
