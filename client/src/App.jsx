@@ -40,7 +40,6 @@ function App() {
               path="/product/:productId"
               element={<ProductDetail />}
             />
-            <Route exact path="/login" element={<LoginSignup />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="/checkout" element={<Checkout />} />
             <Route exact path="/dashboard" element={<Dashboard />}>
