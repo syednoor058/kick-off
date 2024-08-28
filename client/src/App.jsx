@@ -11,6 +11,8 @@ import Order from "./components/dashboardComponents/order/Order";
 import Overview from "./components/dashboardComponents/overview/Overview";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import AdminPrivateRoute from "./components/routes/privateRoutes/AdminPrivateRoute";
+import PrivateRoute from "./components/routes/privateRoutes/PrivateRoute";
 import Cart from "./screens/cart/Cart";
 import Checkout from "./screens/checkout/Checkout";
 import Collection from "./screens/collection/Collection";
@@ -20,6 +22,7 @@ import Login from "./screens/loginSignup/Login";
 import LoginSignup from "./screens/loginSignup/LoginSignup";
 import LoginSignupIndex from "./screens/loginSignup/LoginSignupIndex";
 import Signup from "./screens/loginSignup/Signup";
+import MyOrder from "./screens/myOrder/MyOrder";
 import ProductDetail from "./screens/productDetail/ProductDetail";
 
 function App() {
@@ -42,14 +45,20 @@ function App() {
             />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="/checkout" element={<Checkout />} />
-            <Route exact path="/dashboard" element={<Dashboard />}>
-              <Route index element={<Overview />} />
-              <Route exact path="add-category" element={<AddCategory />} />
-              <Route exact path="add-product" element={<AddProducts />} />
-              <Route exact path="add-admin" element={<AddAdmin />} />
-              <Route exact path="orders" element={<Order />} />
-              <Route exact path="messages" element={<Message />} />
+            <Route exact path="/my-order" element={<PrivateRoute />}>
+              <Route path="" element={<MyOrder />} />
             </Route>
+            <Route exact path="/dashboard" element={<AdminPrivateRoute />}>
+              <Route exact path="" element={<Dashboard />}>
+                <Route index element={<Overview />} />
+                <Route exact path="add-category" element={<AddCategory />} />
+                <Route exact path="add-product" element={<AddProducts />} />
+                <Route exact path="add-admin" element={<AddAdmin />} />
+                <Route exact path="orders" element={<Order />} />
+                <Route exact path="messages" element={<Message />} />
+              </Route>
+            </Route>
+
             <Route exact path="/account" element={<LoginSignup />}>
               <Route index element={<LoginSignupIndex />} />
               <Route path="register" element={<Signup />} />

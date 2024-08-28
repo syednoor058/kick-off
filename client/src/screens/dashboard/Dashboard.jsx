@@ -1,13 +1,13 @@
 // import React from 'react'
-import HomeIcon from "@mui/icons-material/Home";
-
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import CategoryIcon from "@mui/icons-material/Category";
 import EmailIcon from "@mui/icons-material/Email";
-import Inventory2SharpIcon from "@mui/icons-material/Inventory2Sharp";
+import HomeIcon from "@mui/icons-material/Home";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useEffect } from "react";
+import { FaBoxArchive } from "react-icons/fa6";
+import { ImPieChart } from "react-icons/im";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
 
 export default function Dashboard() {
@@ -50,44 +50,64 @@ export default function Dashboard() {
             </span>
             Home
           </Link>
-          <div>/</div>
+          <div className="text-xl flex justify-center items-center">
+            <MdOutlineKeyboardArrowRight />
+          </div>
           <div>Dashboard</div>
         </div>
         <div className="w-full h-full flex flex-row gap-10">
           <div className="w-[20%] h-screen rounded-sm bg-accentColor text-primaryColor">
-            <div className="w-full h-full flex flex-col gap-8 py-20 ps-10">
-              <Link to="/dashboard" className="flex flex-row gap-2">
-                <span>
-                  <AssignmentIcon />
+            <div className="w-full h-full flex flex-col gap-1 py-10 text-sm">
+              <Link
+                to="/dashboard"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <span className="text-xl w-7 h-auto">
+                  <ImPieChart />
                 </span>
                 Overview
               </Link>
-              <Link to="add-category" className="flex flex-row gap-2">
-                <span>
+              <Link
+                to="add-category"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <span className="w-7 h-auto">
                   <CategoryIcon />
                 </span>
                 Categories
               </Link>
-              <Link to="add-product" className="flex flex-row gap-2">
-                <span>
-                  <Inventory2SharpIcon />
+              <Link
+                to="add-product"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <span className="text-xl w-7 h-auto">
+                  <FaBoxArchive />
                 </span>
                 Products
               </Link>
-              <Link to="add-admin" className="flex flex-row gap-2">
-                <span>
+              <Link
+                to="add-admin"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <span className="w-7 h-auto">
                   <AccountCircleIcon />
                 </span>
                 Admins
               </Link>
-              <Link to="orders" className="flex flex-row gap-2">
-                <span>
+              <Link
+                to="orders"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <span className="w-7 h-auto">
                   <LocalShippingIcon />
                 </span>
                 Orders
               </Link>
-              <Link to="messages" className="flex flex-row gap-2">
-                <span>
+              <Link
+                to="messages"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <span className="w-7 h-auto">
                   <EmailIcon />
                 </span>
                 Messages

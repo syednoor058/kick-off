@@ -8,6 +8,7 @@ const AuthContextProvider = (props) => {
     user: null,
     token: "",
   });
+
   const value = { auth, setAuth };
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const AuthContextProvider = (props) => {
         token: parsedLoginData.token,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

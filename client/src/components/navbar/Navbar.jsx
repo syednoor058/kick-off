@@ -105,9 +105,23 @@ export default function Navbar() {
                       }}
                       className="w-[35%] h-screen bg-secondaryColor px-5 sm:px-10 md:px-16 lg:px-20 absolute right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-7 text-xl top-[104px]"
                     >
-                      <Link to="" className="cursor-pointer">
-                        {auth.user.role === 1 ? "Dashboard" : "My Order"}
-                      </Link>
+                      <div to="" className="cursor-pointer">
+                        {auth.user.role === 1 ? (
+                          <Link
+                            to="/dashboard"
+                            onClick={() => handleUserMenuToggle()}
+                          >
+                            Dashboard
+                          </Link>
+                        ) : (
+                          <Link
+                            to="/my-order"
+                            onClick={() => handleUserMenuToggle()}
+                          >
+                            My Order
+                          </Link>
+                        )}
+                      </div>
                       <div
                         onClick={() => handleLogout()}
                         className="cursor-pointer"
