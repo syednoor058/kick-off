@@ -10,31 +10,6 @@ export default function AdminPrivateRoute() {
   const [ok, setOk] = useState(false);
   const { auth } = useContext(AuthContext);
   const adminAuthCheck = async () => {
-    // const res1 = await axios.get(
-    //   `${import.meta.env.VITE_APP_API}/api/v1/auth/user-auth`,
-    //   {
-    //     headers: {
-    //       Authorization: `${auth?.token}`,
-    //     },
-    //   }
-    // );
-    // if (res1.data.ok) {
-    //   console.log(auth.user);
-    //   const res = await axios.get(
-    //     `${import.meta.env.VITE_APP_API}/api/v1/auth/admin-auth`,
-    //     {
-    //       user: auth?.user,
-    //     }
-    //   );
-
-    //   if (res.data.ok) {
-    //     setOk(true);
-    //   } else {
-    //     setOk(false);
-    //   }
-    // } else {
-    //   setOk(false);
-    // }
     const res = await axios.get(
       `${import.meta.env.VITE_APP_API}/api/v1/auth/admin-auth`,
       {
@@ -54,5 +29,13 @@ export default function AdminPrivateRoute() {
     adminAuthCheck();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.token]);
-  return <>{ok ? <Outlet /> : <Spinner nav={"/"} />}</>;
+  return (
+    <>
+      {ok ? (
+        <Outlet />
+      ) : (
+        <Spinner nav={"/"} error={true} message="Unauthorized access!" />
+      )}
+    </>
+  );
 }

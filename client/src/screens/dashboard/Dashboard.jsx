@@ -1,16 +1,18 @@
 // import React from 'react'
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import CategoryIcon from "@mui/icons-material/Category";
-import EmailIcon from "@mui/icons-material/Email";
+import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
+import ChatIcon from "@mui/icons-material/Chat";
 import HomeIcon from "@mui/icons-material/Home";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { useEffect } from "react";
-import { FaBoxArchive } from "react-icons/fa6";
-import { ImPieChart } from "react-icons/im";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import PieChartIcon from "@mui/icons-material/PieChart";
+import RoomServiceIcon from "@mui/icons-material/RoomService";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import { useContext, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "./../../context/AuthContext";
 
 export default function Dashboard() {
+  const { auth } = useContext(AuthContext);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -18,24 +20,22 @@ export default function Dashboard() {
     <div className="w-full h-full">
       <div className="w-full min-h-screen top-0 bg-gray-200 flex flex-col gap-5">
         <div className="w-full flex flex-row justify-between items-center py-3 bg-primaryColor px-10 shadow-lg">
-          <div className="flex flex-col">
-            <div className="text-xl">Kick-Off</div>
-            <div className="text-xs">The Jrsey Galleria</div>
+          <div className="w-full flex flex-col">
+            <div className="text-xl font-bold uppercase">Kick-Off</div>
+            <div className="text-xs text-gray-500">The Jrsey Galleria</div>
           </div>
-          <div className="flex flex-row gap-10">
-            <div className="flex justify-center items-center">
-              <LocalShippingIcon />
-            </div>
-            <div className="flex justify-center items-center">
-              <EmailIcon />
-            </div>
-            <div className="w-full flex flex-row gap-2 justify-center items-center">
-              <div className="px-5 py-3 text-primaryColor flex justify-center items-center bg-secondaryColor rounded-full">
-                R
+          <div className="w-full flex flex-row gap-10 justify-end">
+            <div className="flex flex-row gap-2 justify-end items-center">
+              <div className="h-full w-auto aspect-square text-primaryColor flex justify-center items-center bg-secondaryColor rounded-full text-xl font-bold">
+                {auth.user.name[0]}
               </div>
-              <div className="w-full flex flex-col">
-                <div className="w-full text-nowrap">Rakib Shikdar</div>
-                <div>@rakibs59</div>
+              <div className="flex flex-col">
+                <div className="text-lg uppercase font-semibold leading-none">
+                  {auth.user.name}
+                </div>
+                <div className="flex text-sm text-gray-500">
+                  {"@" + auth.user.email.split("@")[0]}
+                </div>
               </div>
             </div>
           </div>
@@ -62,55 +62,67 @@ export default function Dashboard() {
                 to="/dashboard"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
               >
-                <span className="text-xl w-7 h-auto">
-                  <ImPieChart />
-                </span>
-                Overview
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <PieChartIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Overview</div>
+                </div>
               </Link>
               <Link
                 to="add-category"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
               >
-                <span className="w-7 h-auto">
-                  <CategoryIcon />
-                </span>
-                Categories
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <AutoAwesomeMotionIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Categories</div>
+                </div>
               </Link>
               <Link
                 to="add-product"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
               >
-                <span className="text-xl w-7 h-auto">
-                  <FaBoxArchive />
-                </span>
-                Products
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <LocalMallIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Products</div>
+                </div>
               </Link>
               <Link
                 to="add-admin"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
               >
-                <span className="w-7 h-auto">
-                  <AccountCircleIcon />
-                </span>
-                Admins
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <SupervisorAccountIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Admins</div>
+                </div>
               </Link>
               <Link
                 to="orders"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
               >
-                <span className="w-7 h-auto">
-                  <LocalShippingIcon />
-                </span>
-                Orders
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <RoomServiceIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Orders</div>
+                </div>
               </Link>
               <Link
                 to="messages"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
               >
-                <span className="w-7 h-auto">
-                  <EmailIcon />
-                </span>
-                Messages
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <ChatIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Messages</div>
+                </div>
               </Link>
             </div>
           </div>

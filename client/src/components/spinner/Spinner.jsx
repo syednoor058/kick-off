@@ -2,6 +2,7 @@
 // import React from 'react'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Spinner(props) {
   const [count, setCount] = useState(3);
@@ -11,11 +12,17 @@ export default function Spinner(props) {
     const interval = setInterval(() => {
       setCount((prevValue) => --prevValue);
     }, 1000);
-    count === 0 &&
+    if (count === 0) {
       navigate(props.nav, {
         state: location.pathname,
       });
+      props.error && toast.error(props.message);
+      props.success && toast.success(props.message);
+    }
+
     return () => clearInterval(interval);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, navigate, props.nav]);
   return (
     <>

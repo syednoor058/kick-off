@@ -4,6 +4,13 @@ import userModel from "../models/userModel.js";
 //Protected Routes token base
 export const requireSignIn = async (req, res, next) => {
   try {
+    const authToken = req.headers.authorization
+    if (!authToken) {
+      return res.status(401).send({
+        success: false,
+        message: "Authorization header is missing",
+      });
+    }
     const decode = JWT.verify(
       req.headers.authorization,
       process.env.JWT_SECRET
@@ -12,6 +19,9 @@ export const requireSignIn = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    return res.status(401).send({success: false,
+      message: "Authentication failed!"
+    })
   }
 };
 
@@ -29,7 +39,7 @@ export const isAdmin = async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(401).send({
+    return res.status(401).send({
       success: false,
       error,
       message: "Error in admin middelware",

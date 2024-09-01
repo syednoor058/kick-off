@@ -26,5 +26,13 @@ export default function PrivateRoute() {
     };
     if (auth?.token) authCheck();
   }, [auth?.token]);
-  return <>{ok ? <Outlet /> : <Spinner nav={"/"} />}</>;
+  return (
+    <>
+      {ok ? (
+        <Outlet />
+      ) : (
+        <Spinner nav={"/"} error={true} message="Please login first!" />
+      )}
+    </>
+  );
 }

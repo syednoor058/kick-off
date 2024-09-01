@@ -7,22 +7,22 @@ export const registerController = async (req, res) => {
     const { firstName, lastName, email, password, phone, address } = req.body;
     //validations
     if (!firstName) {
-      return res.send({ message: "First name is required" });
+      return res.status(500).send({ message: "First name is required" });
     }
     if (!lastName) {
-      return res.send({ message: "Last name is required" });
+      return res.status(500).send({ message: "Last name is required" });
     }
     if (!email) {
-      return res.send({ message: "Email is required" });
+      return res.status(500).send({ message: "Email is required" });
     }
     if (!password) {
-      return res.send({ message: "Password is required" });
+      return res.status(500).send({ message: "Password is required" });
     }
     if (!phone) {
-      return res.send({ message: "Phone no is required" });
+      return res.status(500).send({ message: "Phone no is required" });
     }
     if (!address) {
-      return res.send({ message: "Address is required" });
+      return res.status(500).send({ message: "Address is required" });
     }
 
     //check user
@@ -47,8 +47,8 @@ export const registerController = async (req, res) => {
 
     res.status(201).send({
       success: true,
-      message: "User Register Successfully",
-      user,
+      message: "User registered successfully",
+      user: user,
     });
   } catch (error) {
     console.log(`Error register controller, ${error}`);
