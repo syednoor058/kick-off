@@ -3,8 +3,10 @@ import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import ChatIcon from "@mui/icons-material/Chat";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import LogoutIcon from "@mui/icons-material/Logout";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import RoomServiceIcon from "@mui/icons-material/RoomService";
+import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { useContext, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -56,8 +58,8 @@ export default function Dashboard() {
           <div>Dashboard</div>
         </div>
         <div className="w-full h-full flex flex-row gap-10">
-          <div className="w-[20%] h-screen rounded-sm bg-accentColor text-primaryColor">
-            <div className="w-full h-full flex flex-col gap-1 py-10 text-sm">
+          <div className="w-[20%] h-full rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
+            <div className="w-full flex flex-col gap-1 py-10 text-sm">
               <Link
                 to="/dashboard"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
@@ -125,8 +127,32 @@ export default function Dashboard() {
                 </div>
               </Link>
             </div>
+            <div className="w-full flex flex-col gap-1 py-10 text-sm">
+              <Link
+                to="/dashboard"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <SettingsIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Settings</div>
+                </div>
+              </Link>
+              <Link
+                to="add-category"
+                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+              >
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <LogoutIcon />
+                  </div>
+                  <div className="w-[90%] flex items-center">Logout</div>
+                </div>
+              </Link>
+            </div>
           </div>
-          <div className="w-[80%] h-full bg-primaryColor rounded-sm">
+          <div className="w-[80%] h-full bg-primaryColor rounded-sm relative">
             <Outlet />
           </div>
         </div>

@@ -29,7 +29,7 @@ export default function Spinner(props) {
       <div className="w-full h-screen flex justify-center items-center">
         <svg
           aria-hidden="true"
-          className="w-8 h-8 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor"
+          className="w-16 h-16 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

@@ -28,12 +28,10 @@ const productsSchema = new mongoose.Schema(
       ref: "category",
       required: true,
     },
-    photo: [
-      {
-        data: Buffer,
-        contentType: String,
-      },
-    ],
+    photo: {
+      type: [String],
+      required: true,
+    },
     isAvailable: {
       type: Number,
       required: true,
@@ -43,4 +41,9 @@ const productsSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
 export default mongoose.model("products", productsSchema);
+
+
+
+

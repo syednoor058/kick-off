@@ -64,7 +64,7 @@ export default function Login() {
           Login
         </button>
         <div className="w-full flex flex-row gap-3 justify-between">
-          <Link className="hover:underline duration-300">Forget Password?</Link>
+          <Link className="hover:underline duration-300">Forgot Password?</Link>
           <Link className="hover:underline duration-300" to="/account/register">
             Create an account
           </Link>

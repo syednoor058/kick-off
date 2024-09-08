@@ -12,8 +12,8 @@ const categorySchema = new mongoose.Schema(
       unique: true,
     },
     photo: {
-      data: Buffer,
-      contentType: String,
+      type: String,
+      required: true,
     },
   },
   { timeStamps: true }
