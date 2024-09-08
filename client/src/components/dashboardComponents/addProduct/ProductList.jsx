@@ -425,7 +425,7 @@ export default function ProductList() {
                     <div className="w-[50%] flex flex-col gap-3">
                       <label className="block text-gray-700">Category *</label>
                       <select
-                        className="w-full p-2 border border-gray-300 rounded-sm outline-none"
+                        className="w-full p-2 border border-gray-300 rounded-sm outline-none capitalize"
                         value={newSelectedCategory}
                         onChange={(e) => setNewSelectedCategory(e.target.value)}
                         required
@@ -434,7 +434,11 @@ export default function ProductList() {
                           Select a category
                         </option>
                         {categories.map((category) => (
-                          <option key={category._id} value={category._id}>
+                          <option
+                            key={category._id}
+                            value={category._id}
+                            className="capitalize"
+                          >
                             {category.name}
                           </option>
                         ))}
