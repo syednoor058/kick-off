@@ -1,15 +1,11 @@
-import React from "react";
+// import React from "react";
+import UnderConstruction from "../../underConstruction/UnderConstruction";
 
 export default function Message() {
   return (
-    <div className="p-20">
-      <div className="flex flex-col gap-3">
-        <div className="text-center text-3xl font-medium uppercase">
-          This feature is under construction!
-        </div>
-        <div className="text-center text-gray-500 text-xl">
-          Thanks for your patience.
-        </div>
+    <div className="w-full h-full">
+      <div className="w-full h-full px-32 py-20 flex justify-center items-center">
+        <UnderConstruction />
       </div>
     </div>
   );
