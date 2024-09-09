@@ -8,7 +8,7 @@ export default function featureCard(props) {
         src={props.image}
         alt=""
       />
-      <div className="w-full font-medium text-center text-lg absolute bottom-0 pt-16 pb-5 px-5 text-primaryColor bg-gradient-to-t from-secondaryColor to-transparent rounded leading-5">
+      <div className="w-full font-medium text-center text-lg absolute bottom-0 pt-16 pb-5 px-5 text-primaryColor bg-gradient-to-t from-secondaryColor to-transparent rounded leading-5 capitalize">
         {props.title}
       </div>
     </div>

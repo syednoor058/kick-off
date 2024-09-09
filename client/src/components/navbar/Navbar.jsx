@@ -56,8 +56,12 @@ export default function Navbar() {
           <Link to="/collection" className="flex items-center gap-1">
             Products
           </Link>
-          <div className="flex items-center gap-1">About</div>
-          <div className="flex items-center gap-1">Contact</div>
+          <Link to="/about-us" className="flex items-center gap-1">
+            About
+          </Link>
+          <Link to="/contact-us" className="flex items-center gap-1">
+            Contact
+          </Link>
         </div>
         <div className="w-[33%] flex flex-row gap-5 justify-end">
           <Link to="/cart" className="flex items-center gap-1">
@@ -70,11 +74,11 @@ export default function Navbar() {
               <ShoppingCartOutlinedIcon />
             </span>
           </Link>
-          <div className="flex items-center gap-1">
+          <Link to="/favourites" className="flex items-center gap-1">
             <span>
               <FavoriteBorderIcon />
             </span>
-          </div>
+          </Link>
           <Link to="/collection" className="flex items-center gap-1">
             <span>
               <SearchIcon />

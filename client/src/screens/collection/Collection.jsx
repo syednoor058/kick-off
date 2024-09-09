@@ -231,9 +231,10 @@ export default function Collection() {
               <ProductCard
                 key={index}
                 id={item._id}
-                image={item.image[0]}
+                image={item.photo[0]}
                 name={item.name}
                 price={item.price}
+                available={item.isAvailable}
               />
             ))}
           </div>

@@ -37,7 +37,7 @@ export default function Dashboard() {
         <div className="w-full flex flex-row justify-between items-center py-3 bg-primaryColor px-10 shadow-lg">
           <div className="w-full flex flex-col">
             <div className="text-xl font-bold uppercase">Kick-Off</div>
-            <div className="text-xs text-gray-500">The Jrsey Galleria</div>
+            <div className="text-xs text-gray-500">The Jersey Galleria</div>
           </div>
           <div className="w-full flex flex-row gap-10 justify-end">
             <div className="flex flex-row gap-2 justify-end items-center">

@@ -253,7 +253,7 @@ export default function CategoryTable() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-[2px]">
           <div className="w-[60%] bg-white p-8 rounded shadow-md relative">
             {isEditingSpinner && (
-              <div className="w-full h-full flex flex-col gap-5 justify-center items-center absolute backdrop-blur-[3px] z-[200] bg-primaryColor bg-opacity-80">
+              <div className="-m-8 w-full h-full flex flex-col gap-5 justify-center items-center absolute backdrop-blur-[3px] z-[200] bg-primaryColor bg-opacity-80">
                 <svg
                   aria-hidden="true"
                   className="w-16 h-16 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor"
@@ -340,7 +340,7 @@ export default function CategoryTable() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-[2px]">
           <div className="p-10 flex flex-col gap-5 bg-primaryColor relative">
             {isDeleteSpinner && (
-              <div className="w-full h-full flex flex-col justify-center items-center absolute backdrop-blur-[3px] z-[200] bg-primaryColor bg-opacity-80">
+              <div className="-m-10 w-full h-full flex justify-center items-center absolute backdrop-blur-[3px] z-[200] bg-primaryColor bg-opacity-80">
                 <svg
                   aria-hidden="true"
                   className="w-16 h-16 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor"

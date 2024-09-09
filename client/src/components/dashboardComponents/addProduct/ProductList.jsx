@@ -116,6 +116,8 @@ export default function ProductList() {
         return;
       }
 
+      // console.log(newSelectedCategory);
+
       const formData = new FormData();
       formData.append("name", newProductName);
       formData.append("productType", newProductType);
@@ -170,7 +172,7 @@ export default function ProductList() {
   const handleEdit = (product) => {
     setEditableProduct(product);
     setNewProductName(product.name);
-    setNewSelectedCategory(product.category);
+    setNewSelectedCategory(product.category._id);
     setNewProductType(product.productType);
     setNewSelectedSizes(product.size);
     setNewPhotos(product.photo);
@@ -548,19 +550,19 @@ export default function ProductList() {
               </div>
               <div className="w-[25%] rounded flex flex-col gap-6">
                 <div className="uppercase text-center">Preview</div>
-                <div
-                  className={`flex flex-col gap-3 ${
-                    isAvailable == 0 && "bg-primaryColor bg-opacity-60"
-                  }`}
-                >
+                <div className="flex flex-col gap-3">
                   <div className="w-full aspect-square rounded-sm relative">
-                    <div className="w-full h-full absolute z-[60]">
+                    <div
+                      className={`w-full h-full absolute ${
+                        isAvailable == 0 && "bg-secondaryColor"
+                      } bg-opacity-70 z-[60]`}
+                    >
                       {isAvailable == 1 ? (
-                        <div className="w-[30%] uppercase px-1 py-2 rounded-sm bg-secondaryColor text-primaryColor text-xs text-center mt-5">
+                        <div className="inline-block uppercase px-2 py-2 rounded-sm bg-secondaryColor text-primaryColor text-xs text-center mt-5">
                           In Stock
                         </div>
                       ) : (
-                        <div className="w-[30%] uppercase px-1 py-2 rounded-sm bg-primaryColor text-secondaryColor text-xs text-center mt-5">
+                        <div className=" inline-block uppercase px-2 py-2 rounded-sm bg-primaryColor text-secondaryColor text-xs text-center mt-5">
                           Stock Out
                         </div>
                       )}

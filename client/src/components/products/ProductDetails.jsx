@@ -4,14 +4,18 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import StraightenOutlinedIcon from "@mui/icons-material/StraightenOutlined";
 import { useContext, useEffect, useState } from "react";
+import { FaHome } from "react-icons/fa";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContext";
 import RelatedProducts from "../relatedProducts/RelatedProducts";
+import "./product_details.css";
 
 export default function ProductDetails(props) {
-  const [largeImg, setLargeImg] = useState(props.item.image[0]);
+  const [largeImg, setLargeImg] = useState(props.item.photo[0]);
   const [size, setSize] = useState("");
-  useEffect(() => setLargeImg(props.item.image[0]), [props.item.image]);
+  useEffect(() => setLargeImg(props.item.photo[0]), [props.item.photo]);
   const { addToCart, getRelatedProducts } = useContext(ProductContext);
   const [relatedProducts, setRelatedProducts] = useState({});
 
@@ -28,20 +32,37 @@ export default function ProductDetails(props) {
       const related = localStorage.getItem("relatedProducts");
       setRelatedProducts(JSON.parse(related));
     }
-  }, [getRelatedProducts, props.item.name]);
+  }, [getRelatedProducts, props.item]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [relatedProducts]);
+  }, []);
 
   return (
     <div>
       <div className="w-full h-full px-5 sm:px-10 md:px-10 lg:px-20 pt-10 md:pt-20 flex flex-col gap-10 md:gap-20">
+        <div className="flex flex-row gap-3 sm:gap-5 -mb-4 md:-mb-12">
+          <Link
+            to="/"
+            className="flex justify-center items-center gap-2 leading-3 text-xs sm:text-sm"
+          >
+            <span className="flex justify-center items-end">
+              <FaHome />
+            </span>
+            Home
+          </Link>
+          <div className="flex justify-center items-center">
+            <MdKeyboardArrowRight />
+          </div>
+          <div className="flex justify-center text-xs sm:text-sm items-center leading-3">
+            {props.item.name}
+          </div>
+        </div>
         <div className="w-full flex flex-col md:flex-row gap-10">
           <div className="w-full md:w-[60%] flex flex-row gap-5">
             <div className="w-[25%] md:w-[15%]">
               <div className="w-full flex flex-col gap-5">
-                {props.item.image.map((itemImg, index) => (
+                {props.item.photo.map((itemImg, index) => (
                   <div
                     className="w-full aspect-square overflow-hidden rounded shadow-lg"
                     key={index}
@@ -72,8 +93,19 @@ export default function ProductDetails(props) {
                 </div>
                 <div className="flex flex-col gap-2 md:gap-3 text-sm text-gray-700 capitalize">
                   <div>Product ID: {props.item._id}</div>
-                  <div>Type: {props.item.type}</div>
-                  <div>Category: {props.item.category}</div>
+                  <div className="capitalize">
+                    Type: {props.item.productType}
+                  </div>
+                  <div className="capitalize">
+                    Category: {props.item.category.name}
+                  </div>
+                  {props.item.isAvailable == 1 ? (
+                    <div className="uppercase font-medium">In Stock</div>
+                  ) : (
+                    <div className="font-medium text-red-500 uppercase">
+                      Stock Out
+                    </div>
+                  )}
                 </div>
                 <div className="text-xl capitalize">
                   Price:{" "}
@@ -84,11 +116,11 @@ export default function ProductDetails(props) {
               </div>
               <div className="w-full flex flex-col gap-2">
                 <div className="capitalize">Size Availavle:</div>
-                <div className="w-full flex flex-row gap-5">
-                  {props.item.sizes.map((propSize, index) => (
+                <div className="w-full flex flex-row gap-3">
+                  {props.item.size.map((propSize, index) => (
                     <div
                       key={index}
-                      className={`uppercase cursor-pointer py-2 px-5 rounded-full  text-sm ${
+                      className={`w-10 flex justify-center items-center aspect-square uppercase cursor-pointer rounded-full  text-sm ${
                         size === propSize
                           ? "bg-secondaryColor text-primaryColor"
                           : "bg-gray-200 text-secondaryColor"
@@ -116,15 +148,24 @@ export default function ProductDetails(props) {
               </div>
               <div className="flex flex-row gap-5">
                 <div className="w-[80%] flex flex-col gap-3">
-                  <Link
-                    to={size && "/cart"}
-                    className="w-full flex justify-center items-center px-5 py-3 bg-secondaryColor rounded hover:bg-primaryColor hover:border hover:border-secondaryColor uppercase text-primaryColor hover:text-secondaryColor cursor-pointer"
-                    onClick={() => addToCart(props.item._id, size)}
-                  >
-                    Add to cart
-                  </Link>
+                  {props.item.isAvailable == 1 ? (
+                    <Link
+                      to={size && "/cart"}
+                      className="w-full flex justify-center items-center px-5 py-3 bg-secondaryColor rounded-sm hover:bg-primaryColor hover:border hover:border-secondaryColor uppercase text-primaryColor hover:text-secondaryColor cursor-pointer"
+                      onClick={() => addToCart(props.item._id, size)}
+                    >
+                      Add to cart
+                    </Link>
+                  ) : (
+                    <button
+                      className="w-full flex justify-center items-center px-5 py-3 bg-gray-400 rounded-sm  uppercase text-primaryColor cursor-not-allowed"
+                      disabled
+                    >
+                      Add to cart
+                    </button>
+                  )}
                 </div>
-                <div className="w-[20%] flex justify-center">
+                <div className="w-[20%] flex justify-center items-center">
                   <FavoriteIcon
                     fontSize="large"
                     className="p-2 rounded-full border border-secondaryColor"
@@ -136,42 +177,8 @@ export default function ProductDetails(props) {
         </div>
         <div className="w-full flex flex-col gap-7">
           <div className="text-2xl font-semibold uppercase">Description</div>
-          <div className="text-sm md:text-base">
-            {props.item.description} Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Esse tempore, eos illo excepturi atque soluta
-            delectus quisquam tempora temporibus fuga quidem commodi nam? Ipsa
-            dolor, laborum quae quis eum voluptatibus voluptas aspernatur fugit
-            soluta quos laboriosam sequi id dolorum voluptatum velit fugiat,
-            accusamus doloribus omnis, ullam voluptate perspiciatis! Sint
-            maiores iure doloremque obcaecati! Odit vitae voluptatum fuga
-            tempora numquam magnam nesciunt similique. Sapiente ex corrupti
-            reiciendis unde culpa sit voluptatibus odio inventore, maiores
-            suscipit ullam labore doloremque repellat iusto, tenetur quis
-            obcaecati adipisci alias! Veritatis, magnam consectetur, nemo quae
-            omnis dolores atque sequi enim provident officiis iure nam vitae
-            beatae ab suscipit ipsum nulla vero? Dolores vel veritatis placeat
-            quisquam laboriosam praesentium cupiditate. Sequi unde ex alias,
-            excepturi vero reiciendis dolor nihil animi repudiandae cumque non
-            fuga? Odio quae accusantium sequi, in dicta, iusto nobis id
-            inventore esse consequuntur ipsa numquam. Doloremque optio tempora
-            labore et libero sit beatae temporibus quaerat nesciunt harum
-            voluptates sed sunt blanditiis cum molestiae earum vel ea placeat
-            perferendis, quis ipsam qui at quod omnis. Distinctio delectus
-            cupiditate fugit quia nobis itaque culpa incidunt illum minima
-            exercitationem. Ab repellat accusamus minima in consequatur nemo
-            laboriosam mollitia fuga, nisi vero, temporibus laborum, neque natus
-            error quam soluta suscipit voluptas. Iusto dignissimos ea nostrum
-            eum, eaque dolorum, iure labore voluptas nobis natus nemo ullam odit
-            nesciunt earum excepturi nihil in vel obcaecati voluptates cum
-            aperiam debitis assumenda quasi quas! Libero eveniet asperiores
-            totam harum obcaecati sit consequatur assumenda perferendis. Dolor
-            incidunt, odit animi sit consequuntur, repudiandae nam iusto
-            molestiae qui fuga laudantium sint aliquam dolorum omnis. Excepturi
-            fugiat placeat ipsum perspiciatis officia. Libero unde
-            exercitationem, aliquid eligendi autem non molestias quae earum
-            laboriosam maxime est dolores quaerat ad harum ratione reprehenderit
-            voluptatem porro obcaecati aliquam quam at dolorem? Voluptates harum
-            labore delectus repudiandae perferendis corrupti, culpa ratione.
+          <div className="text-sm md:text-base product-description">
+            <div dangerouslySetInnerHTML={{ __html: props.item.desc }} />
           </div>
         </div>
         <div>

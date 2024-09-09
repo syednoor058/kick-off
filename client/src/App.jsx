@@ -13,10 +13,13 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import AdminPrivateRoute from "./components/routes/privateRoutes/AdminPrivateRoute";
 import PrivateRoute from "./components/routes/privateRoutes/PrivateRoute";
+import About from "./screens/about/About";
 import Cart from "./screens/cart/Cart";
 import Checkout from "./screens/checkout/Checkout";
 import Collection from "./screens/collection/Collection";
+import Contact from "./screens/contact/Contact";
 import Dashboard from "./screens/dashboard/Dashboard";
+import FavProduct from "./screens/favProduct/FavProduct";
 import Home from "./screens/home/Home";
 import Login from "./screens/loginSignup/Login";
 import LoginSignup from "./screens/loginSignup/LoginSignup";
@@ -43,6 +46,9 @@ function App() {
               path="/product/:productId"
               element={<ProductDetail />}
             />
+            <Route exact path="/about-us" element={<About />} />
+            <Route exact path="/contact-us" element={<Contact />} />
+            <Route exact path="/favourites" element={<FavProduct />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="/checkout" element={<Checkout />} />
             <Route exact path="/my-order" element={<PrivateRoute />}>

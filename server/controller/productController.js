@@ -115,7 +115,6 @@ export const getSingleProductController = async (req, res) => {
   try {
     const product = await productsModel
       .findById(req.params.id)
-      .select("-photo")
       .populate("category", "-photo");
     if (!product) {
       return res.status(404).send({

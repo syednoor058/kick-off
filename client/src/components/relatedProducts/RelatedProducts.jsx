@@ -32,7 +32,7 @@ export default function RelatedProducts(props) {
           ))}
         </div>
       ) : (
-        <div className=" w-full flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300 leading-none">
+        <div className=" w-full flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300 leading-none px-20 py-20">
           No related product found!
         </div>
       )}
