@@ -8,7 +8,7 @@ export const requireSignIn = async (req, res, next) => {
     if (!authToken) {
       return res.status(401).send({
         success: false,
-        message: "Authorization header is missing",
+        message: "Authorization header is missing!",
       });
     }
     const decode = JWT.verify(
@@ -32,15 +32,15 @@ export const isAdmin = async (req, res, next) => {
     if (!req.user) {
       return res.status(401).send({
         success: false,
-        message: "Unauthorized Access: User not found",
+        message: "Unauthorized Access: User not found!",
       });
     }
-    
+
     const user = await userModel.findById(req.user._id);
     if (user.role !== 1) {
       return res.status(401).send({
         success: false,
-        message: "Unauthorized Access",
+        message: "Unauthorized Access!",
       });
     } else {
       next();
@@ -50,7 +50,7 @@ export const isAdmin = async (req, res, next) => {
     return res.status(401).send({
       success: false,
       error,
-      message: "Error in admin middelware",
+      message: "Error in admin middelware!",
     });
   }
 };
