@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
@@ -8,6 +9,9 @@ const AuthContextProvider = (props) => {
     user: null,
     token: "",
   });
+
+  // default axios headers
+  axios.defaults.headers.common["Authorization"] = auth?.token;
 
   const value = { auth, setAuth };
 

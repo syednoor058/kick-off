@@ -8,10 +8,10 @@ export const createCategoryController = async (req, res) => {
 
     // Validations
     if (!name) {
-      return res.status(500).send({ message: "Category name is required" });
+      return res.status(500).send({ success: false, message: "Category name is required" });
     }
     if (!photo) {
-      return res.status(500).send({ message: "Category photo is required" });
+      return res.status(500).send({ success: false, message: "Category photo is required" });
     }
     // if (photo && photo.size > 1000000) {
     //   return res.status(501).send({ message: "File size is more than 1 MB!" });

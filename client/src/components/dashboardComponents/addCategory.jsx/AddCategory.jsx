@@ -21,7 +21,18 @@ export default function AddCategory() {
 
   const handleCategoryUpload = async () => {
     setIsSpinner(true);
+    if (!catName) {
+      setIsSpinner(false);
+      toast.error("Category name is required!");
+      return;
+    }
+    if (!catImg) {
+      setIsSpinner(false);
+      toast.error("Category image is required!");
+      return;
+    }
     const file = catImg;
+
     if (catImg.size > 1000000) {
       toast.error("Image file is too big!");
       setIsSpinner(false);
@@ -39,8 +50,8 @@ export default function AddCategory() {
     );
     // console.log(res.data.url);
     const categoryData = new FormData();
-    categoryData.append("name", catName.toLowerCase());
-    categoryData.append("photo", resPhoto.data.url);
+    categoryData.append("name", catName?.toLowerCase());
+    categoryData.append("photo", resPhoto?.data.url);
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_APP_API}/api/create-category`,
@@ -53,12 +64,12 @@ export default function AddCategory() {
         }
       );
       if (res.data.success) {
+        setIsSpinner(false);
         reloadPage();
         toast.success(res.data.message);
-        setIsSpinner(false);
       } else {
-        toast.error(res.data.message);
         setIsSpinner(false);
+        toast.error(res.data.message);
       }
     } catch (error) {
       setIsSpinner(false);

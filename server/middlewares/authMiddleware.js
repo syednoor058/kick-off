@@ -28,6 +28,14 @@ export const requireSignIn = async (req, res, next) => {
 //admin acceess
 export const isAdmin = async (req, res, next) => {
   try {
+    // Check if user data is present
+    if (!req.user) {
+      return res.status(401).send({
+        success: false,
+        message: "Unauthorized Access: User not found",
+      });
+    }
+    
     const user = await userModel.findById(req.user._id);
     if (user.role !== 1) {
       return res.status(401).send({

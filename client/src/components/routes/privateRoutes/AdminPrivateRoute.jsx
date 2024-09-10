@@ -19,6 +19,7 @@ export default function AdminPrivateRoute() {
         user: auth.user,
       }
     );
+    console.log(auth?.token);
     if (res.data.ok) {
       setOk(true);
     } else {
