@@ -7,6 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
+import { TbLogout2 } from "react-icons/tb";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
@@ -22,6 +23,9 @@ export default function Navbar() {
   };
   const handleToggle = () => {
     setToggle(!toggle);
+    if (userMenuToggle) {
+      setUserMenuToggle(false);
+    }
   };
   const handleLogout = () => {
     setAuth({
@@ -74,12 +78,18 @@ export default function Navbar() {
               <ShoppingCartOutlinedIcon />
             </span>
           </Link>
-          <Link to="/favourites" className="flex items-center gap-1">
+          <Link
+            to="/favourites"
+            className="hidden md:visible md:flex items-center gap-1"
+          >
             <span>
               <FavoriteBorderIcon />
             </span>
           </Link>
-          <Link to="/collection" className="flex items-center gap-1">
+          <Link
+            to="/collection"
+            className="hidden md:visible md:flex items-center gap-1"
+          >
             <span>
               <SearchIcon />
             </span>
@@ -107,9 +117,22 @@ export default function Navbar() {
                         opacity: 1,
                         transition: { duration: 0.5 },
                       }}
-                      className="w-[35%] h-screen bg-secondaryColor px-5 sm:px-10 md:px-16 lg:px-20 absolute right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-7 text-xl top-[104px]"
+                      className="h-screen bg-secondaryColor ps-14 sm:ps-20 md:ps-32 lg:ps-40 pe-7 sm:pe-10 md:pe-16 lg:pe-20 absolute right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-base md:text-xl top-[104px]"
                     >
-                      <div to="" className="cursor-pointer">
+                      <div className="flex flex-row gap-3 items-center">
+                        <div className="flex flex-col gap-1 text-end justify-center">
+                          <div className="uppercase font-semibold leading-none">
+                            {auth.user.name}
+                          </div>
+                          <div className="text-end text-sm text-gray-500">
+                            {auth.user.email.split("@")[0]}
+                          </div>
+                        </div>
+                        <div className="w-12 aspect-square rounded-full flex justify-center items-center bg-gray-200 text-secondaryColor font-bold text-xl">
+                          {auth.user.name[0]}
+                        </div>
+                      </div>
+                      <div className="cursor-pointer mt-8">
                         {auth.user.role === 1 ? (
                           <Link
                             to="/dashboard"
@@ -128,8 +151,12 @@ export default function Navbar() {
                       </div>
                       <div
                         onClick={() => handleLogout()}
-                        className="cursor-pointer"
+                        className="cursor-pointer flex justify-center items-center flex-row gap-2"
                       >
+                        {" "}
+                        <span className="flex justify-center items-center">
+                          <TbLogout2 />
+                        </span>
                         Logout
                       </div>
                     </motion.div>
@@ -156,10 +183,10 @@ export default function Navbar() {
             initial={{ x: "100%", opacity: 1 }}
             animate={{ x: 0, opacity: 1, transition: { duration: 0.5 } }}
             exit={{ x: "100%", opacity: 1, transition: { duration: 0.5 } }}
-            className="w-[50%] h-screen bg-secondaryColor absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-center justify-start gap-7 text-2xl md:text-4xl"
+            className="h-screen bg-secondaryColor ps-14 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-base sm:text-lg lg:text-2xl md:text-xl"
           >
             <div onClick={() => handleToggle()} className="cursor-pointer">
-              <CloseIcon fontSize="large" />
+              <CloseIcon fontSize="" />
             </div>
             <Link
               to="/"
@@ -175,8 +202,20 @@ export default function Navbar() {
             >
               Products
             </Link>
-            <div className="cursor-pointer">About</div>
-            <div className="cursor-pointer">Contact</div>
+            <Link
+              to="/about-us"
+              className="cursor-pointer"
+              onClick={() => handleToggle()}
+            >
+              About
+            </Link>
+            <Link
+              to="/contact-us"
+              className="cursor-pointer"
+              onClick={() => handleToggle()}
+            >
+              Contact
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
