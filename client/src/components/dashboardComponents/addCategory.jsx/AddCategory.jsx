@@ -61,6 +61,7 @@ export default function AddCategory() {
         setIsSpinner(false);
       }
     } catch (error) {
+      setIsSpinner(false);
       console.log(error);
       toast.error("Something went wrong!");
     }
