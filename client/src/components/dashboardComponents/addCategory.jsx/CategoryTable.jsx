@@ -224,7 +224,7 @@ export default function CategoryTable() {
             <tr>
               <td className="py-20 px-10 text-center relative" colSpan="4">
                 {isSpinner && (
-                  <div className="w-full h-full flex flex-col gap-5 justify-center items-center absolute backdrop-blur-[3px] z-[200] bg-primaryColor bg-opacity-80">
+                  <div className="w-full h-full flex flex-col gap-5 justify-center items-center absolute backdrop-blur-[3px] z-[200] bg-primaryColor bg-opacity-80 -my-20 -mx-10">
                     <svg
                       aria-hidden="true"
                       className="w-10 h-10 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor"
