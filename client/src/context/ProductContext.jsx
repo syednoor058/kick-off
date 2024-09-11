@@ -15,10 +15,11 @@ const ProductContextProvider = (props) => {
   const [relatedProducts, setRelatedProducts] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const getRelatedProducts = (itemName) => {
-    const targetKeys = itemName.toLowerCase().split(" ");
+  const getRelatedProducts = (item) => {
+    const targetKeys = item.name.toLowerCase().split(" ");
+    // const targetCategory = item.category._id;
     const productList = products.filter((product) => {
-      if (product.name.toLowerCase() === itemName.toLowerCase()) {
+      if (product.name.toLowerCase() === item.name.toLowerCase()) {
         return false;
       }
       return targetKeys.some((key) => product.name.toLowerCase().includes(key));

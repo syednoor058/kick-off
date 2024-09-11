@@ -16,23 +16,43 @@ export default function ProductDetails(props) {
   const [largeImg, setLargeImg] = useState(props.item.photo[0]);
   const [size, setSize] = useState("");
   useEffect(() => setLargeImg(props.item.photo[0]), [props.item.photo]);
-  const { addToCart, getRelatedProducts } = useContext(ProductContext);
+  const { addToCart, products } = useContext(ProductContext);
   const [relatedProducts, setRelatedProducts] = useState({});
 
   // Effect to load related products on mount
   useEffect(() => {
-    // Check if there's already related product data in localStorage
-    const storedRelatedProducts = localStorage.getItem("relatedProducts");
+    const getRelatedProducts = (item) => {
+      const targetKeys = item.name.toLowerCase().split(" ");
+      // const targetCategory = item.category._id;
+      const productList = products.filter((product) => {
+        if (product.name.toLowerCase() === item.name.toLowerCase()) {
+          return false;
+        }
+        return targetKeys.some((key) =>
+          product.name.toLowerCase().includes(key)
+        );
+      });
 
-    if (storedRelatedProducts) {
-      setRelatedProducts(JSON.parse(storedRelatedProducts));
-    } else {
-      // Get related products and save them to state and localStorage
-      getRelatedProducts(props.item.name);
-      const related = localStorage.getItem("relatedProducts");
-      setRelatedProducts(JSON.parse(related));
-    }
-  }, [getRelatedProducts, props.item]);
+      setRelatedProducts(productList);
+    };
+
+    getRelatedProducts(props.item);
+
+    // getRelatedProducts(props.item);
+
+    // // Check if there's already related product data in localStorage
+    // const storedRelatedProducts = localStorage.getItem("relatedProducts");
+
+    // if (storedRelatedProducts) {
+    //   setRelatedProducts(JSON.parse(storedRelatedProducts));
+    // } else {
+    //   // Get related products and save them to state and localStorage
+    //   getRelatedProducts(props.item.name);
+    //   const related = localStorage.getItem("relatedProducts");
+    //   setRelatedProducts(JSON.parse(related));
+    // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.item]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

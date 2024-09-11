@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import ProductCard from "../products/ProductCard";
 
 export default function RelatedProducts(props) {
-  //   const { relatedProducts } = useContext(ProductContext);
+  // const { relatedProducts } = useContext(ProductContext);
   const [topRelatedProducts, setTopRelatedProducts] = useState({});
 
   useEffect(() => {
+    // relatedProducts(props.products);
     if (props.products.length > 0) {
-      setTopRelatedProducts(props.products.slice(0, 8));
+      setTopRelatedProducts(props.products.slice(0, 4));
     }
   }, [props.products]);
 
@@ -25,9 +26,10 @@ export default function RelatedProducts(props) {
             <ProductCard
               key={index}
               id={item._id}
-              image={item.image[0]}
+              image={item.photo[0]}
               name={item.name}
               price={item.price}
+              available={item.isAvailable}
             />
           ))}
         </div>
