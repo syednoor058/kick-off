@@ -10,9 +10,10 @@ export default function Collection() {
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
-  const [type, setType] = useState([]);
+  // const [type, setType] = useState([]);
   const [sortType, setSortType] = useState("relevence");
   const [search, setSearch] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -21,31 +22,33 @@ export default function Collection() {
       setCategory((prev) => [...prev, e.target.value]);
     }
   };
-  const toggleType = (e) => {
-    if (type.includes(e.target.value)) {
-      setType((prev) => prev.filter((item) => item !== e.target.value));
-    } else {
-      setType((prev) => [...prev, e.target.value]);
-    }
-  };
+  // const toggleType = (e) => {
+  //   if (type.includes(e.target.value)) {
+  //     setType((prev) => prev.filter((item) => item !== e.target.value));
+  //   } else {
+  //     setType((prev) => [...prev, e.target.value]);
+  //   }
+  // };
 
   const applyFilter = useCallback(() => {
     let productCopy = products.slice();
     if (category.length > 0) {
       productCopy = productCopy.filter((item) =>
-        category.includes(item.category)
+        category.includes(item.category.name)
       );
     }
-    if (type.length > 0) {
-      productCopy = productCopy.filter((item) => type.includes(item.type));
-    }
+    // if (type.length > 0) {
+    //   productCopy = productCopy.filter((item) =>
+    //     type.includes(item.productType)
+    //   );
+    // }
     if (search !== "") {
       productCopy = productCopy.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
     }
     setFilterProducts(productCopy);
-  }, [category, products, search, type]);
+  }, [category, products, search]);
 
   const sortProduct = useCallback(() => {
     let fpCopy = filterProducts.slice();
@@ -81,7 +84,14 @@ export default function Collection() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+
+    // Extract unique categories
+    const uniqueCategories = [
+      ...new Set(products.map((product) => product.category.name)),
+    ];
+    setCategories(uniqueCategories);
+    // console.log(categories);
+  }, [products]);
 
   return (
     <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
@@ -134,36 +144,21 @@ export default function Collection() {
           >
             <div className="flex flex-col gap-2">
               <p className="font-medium">Categories</p>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  type="checkbox"
-                  value={"football jersey"}
-                  onChange={toggleCategory}
-                />
-                Football Jersey
-              </div>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  type="checkbox"
-                  value={"cricket jersey"}
-                  onChange={toggleCategory}
-                />
-                Cricket Jersey
-              </div>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  type="checkbox"
-                  value={"boot"}
-                  onChange={toggleCategory}
-                />
-                Boots
-              </div>
+              {categories.length > 0 &&
+                categories.map((category, index) => (
+                  <div key={index} className="flex gap-2 text-sm capitalize">
+                    <input
+                      className="w-3 cursor-pointer"
+                      type="checkbox"
+                      value={category}
+                      onChange={toggleCategory}
+                    />
+                    {category}
+                  </div>
+                ))}
             </div>
           </div>
-          <div
+          {/* <div
             className={`border border-gray-300 px-5 py-3 ${
               showFilter ? "" : "hidden"
             } md:block duration-300 rounded shadow-lg`}
@@ -207,7 +202,7 @@ export default function Collection() {
                 Deshi Premium
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="w-full flex flex-col gap-8">
           <div className="w-full flex flex-row justify-between">
@@ -220,7 +215,7 @@ export default function Collection() {
                 onChange={(e) => setSortType(e.target.value)}
                 className="border border-gray-300 text-sm p-2 outline-none rounded"
               >
-                <option value="relevence">Relevence</option>
+                <option value="relevence">Latest</option>
                 <option value="low-high">Low to High</option>
                 <option value="high-low">High to Low</option>
               </select>
