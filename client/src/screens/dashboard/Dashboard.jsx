@@ -3,13 +3,13 @@ import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import ChatIcon from "@mui/icons-material/Chat";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
-import LogoutIcon from "@mui/icons-material/Logout";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import RoomServiceIcon from "@mui/icons-material/RoomService";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { useContext, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { TbLogout2 } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/AuthContext";
 
@@ -159,7 +159,7 @@ export default function Dashboard() {
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
-                    <LogoutIcon />
+                    <TbLogout2 />
                   </div>
                   <div className="w-[90%] flex items-center">Logout</div>
                 </div>

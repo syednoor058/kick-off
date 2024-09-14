@@ -73,13 +73,17 @@ export default function Login() {
           className="w-full px-3 py-2 rounded-sm outline-none border"
           placeholder="Enter email address"
           value={email}
+          type="email"
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
         />
         <input
           className="w-full px-3 py-2 rounded-sm outline-none border"
           placeholder="Enter password"
           value={password}
+          type="password"
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
         />
 
         <button

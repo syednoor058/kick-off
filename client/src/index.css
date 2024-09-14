@@ -5,3 +5,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active-page {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

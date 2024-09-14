@@ -14,6 +14,13 @@ export default function Collection() {
   const [sortType, setSortType] = useState("relevence");
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12;
+  const lastIndex = currentPage * productsPerPage;
+  const firstIndex = lastIndex - productsPerPage;
+  const productRecords = filterProducts.slice(firstIndex, lastIndex);
+  const nPage = Math.ceil(filterProducts.length / productsPerPage);
+  const numbers = [...Array(nPage + 1).keys()].slice(1);
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -222,7 +229,7 @@ export default function Collection() {
             </div>
           </div>
           <div className="w-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filterProducts.map((item, index) => (
+            {productRecords.map((item, index) => (
               <ProductCard
                 key={index}
                 id={item._id}
@@ -232,6 +239,25 @@ export default function Collection() {
                 available={item.isAvailable}
               />
             ))}
+          </div>
+          <div className="flex flex-row gap-7 justify-center items-center pt-10">
+            {/* <div>Prev</div> */}
+            <div className="flex flex-row gap-3">
+              {numbers.map((num, index) => (
+                <div
+                  key={index}
+                  className={`w-5 h-5 lg:w-8 lg:h-8 flex justify-center items-center ${
+                    num == currentPage
+                      ? "active-page"
+                      : "border-secondaryColor border rounded hover:border-none hover:bg-secondaryColor hover:text-primaryColor duration-300"
+                  } cursor-pointer text-xs lg:text-base`}
+                  onClick={() => setCurrentPage(num)}
+                >
+                  {num}
+                </div>
+              ))}
+            </div>
+            {/* <div>Next</div> */}
           </div>
         </div>
       </div>
