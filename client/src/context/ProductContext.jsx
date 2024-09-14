@@ -13,7 +13,9 @@ const ProductContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [cartItem, setCartItem] = useState({});
   const [relatedProducts, setRelatedProducts] = useState({});
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
+
+  const cartItemData = localStorage.getItem("cartItem");
 
   const getRelatedProducts = (item) => {
     const targetKeys = item.name.toLowerCase().split(" ");
@@ -33,6 +35,7 @@ const ProductContextProvider = (props) => {
     let cartData = structuredClone(cartItem);
     cartData[itemId][size] = quantity;
     setCartItem(cartData);
+    localStorage.setItem("cartItem", JSON.stringify(cartData));
   };
 
   const addToCart = async (itemId, size) => {
@@ -55,6 +58,7 @@ const ProductContextProvider = (props) => {
     }
     toast.success("Product added to cart!");
     setCartItem(cartData);
+    localStorage.setItem("cartItem", JSON.stringify(cartData));
   };
 
   const getCartCount = () => {
@@ -86,6 +90,7 @@ const ProductContextProvider = (props) => {
 
   const value = {
     products,
+    cartItemData,
     currency,
     deliveryCharge,
     cartItem,
@@ -106,46 +111,55 @@ const ProductContextProvider = (props) => {
       );
       if (response.data.success) {
         setProducts(response.data.products);
-        setLoading(false);
+        // setLoading(false);
       } else {
         toast.error("Something went wrong!");
-        setLoading(false);
+        // setLoading(false);
       }
     } catch (err) {
       console.log(err);
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   // Fetch categories from API
   const fetchCategories = async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_APP_API}/api/categories`
       );
+
       if (response.data.success) {
         setCategories(response.data.categories);
-        setLoading(false);
+        // setLoading(false);
       } else {
         toast.error("Something went wrong!");
-        setLoading(false);
+        // setLoading(false);
       }
     } catch (err) {
       console.log(err);
-      setLoading(false);
+      // setLoading(false);
+    }
+  };
+
+  const fetchCartItem = () => {
+    const cartData = localStorage.getItem("cartItem");
+    if (cartData) {
+      setCartItem(JSON.parse(cartData));
     }
   };
 
   useEffect(() => {
     fetchProducts();
     fetchCategories();
+    fetchCartItem();
   }, []);
 
   return (
     <ProductContext.Provider value={value}>
-      {loading && (
-        <div className="w-full h-full top-0 bottom-0 absolute flex justify-center items-center bg-primaryColor bg-opacity-80 z-[150]">
+      {/* {loading && (
+        <div className="w-full h-screen top-0 bottom-0 absolute flex justify-center items-center bg-primaryColor bg-opacity-80 z-[150]">
           <svg
             aria-hidden="true"
             className="w-16 h-16 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor"
@@ -163,7 +177,7 @@ const ProductContextProvider = (props) => {
             />
           </svg>
         </div>
-      )}
+      )} */}
       {props.children}
     </ProductContext.Provider>
   );

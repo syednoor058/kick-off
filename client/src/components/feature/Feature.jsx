@@ -10,23 +10,22 @@ export default function Feature() {
       <div className="w-full font-bold uppercase text-center text-2xl  lg:text-4xl">
         All Categories
       </div>
-      <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-5 place-items-center place-content-center">
-        {categories.length > 0 ? (
-          <>
-            {categories.map((category, index) => (
-              <FeatureCard
-                key={index}
-                title={category.name}
-                image={category.photo}
-              />
-            ))}
-          </>
-        ) : (
-          <div className="w-full p-20 text-center text-gray-400 font-medium uppercase">
-            No Categories Found!
-          </div>
-        )}
-      </div>
+
+      {categories.length > 0 ? (
+        <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-5 place-items-center place-content-center">
+          {categories.map((category, index) => (
+            <FeatureCard
+              key={index}
+              title={category.name}
+              image={category.photo}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="w-full p-20 text-center text-gray-400 font-medium uppercase">
+          No Categories Found!
+        </div>
+      )}
     </div>
   );
 }

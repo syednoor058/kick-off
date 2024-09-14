@@ -588,7 +588,7 @@ export default function ProductList() {
       {isDeletePopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-[2px]">
           {isDeleteSpinner && (
-            <div className="w-full h-full absolute z-[100] backdrop-blur-[3px] flex justify-center items-center bg-secondaryColor bg-opacity-50">
+            <div className="w-full h-full absolute z-[100] backdrop-blur-[3px] flex justify-center items-center bg-primaryColor bg-opacity-70">
               <svg
                 aria-hidden="true"
                 className="w-10 h-10 text-secondaryColor animate-spin dark:text-gray-300 fill-secondaryColor mx-auto"
