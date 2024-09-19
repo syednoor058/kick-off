@@ -67,7 +67,7 @@ export default function Navbar() {
             Contact
           </Link>
         </div>
-        <div className="w-[33%] flex flex-row gap-5 justify-end">
+        <div className="w-[33%] flex flex-row gap-4 justify-end">
           <Link to="/cart" className="flex items-center gap-1">
             <span className="relative">
               {cartNum > 0 && (
@@ -96,9 +96,9 @@ export default function Navbar() {
           </Link>
           <div className="flex justify-center items-center">
             {auth.user ? (
-              <div className="h-full">
+              <div className="h-full flex items-center">
                 <div
-                  className="h-full aspect-square text-primaryColor text-2xl uppercase font-bold rounded-full bg-accentColor flex justify-center items-center cursor-pointer"
+                  className="h-[80%] aspect-square text-primaryColor text-xl lg:text-2xl uppercase font-bold rounded-full bg-accentColor flex justify-center items-center cursor-pointer"
                   onClick={() => handleUserMenuToggle()}
                 >
                   {auth.user.name[0]}
@@ -170,10 +170,10 @@ export default function Navbar() {
             )}
           </div>
           <div
-            className="lg:hidden flex items-center px-3 bg-secondaryColor text-primaryColor rounded cursor-pointer"
+            className="lg:hidden flex items-center text-secondaryColor rounded cursor-pointer"
             onClick={() => handleToggle()}
           >
-            <MenuSharpIcon fontSize="medium" />
+            <MenuSharpIcon fontSize="large" />
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@ export default function Navbar() {
             initial={{ x: "100%", opacity: 1 }}
             animate={{ x: 0, opacity: 1, transition: { duration: 0.5 } }}
             exit={{ x: "100%", opacity: 1, transition: { duration: 0.5 } }}
-            className="h-screen bg-secondaryColor ps-14 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-base sm:text-lg lg:text-2xl md:text-xl"
+            className="h-screen bg-secondaryColor ps-28 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-base sm:text-lg lg:text-2xl md:text-xl"
           >
             <div onClick={() => handleToggle()} className="cursor-pointer">
               <CloseIcon fontSize="" />

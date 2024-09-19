@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import CartList from "../../components/cartList/CartList";
 import LatestProducts from "../../components/products/LatestProducts";
 import Products from "../../components/products/Products";
+import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
 
 export default function Cart() {
+  const { auth } = useContext(AuthContext);
   const { products, cartItem, cartTotalAmount, cartLoading } =
     useContext(ProductContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +21,9 @@ export default function Cart() {
     }
   }, [cartLoading, products.length]);
   if (isLoading) {
+    if (!auth.user) {
+      setIsLoading(false);
+    }
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <svg
@@ -42,62 +47,88 @@ export default function Cart() {
   }
   return (
     <div className="min-h-screen  py-10 md:py-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
-      {cartItem && cartItem.length > 0 ? (
-        <div className="flex flex-col md:flex-row gap-10 md:gap-5 lg:gap-10 px-2 sm:px-5 md:px-10 lg:px-20">
-          <div className="w-full md:w-[70%] text-[10px] sm:text-xs flex flex-col gap-5 ">
-            <div className="w-full flex flex-row gap-5 uppercase font-medium p-3 bg-gray-200 rounded">
-              <div className="w-[10%] flex items-center justify-center">
-                Index
+      {auth.user ? (
+        <div>
+          {cartItem && cartItem.length > 0 ? (
+            <div className="flex flex-col md:flex-row gap-10 md:gap-5 lg:gap-10 px-2 sm:px-5 md:px-10 lg:px-20">
+              <div className="w-full md:w-[70%] text-[10px] sm:text-xs flex flex-col gap-5 ">
+                <div className="w-full flex flex-row gap-5 uppercase font-medium p-3 bg-gray-200 rounded">
+                  <div className="w-[10%] flex items-center justify-center">
+                    Index
+                  </div>
+                  <div className="w-[55%]">Product</div>
+                  <div className="w-[10%] flex items-center justify-center">
+                    Size
+                  </div>
+                  <div className="w-[10%] flex items-center justify-center">
+                    Quantity
+                  </div>
+                  <div className="w-[10%] flex items-center justify-center">
+                    Price
+                  </div>
+                  <div className="w-[5%]"></div>
+                </div>
+                {cartItem.map(
+                  (item, index) =>
+                    item.product && (
+                      <CartList key={index} index={index + 1} cart={item} />
+                    )
+                )}
               </div>
-              <div className="w-[55%]">Product</div>
-              <div className="w-[10%] flex items-center justify-center">
-                Size
+              <div className="w-full md:w-[30%] flex flex-col gap-3 text-sm">
+                <div className="p-3 uppercase border-b-2">Order summary</div>
+                <div className="px-3 py-8 border rounded flex flex-row justify-between items-center">
+                  <div className="uppercase font-medium">Total:</div>
+                  <div className="text-xl font-bold uppercase">
+                    {cartTotalAmount()} BDT
+                  </div>
+                </div>
+                <div className="text-xs text-gray-400">
+                  Tax included and shipping calculated at checkout
+                </div>
+                <Link
+                  to="/checkout"
+                  className="p-3 bg-secondaryColor rounded-sm text-primaryColor text-center uppercase text-base md:text-lg hover:bg-transparent hover:border border-secondaryColor hover:text-secondaryColor cursor-pointer duration-300"
+                >
+                  Proceed to Checkout
+                </Link>
+                <Link
+                  to="/collection"
+                  className="p-3 hover:bg-secondaryColor rounded-sm hover:text-primaryColor text-center uppercase text-base md:text-lg border border-secondaryColor cursor-pointer duration-300"
+                >
+                  Continue Shopping
+                </Link>
               </div>
-              <div className="w-[10%] flex items-center justify-center">
-                Quantity
-              </div>
-              <div className="w-[10%] flex items-center justify-center">
-                Price
-              </div>
-              <div className="w-[5%]"></div>
             </div>
-            {cartItem.map(
-              (item, index) =>
-                item.product && (
-                  <CartList key={index} index={index + 1} cart={item} />
-                )
-            )}
-          </div>
-          <div className="w-full md:w-[30%] flex flex-col gap-3 text-sm">
-            <div className="p-3 uppercase border-b-2">Order summary</div>
-            <div className="px-3 py-8 border rounded flex flex-row justify-between items-center">
-              <div className="uppercase font-medium">Total:</div>
-              <div className="text-xl font-bold uppercase">
-                {cartTotalAmount()} BDT
-              </div>
+          ) : (
+            <div className=" w-full px-10 py-10 md:py-20 md:px-20 flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300">
+              No product in your cart!
             </div>
-            <div className="text-xs text-gray-400">
-              Tax included and shipping calculated at checkout
-            </div>
-            <Link
-              to="/checkout"
-              className="p-3 bg-secondaryColor rounded-sm text-primaryColor text-center uppercase text-base md:text-lg hover:bg-transparent hover:border border-secondaryColor hover:text-secondaryColor cursor-pointer duration-300"
-            >
-              Proceed to Checkout
-            </Link>
-            <Link
-              to="/collection"
-              className="p-3 hover:bg-secondaryColor rounded-sm hover:text-primaryColor text-center uppercase text-base md:text-lg border border-secondaryColor cursor-pointer duration-300"
-            >
-              Continue Shopping
-            </Link>
-          </div>
+          )}
         </div>
       ) : (
-        <div className=" w-full px-10 py-20 md:px-20 flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300">
-          No product in your cart!
+        <div className="flex flex-col gap-5 px-10 py-10 md:py-20 md:px-20 items-center">
+          <div className=" w-full  flex items-center justify-center text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-medium text-gray-300">
+            Sign in to add products in cart.
+          </div>
+          <div className="w-full flex flex-row gap-5 justify-center items-center">
+            <Link
+              className="w-[30%] md:w-[20%] bg-secondaryColor text-primaryColor rounded-sm px-3 py-3 flex items-center justify-center hover:bg-transparent hover:text-secondaryColor hover:border border-secondaryColor duration-300"
+              to="/account/login"
+            >
+              Login
+            </Link>
+            <div>or</div>
+            <Link
+              className="w-[30%] md:w-[20%] bg-transparent text-secondaryColor rounded-sm px-3 py-3 flex items-center justify-center hover:bg-secondaryColor hover:text-primaryColor border border-secondaryColor duration-300"
+              to="/account/register"
+            >
+              Signup
+            </Link>
+          </div>
         </div>
       )}
+
       <div className="w-full flex flex-col gap-10 md:gap-20">
         <Products />
         <LatestProducts />
