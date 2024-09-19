@@ -15,7 +15,7 @@ import "./product_details.css";
 export default function ProductDetails(props) {
   const [largeImg, setLargeImg] = useState(props.item.photo[0]);
   const [size, setSize] = useState("");
-
+  const [qty, setQty] = useState(1);
   const { addToCart, products } = useContext(ProductContext);
   const [relatedProducts, setRelatedProducts] = useState({});
 
@@ -54,7 +54,7 @@ export default function ProductDetails(props) {
 
   return (
     <div>
-      <div className="w-full h-full px-5 sm:px-10 md:px-10 lg:px-20 pt-10 md:pt-20 flex flex-col gap-10 md:gap-20">
+      <div className="w-full h-full px-5 sm:px-10 md:px-10 lg:px-20 pt-10 md:pt-10 flex flex-col gap-10 md:gap-20">
         <div className="flex flex-row gap-3 sm:gap-5 -mb-4 md:-mb-12">
           <Link
             to="/"
@@ -106,7 +106,7 @@ export default function ProductDetails(props) {
                   {props.item.name}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-3 text-sm text-gray-700 capitalize">
-                  <div>Product ID: {props.item._id}</div>
+                  {/* <div>Product ID: {props.item._id}</div> */}
                   <div className="capitalize">
                     Type: {props.item.productType}
                   </div>
@@ -160,13 +160,24 @@ export default function ProductDetails(props) {
                   Shipping cost: 200 BDT
                 </div>
               </div>
+              <div className="flex flex-row gap-2 capitalize text-sm items-center">
+                <div>Quantity:</div>
+                <input
+                  type="number"
+                  className="outline-none border w-16 py-1 ps-2 rounded-sm"
+                  value={qty}
+                  onChange={(e) =>
+                    !(e.target.value < 1) && setQty(e.target.value)
+                  }
+                />
+              </div>
               <div className="flex flex-row gap-5">
                 <div className="w-[80%] flex flex-col gap-3">
                   {props.item.isAvailable == 1 ? (
                     <Link
                       to={size && "/cart"}
                       className="w-full flex justify-center items-center px-5 py-3 bg-secondaryColor rounded-sm hover:bg-primaryColor hover:border hover:border-secondaryColor uppercase text-primaryColor hover:text-secondaryColor cursor-pointer"
-                      onClick={() => addToCart(props.item._id, size)}
+                      onClick={() => addToCart(props.item._id, size, qty)}
                     >
                       Add to cart
                     </Link>

@@ -1,19 +1,23 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "./AuthContext";
 // import { products } from "../assets/products/productsDetails";
+// import { useNavigate } from "react-router-dom";
 
 export const ProductContext = createContext();
 
 const ProductContextProvider = (props) => {
+  // const navigate = useNavigate();
+  const { auth } = useContext(AuthContext);
   const currency = "BDT";
   const deliveryCharge = 200;
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [cartItem, setCartItem] = useState({});
+  const [cartItem, setCartItem] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState({});
-  // const [loading, setLoading] = useState(true);
+  const [cartLoading, setCartLoading] = useState(true);
 
   const cartItemData = localStorage.getItem("cartItem");
 
@@ -38,52 +42,96 @@ const ProductContextProvider = (props) => {
     localStorage.setItem("cartItem", JSON.stringify(cartData));
   };
 
-  const addToCart = async (itemId, size) => {
-    let cartData = structuredClone(cartItem);
-
-    if (size === "") {
-      toast.error("Select product size!");
+  const addToCart = async (itemId, size, quantity) => {
+    setCartLoading(true);
+    if (!auth.user) {
+      setCartLoading(false);
+      toast.error("Login first before adding products!");
       return;
     }
 
-    if (cartData[itemId]) {
-      if (cartData[itemId][size]) {
-        cartData[itemId][size] += 1;
-      } else {
-        cartData[itemId][size] = 1;
-      }
-    } else {
-      cartData[itemId] = {};
-      cartData[itemId][size] = 1;
+    if (!size) {
+      setCartLoading(false);
+      toast.error("Please select product size!");
+      return;
     }
-    toast.success("Product added to cart!");
-    setCartItem(cartData);
-    localStorage.setItem("cartItem", JSON.stringify(cartData));
+
+    if (!(quantity > 0)) {
+      setCartItem(false);
+      toast.error("Quantity must be atleast 1!");
+      return;
+    }
+
+    const res = await axios.post(
+      `${import.meta.env.VITE_APP_API}/api/v1/auth/cart/${auth?.user?._id}`,
+      { productId: itemId, size, quantity },
+      {
+        headers: {
+          // "Content-Type": "multipart/form-data",
+          Authorization: `${auth?.token}`,
+        },
+        user: auth.user,
+      }
+    );
+
+    if (res.data.success) {
+      toast.success("Product is added to cart!");
+      setCartItem(res.data.cart);
+      // navigate("/cart");
+      setCartLoading(false);
+    } else {
+      toast.error("Error addding product to cart!");
+      setCartLoading(false);
+    }
+  };
+
+  const deleteCartItem = async (productId, size) => {
+    setCartLoading(true);
+    if (!auth.user) {
+      setCartLoading(false);
+      toast.error("Login first before adding products!");
+      return;
+    }
+
+    const res = await axios.post(
+      `${import.meta.env.VITE_APP_API}/api/v1/auth/cart_delete/${
+        auth?.user?._id
+      }`,
+      { productId, size },
+      {
+        headers: {
+          // "Content-Type": "multipart/form-data",
+          Authorization: `${auth?.token}`,
+        },
+        user: auth.user,
+      }
+    );
+
+    if (res.data.success) {
+      toast.success("Product is removed from cart!");
+      setCartItem(res.data.cart);
+      // navigate("/cart");
+      setCartLoading(false);
+    } else {
+      toast.error("Error removing product from cart!");
+      setCartLoading(false);
+    }
   };
 
   const getCartCount = () => {
     let totalCount = 0;
-    for (const items in cartItem) {
-      for (const item in cartItem[items]) {
-        try {
-          if (cartItem[items][item] > 0) {
-            totalCount += cartItem[items][item];
-          }
-        } catch (error) {
-          console.log(error.message);
-        }
-      }
-    }
+    cartItem.map((cartItemData) => (totalCount += cartItemData.quantity));
+
     return totalCount;
   };
 
   const cartTotalAmount = () => {
     let total = 0;
-    for (const item in cartItem) {
-      const product = products.find((info) => info._id === item);
-      for (const size in cartItem[item]) {
-        total += product.price * cartItem[item][size];
-      }
+    if (cartItem.length > 0) {
+      cartItem.map(
+        (cartItemData) =>
+          (total += cartItemData.product.price * cartItemData.quantity)
+      );
     }
     return total;
   };
@@ -101,6 +149,8 @@ const ProductContextProvider = (props) => {
     relatedProducts,
     getRelatedProducts,
     categories,
+    cartLoading,
+    deleteCartItem,
   };
 
   // Fetch products from API
@@ -143,18 +193,41 @@ const ProductContextProvider = (props) => {
     }
   };
 
-  const fetchCartItem = () => {
-    const cartData = localStorage.getItem("cartItem");
-    if (cartData) {
-      setCartItem(JSON.parse(cartData));
+  const fetchCartItem = async () => {
+    // const cartData = localStorage.getItem("cartItem");
+    // setCartItem(JSON.parse(cartData));
+    setCartLoading(true);
+    const res = await axios.get(
+      `${import.meta.env.VITE_APP_API}/api/v1/auth/cart/${auth?.user?._id}`,
+      {
+        headers: {
+          // "Content-Type": "multipart/form-data",
+          Authorization: `${auth?.token}`,
+        },
+        user: auth.user,
+      }
+    );
+
+    if (res.data.cart) {
+      setCartItem(res.data.cart);
+      setCartLoading(false);
     }
   };
 
   useEffect(() => {
     fetchProducts();
     fetchCategories();
-    fetchCartItem();
-  }, []);
+
+    if (!auth.user) {
+      setCartItem([]);
+    }
+
+    if (auth.user) {
+      fetchCartItem();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth.user]);
 
   return (
     <ProductContext.Provider value={value}>

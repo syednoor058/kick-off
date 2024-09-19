@@ -109,3 +109,71 @@ export const loginController = async (req, res) => {
     });
   }
 };
+
+export const userCartController = async (req, res) => {
+  const { userId } = req.params;
+  let { productId, size, quantity } = req.body;
+
+  quantity = Number(quantity);
+  
+
+  try {
+    let user = await userModel.findById(userId);
+
+    // Check if the product with the same size already exists in the cart
+    const cartItemIndex = user.cart.findIndex(item => 
+      item.product.toString() === productId && item.size === size
+    );
+
+    if (cartItemIndex > -1) {
+      // If item exists, increase quantity
+      user.cart[cartItemIndex].quantity += quantity;
+    } else {
+      // If item doesn't exist, add new cart item
+      user.cart.push({ product: productId, size: size, quantity: quantity });
+    }
+
+    await user.save();
+
+    const userCart = await userModel.findById(userId).populate('cart.product');
+
+    res.status(200).send({ success: true, message: "Cart is updated!", cart: userCart.cart });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ success: false, message: "Error updating cart!" });
+  }
+};
+
+
+export const getCartController = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const user = await userModel.findById(userId).populate('cart.product');
+    if (!user) {
+      return res.status(404).send({ success: false, message: "User not found!" });
+    };
+
+    res.status(200).send({success: true, message: "Cart is fetched!", cart: user.cart});
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({success: false, message: "Error in fetching cart items!"})
+  }
+};
+
+export const deleteCartController = async (req, res) => {
+  const { userId } = req.params;
+  let { productId, size } = req.body;
+  try{
+    let user = await userModel.findById(userId);
+    user.cart = user.cart.filter(cartItem => cartItem.product.toString() !== productId || cartItem.size.toLowerCase() !== size.toLowerCase());
+    await user.save();
+
+    const userUpdatedCart = await userModel.findById(userId).populate('cart.product');
+    res.status(200).send({ success: true, message: "Product is removed!", cart: userUpdatedCart.cart });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({success: false, message: "Internal server error!"});
+  }
+}

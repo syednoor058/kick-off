@@ -8,33 +8,16 @@ import Products from "../../components/products/Products";
 import { ProductContext } from "../../context/ProductContext";
 
 export default function Cart() {
-  const { products, cartItem, cartTotalAmount } = useContext(ProductContext);
-  const [cartData, setCartData] = useState([]);
+  const { products, cartItem, cartTotalAmount, cartLoading } =
+    useContext(ProductContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // const cartItemData = localStorage.getItem("cartItem")
-    const tempData = [];
-    for (const itemId in cartItem) {
-      for (const itemSize in cartItem[itemId]) {
-        if (cartItem[itemId][itemSize] > 0) {
-          tempData.push({
-            _id: itemId,
-            size: itemSize,
-            quantity: cartItem[itemId][itemSize],
-          });
-        }
-      }
-    }
-    setCartData(tempData);
-  }, [cartItem]);
-
-  useEffect(() => {
     window.scrollTo(0, 0);
-    if (products.length > 0) {
+    if (products.length > 0 && !cartLoading) {
       setIsLoading(false);
     }
-  }, [products.length]);
+  }, [cartLoading, products.length]);
   if (isLoading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
@@ -59,11 +42,13 @@ export default function Cart() {
   }
   return (
     <div className="min-h-screen  py-10 md:py-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
-      {cartData.length > 0 ? (
+      {cartItem && cartItem.length > 0 ? (
         <div className="flex flex-col md:flex-row gap-10 md:gap-5 lg:gap-10 px-2 sm:px-5 md:px-10 lg:px-20">
           <div className="w-full md:w-[70%] text-[10px] sm:text-xs flex flex-col gap-5 ">
             <div className="w-full flex flex-row gap-5 uppercase font-medium p-3 bg-gray-200 rounded">
-              <div className="w-[10%] flex items-center justify-center">ID</div>
+              <div className="w-[10%] flex items-center justify-center">
+                Index
+              </div>
               <div className="w-[55%]">Product</div>
               <div className="w-[10%] flex items-center justify-center">
                 Size
@@ -76,14 +61,12 @@ export default function Cart() {
               </div>
               <div className="w-[5%]"></div>
             </div>
-            {cartData.map((item, index) => {
-              const product = products.find((x) => x._id === item._id);
-              if (product && item.quantity > 0) {
-                return <CartList key={index} item={product} cart={item} />;
-              } else {
-                return null;
-              }
-            })}
+            {cartItem.map(
+              (item, index) =>
+                item.product && (
+                  <CartList key={index} index={index + 1} cart={item} />
+                )
+            )}
           </div>
           <div className="w-full md:w-[30%] flex flex-col gap-3 text-sm">
             <div className="p-3 uppercase border-b-2">Order summary</div>
