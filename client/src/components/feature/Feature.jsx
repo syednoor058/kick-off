@@ -12,7 +12,7 @@ export default function Feature() {
       </div>
 
       {categories.length > 0 ? (
-        <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-5 place-items-center place-content-center">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  gap-2 md:gap-3 place-items-center place-content-center">
           {categories.map((category, index) => (
             <FeatureCard
               key={index}

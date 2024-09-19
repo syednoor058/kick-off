@@ -151,13 +151,13 @@ export default function AddCategory() {
         <div className="w-[25%] flex flex-col gap-5">
           <div className="w-full text-center uppercase">Category Preview</div>
           {preview ? (
-            <div className="w-full aspect-square rounded bg-secondaryColor relative shadow-md group overflow-hidden">
+            <div className="w-full aspect-[16/5] rounded bg-secondaryColor relative shadow-md group overflow-hidden">
               <img
                 className="w-full h-full object-cover rounded group-hover:scale-[1.1] duration-300"
                 src={preview}
                 alt={catName}
               />
-              <div className="w-full font-medium text-center text-lg absolute bottom-0 pt-16 pb-5 px-5 text-primaryColor bg-gradient-to-t from-secondaryColor to-transparent rounded leading-5 capitalize">
+              <div className="w-full font-medium text-center text-lg absolute bottom-0 top-0 p-5 flex justify-center items-center text-primaryColor bg-accentColor bg-opacity-70 rounded leading-5 capitalize">
                 {catName}
               </div>
             </div>
