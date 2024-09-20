@@ -69,15 +69,6 @@ export default function AddProducts() {
       formData.append("size", selectedSizes);
       formData.append("photo", photosUploadUrl);
 
-      // console.log(photosUrl);
-      // Append sizes
-      // selectedSizes.forEach((s) => formData.append("size", s));
-
-      // Append photos
-      // photosUploadUrl.forEach((photoUrl) => {
-      //   formData.append(`photo`, photoUrl);
-      // });
-
       // Send the POST request
       const res = await axios.post(
         `${import.meta.env.VITE_APP_API}/api/create-product`,
@@ -188,8 +179,8 @@ export default function AddProducts() {
       )}
       <div className="flex flex-col gap-10 px-10 py-10">
         <div className="text-xl uppercase">List a new Product</div>
-        <div className="w-full flex flex-row gap-10">
-          <div className="w-[70%]">
+        <div className="w-full flex flex-col md:flex-row gap-10">
+          <div className="w-full md:w-[70%]">
             <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -318,7 +309,7 @@ export default function AddProducts() {
               </div>
             </form>
           </div>
-          <div className="w-[30%]">
+          <div className="w-[50%] md:w-[30%]">
             <div className="w-full text-center uppercase pb-10 font-medium">
               Product Preview
             </div>

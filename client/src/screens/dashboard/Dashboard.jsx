@@ -70,9 +70,9 @@ export default function Dashboard() {
           </div>
           <div>Dashboard</div>
         </div>
-        <div className="w-full h-full flex flex-row gap-10">
-          <div className="w-[20%] h-full rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
-            <div className="w-full flex flex-col gap-1 py-10 text-sm">
+        <div className="w-full h-full flex flex-col lg:flex-row gap-10">
+          <div className="w-full lg:w-[20%] h-full rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
+            <div className="w-full flex flex-row lg:flex-col gap-1 lg:py-10 text-sm">
               <Link
                 to="/dashboard"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
@@ -81,7 +81,9 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <PieChartIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Overview</div>
+                  <div className="w-[90%] lg:flex items-center hidden">
+                    Overview
+                  </div>
                 </div>
               </Link>
               <Link
@@ -92,7 +94,9 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <AutoAwesomeMotionIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Categories</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Categories
+                  </div>
                 </div>
               </Link>
               <Link
@@ -103,7 +107,9 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <LocalMallIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Products</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Products
+                  </div>
                 </div>
               </Link>
               <Link
@@ -114,7 +120,9 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <SupervisorAccountIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Admins</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Admins
+                  </div>
                 </div>
               </Link>
               <Link
@@ -125,7 +133,9 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <RoomServiceIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Orders</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Orders
+                  </div>
                 </div>
               </Link>
               <Link
@@ -136,11 +146,13 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <ChatIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Messages</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Messages
+                  </div>
                 </div>
               </Link>
             </div>
-            <div className="w-full flex flex-col gap-1 py-10 text-sm">
+            <div className="w-full flex flex-row lg:flex-col gap-1 lg:py-10 text-sm">
               <Link
                 to="/dashboard"
                 className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
@@ -149,7 +161,9 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <SettingsIcon />
                   </div>
-                  <div className="w-[90%] flex items-center">Settings</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Settings
+                  </div>
                 </div>
               </Link>
               <Link
@@ -161,12 +175,14 @@ export default function Dashboard() {
                   <div className="w-[10%] text-xl h-auto">
                     <TbLogout2 />
                   </div>
-                  <div className="w-[90%] flex items-center">Logout</div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Logout
+                  </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div className="w-[80%] h-full bg-primaryColor rounded-sm relative">
+          <div className="w-full lg:w-[80%] h-full bg-primaryColor rounded-sm relative">
             <Outlet />
           </div>
         </div>

@@ -372,10 +372,10 @@ export default function ProductList() {
               </svg>
             </div>
           )}
-          <div className="w-[90%] h-[80%] overflow-y-auto bg-primaryColor p-10 flex flex-col gap-10 ">
+          <div className="w-[90%] h-[80%] overflow-y-auto bg-primaryColor p-3 sm:p-10 flex flex-col gap-10 ">
             <div className="text-xl uppercase">Update Product Details</div>
-            <div className="flex flex-row justify-between">
-              <div className="w-[70%]">
+            <div className="flex flex-col md:flex-row justify-between gap-5 md:gap-0">
+              <div className="w-full md:w-[70%] text-sm md:text-=base">
                 <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                   <input
                     type="text"
@@ -392,16 +392,16 @@ export default function ProductList() {
                     onChange={(e) => setNewProductType(e.target.value)}
                     placeholder="Enter product type (optional)"
                   />
-                  <div className="flex flex-row gap-10">
+                  <div className="flex flex-row gap-4 md:gap-10">
                     <input
                       type="number"
-                      className="w-[50%] p-2 border border-gray-300 rounded-sm outline-none"
+                      className="w-[30%] md:w-[50%] p-2 border border-gray-300 rounded-sm outline-none"
                       value={newPrice}
                       onChange={(e) => setNewPrice(e.target.value)}
                       placeholder="Enter product price *"
                       required
                     />
-                    <div className="w-[50%] flex flex-col gap-3">
+                    <div className="w-[70%] md:w-[50%] flex flex-col gap-3">
                       <label className="block text-gray-700">Size *</label>
                       <div className="flex gap-5">
                         {["S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
@@ -548,7 +548,7 @@ export default function ProductList() {
                   </div>
                 </form>
               </div>
-              <div className="w-[25%] rounded flex flex-col gap-6">
+              <div className="w-[50%] md:w-[25%] rounded flex flex-col gap-6">
                 <div className="uppercase text-center">Preview</div>
                 <div className="flex flex-col gap-3">
                   <div className="w-full aspect-square rounded-sm relative">

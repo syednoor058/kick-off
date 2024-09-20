@@ -5,6 +5,7 @@ import Hero from "../../components/hero/Hero";
 import Newsletter from "../../components/newsletter/Newsletter";
 import LatestProducts from "../../components/products/LatestProducts";
 import Products from "../../components/products/Products";
+import RecentProduct from "../../components/recentProduct/RecentProduct";
 export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -13,6 +14,7 @@ export default function Home() {
     <div className="w-full h-full flex flex-col gap-10 md:gap-24 overflow-hidden pb-10 md:pb-20 mt-[104px]">
       <Hero />
       <Feature />
+      <RecentProduct />
       <Products />
       <Newsletter />
       <LatestProducts />
