@@ -321,12 +321,12 @@ export default function CategoryTable() {
               </div>
               <div className="w-[35%] flex flex-col gap-5">
                 <div className="uppercase text-center">Preview</div>
-                <div className="w-full aspect-square relative">
-                  <div className="text-center font-semibold capitalize p-10 bg-gradient-to-t from-secondaryColor to-transparent absolute bottom-0 right-0 left-0 text-primaryColor">
+                <div className="w-full aspect-[16/5] relative overflow-hidden rounded-sm">
+                  <div className="text-center font-semibold capitalize bg-secondaryAccentColor bg-opacity-70 backdrop-blur-[1px] absolute bottom-0 top-0 right-0 left-0 text-primaryColor flex justify-center items-center rounded-sm">
                     {selectedCategory.name}
                   </div>
                   <img
-                    className="w-full aspect-square object-cover rounded-sm"
+                    className="w-full h-full object-cover rounded-sm"
                     src={preview}
                     alt=""
                   />

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { IoIosAddCircle } from "react-icons/io";
 import { toast } from "react-toastify";
-import imgSkeleton from "../../../assets/img_skeleton.png";
+import imgSkeleton from "../../../assets/catImgSkeleton.png";
 import { AuthContext } from "../../../context/AuthContext";
 import CategoryTable from "./CategoryTable";
 
@@ -162,13 +162,13 @@ export default function AddCategory() {
               </div>
             </div>
           ) : (
-            <div className="w-full flex justify-center items-center aspect-square rounded-sm top-0 bottom-0 relative">
+            <div className="w-full flex justify-center items-center aspect-[16/5] rounded-sm top-0 bottom-0 relative group overflow-hidden">
               <img
-                className="w-full h-full object-cover scale-[1.1]"
+                className="w-full h-full object-cover group-hover:scale-[1.1] rounded-sm duration-300"
                 src={imgSkeleton}
                 alt=""
               />
-              <div className="w-full p-10 absolute bg-gradient-to-t from-secondaryColor to-transparent bottom-0 text-center text-primaryColor">
+              <div className="w-full h-full flex justify-center items-center absolute bg-secondaryAccentColor bottom-0 top-0 text-center text-primaryColor bg-opacity-70 backdrop-blur-[1px]">
                 Category Name
               </div>
             </div>

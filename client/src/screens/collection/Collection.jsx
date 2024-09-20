@@ -2,6 +2,8 @@
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Search from "@mui/icons-material/Search";
 import { useCallback, useContext, useEffect, useState } from "react";
+import horizontalBanner from "../../assets/banners/horizontal_banner.png";
+import verticalBanner from "../../assets/banners/vertical_banner.webp";
 import ProductCard from "../../components/products/ProductCard";
 import { ProductContext } from "../../context/ProductContext";
 
@@ -157,7 +159,7 @@ export default function Collection() {
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="min-w-60 uppercase flex flex-col gap-5 ">
+        <div className="md:max-w-60 uppercase flex flex-col gap-5 ">
           <p
             className="flex flex-row gap-1 items-center cursor-pointer sm:cursor-default"
             onClick={() => setShowFilter(!showFilter)}
@@ -192,51 +194,20 @@ export default function Collection() {
                 ))}
             </div>
           </div>
-          {/* <div
-            className={`border border-gray-300 px-5 py-3 ${
-              showFilter ? "" : "hidden"
-            } md:block duration-300 rounded shadow-lg`}
-          >
-            <div className="flex flex-col gap-2">
-              <p className="font-medium">Types</p>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  type="checkbox"
-                  value={"thai premium"}
-                  onChange={toggleType}
-                />
-                Thai Premium
-              </div>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  type="checkbox"
-                  value={"player edition"}
-                  onChange={toggleType}
-                />
-                Player Edition
-              </div>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  value={"fan edition"}
-                  type="checkbox"
-                  onChange={toggleType}
-                />
-                Fan Edition
-              </div>
-              <div className="flex gap-2 normal-case text-sm">
-                <input
-                  className="w-3 cursor-pointer"
-                  type="checkbox"
-                  value={"deshi premium"}
-                  onChange={toggleType}
-                />
-                Deshi Premium
-              </div>
-            </div>
-          </div> */}
+          <div className="w-full rounded-sm hidden md:block">
+            <img
+              className="w-full h-full rounded-sm"
+              src={verticalBanner}
+              alt=""
+            />
+          </div>
+          <div className="w-full inset-0 -mr-10 rounded-sm visible md:invisible">
+            <img
+              className="w-full h-full object-cover rounded-sm"
+              src={horizontalBanner}
+              alt=""
+            />
+          </div>
         </div>
         <div className="w-full flex flex-col gap-8">
           <div className="w-full flex flex-row justify-between">
