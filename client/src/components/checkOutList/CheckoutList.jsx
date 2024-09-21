@@ -11,19 +11,19 @@ export default function CheckoutList(props) {
           </div>
           <img
             className="h-full w-full object-cover"
-            src={props.item.image[0]}
+            src={props.cart.product?.photo[0]}
           />
         </div>
         <div className="flex flex-col gap-1">
-          <div className="text-sm">{props.item.name}</div>
+          <div className="text-sm">{props.cart.product?.name}</div>
           <div className="text-xs text-gray-600">
-            {props.item.category} / {props.item.type} / {props.cart.size}
+            {props.cart.product?.productType} / {props.cart.size}
           </div>
         </div>
       </div>
 
       <div className="w-[20%] font-medium">
-        {props.cart.quantity * props.item.price}{" "}
+        {props.cart.quantity * props.cart.product?.price}{" "}
         <span className="font-normal text-sm text-gray-600">BDT</span>
       </div>
     </div>
