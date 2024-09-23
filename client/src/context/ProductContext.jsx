@@ -18,6 +18,8 @@ const ProductContextProvider = (props) => {
   const [cartItem, setCartItem] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState({});
   const [cartLoading, setCartLoading] = useState(true);
+  const [categoryLoading, setCategoryLoading] = useState(true);
+  const [productLoading, setProductLoading] = useState(true);
 
   const cartItemData = localStorage.getItem("cartItem");
 
@@ -151,6 +153,8 @@ const ProductContextProvider = (props) => {
     categories,
     cartLoading,
     deleteCartItem,
+    categoryLoading,
+    productLoading,
   };
 
   // Fetch products from API
@@ -161,20 +165,19 @@ const ProductContextProvider = (props) => {
       );
       if (response.data.success) {
         setProducts(response.data.products);
-        // setLoading(false);
+        setProductLoading(false);
       } else {
         toast.error("Something went wrong!");
-        // setLoading(false);
+        setProductLoading(false);
       }
     } catch (err) {
       console.log(err);
-      // setLoading(false);
+      setProductLoading(false);
     }
   };
 
   // Fetch categories from API
   const fetchCategories = async () => {
-    // setLoading(true);
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_APP_API}/api/categories`
@@ -182,14 +185,14 @@ const ProductContextProvider = (props) => {
 
       if (response.data.success) {
         setCategories(response.data.categories);
-        // setLoading(false);
+        setCategoryLoading(false);
       } else {
         toast.error("Something went wrong!");
-        // setLoading(false);
+        setCategoryLoading(false);
       }
     } catch (err) {
       console.log(err);
-      // setLoading(false);
+      setCategoryLoading(false);
     }
   };
 

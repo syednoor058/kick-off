@@ -185,7 +185,7 @@ export default function Navbar() {
             initial={{ x: "100%", opacity: 1 }}
             animate={{ x: 0, opacity: 1, transition: { duration: 0.5 } }}
             exit={{ x: "100%", opacity: 1, transition: { duration: 0.5 } }}
-            className="h-screen bg-secondaryColor ps-28 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-base sm:text-lg lg:text-2xl md:text-xl"
+            className="h-screen bg-secondaryColor ps-28 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-xl sm:text-lg lg:text-2xl md:text-xl"
           >
             <div onClick={() => handleToggle()} className="cursor-pointer">
               <CloseIcon fontSize="" />
