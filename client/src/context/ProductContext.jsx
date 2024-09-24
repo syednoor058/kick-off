@@ -10,6 +10,8 @@ export const ProductContext = createContext();
 
 const ProductContextProvider = (props) => {
   // const navigate = useNavigate();
+  const [orderLoading, setOrderLoading] = useState(false);
+  const [order, setOrder] = useState([]);
   const { auth } = useContext(AuthContext);
   const currency = "BDT";
   const deliveryCharge = 200;
@@ -17,7 +19,7 @@ const ProductContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [cartItem, setCartItem] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState({});
-  const [cartLoading, setCartLoading] = useState(true);
+  const [cartLoading, setCartLoading] = useState(false);
   const [categoryLoading, setCategoryLoading] = useState(true);
   const [productLoading, setProductLoading] = useState(true);
 
@@ -155,6 +157,8 @@ const ProductContextProvider = (props) => {
     deleteCartItem,
     categoryLoading,
     productLoading,
+    order,
+    orderLoading,
   };
 
   // Fetch products from API
@@ -211,9 +215,39 @@ const ProductContextProvider = (props) => {
       }
     );
 
-    if (res.data.cart) {
+    if (res.data.success) {
       setCartItem(res.data.cart);
       setCartLoading(false);
+    } else {
+      setCartLoading(false);
+    }
+  };
+
+  const fetchOrder = async () => {
+    setOrderLoading(true);
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_API}/api/get-order`,
+        {
+          headers: {
+            // "Content-Type": "multipart/form-data",
+            Authorization: `${auth?.token}`,
+          },
+          user: auth.user,
+        }
+      );
+
+      if (res.data.success) {
+        setOrder(res.data.order);
+        setOrderLoading(false);
+      } else {
+        // toast.error(res.data.message);
+        setOrderLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setOrderLoading(false);
+      toast.error("Something went wrong fetching order!");
     }
   };
 
@@ -227,6 +261,7 @@ const ProductContextProvider = (props) => {
 
     if (auth.user) {
       fetchCartItem();
+      fetchOrder();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

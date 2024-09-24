@@ -14,6 +14,7 @@ import { ProductContext } from "../../context/ProductContext";
 
 export default function Checkout() {
   const navigate = useNavigate();
+  const [amount, setAmount] = useState();
   const [popup, setPopup] = useState(false);
   const [termsChecked, setTermsChecked] = useState(false);
   const [payment, setPayment] = useState("bkash");
@@ -37,10 +38,72 @@ export default function Checkout() {
   const submitOrder = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    const total =
+      cartTotalAmount() + deliveryCharge + cartTotalAmount() * (15 / 100);
     try {
       if (termsChecked) {
         const user = auth.user?._id;
+
+        if (!product) {
+          toast.error("No product in cart!");
+          setLoading(false);
+          return;
+        }
+        if (!email) {
+          toast.error("Contact email required!");
+          setLoading(false);
+          return;
+        }
+        if (!region) {
+          toast.error("Select a region!");
+          setLoading(false);
+          return;
+        }
+        if (!firstName) {
+          toast.error("First name is empty!");
+          setLoading(false);
+          return;
+        }
+        if (!lastName) {
+          toast.error("Last name is empty!");
+          setLoading(false);
+          return;
+        }
+        if (!address) {
+          toast.error("Address is required!");
+          setLoading(false);
+          return;
+        }
+        if (!city) {
+          toast.error("City is required!");
+          setLoading(false);
+          return;
+        }
+        if (!phoneNumber) {
+          toast.error("Phone number is empty!");
+          setLoading(false);
+          return;
+        }
+        if (!amount) {
+          toast.error("Amount is empty!");
+          setLoading(false);
+          return;
+        }
+        if (amount < 200) {
+          toast.error("Minimum amount should be 200!");
+          setLoading(false);
+          return;
+        }
+        if (!sendAccNum) {
+          toast.error("Sender's account number is required!");
+          setLoading(false);
+          return;
+        }
+        if (!transactionId) {
+          toast.error("Transaction ID is required!");
+          setLoading(false);
+          return;
+        }
 
         const response = await axios.post(
           `${import.meta.env.VITE_APP_API}/api/place-order`,
@@ -56,6 +119,8 @@ export default function Checkout() {
             postalCode,
             phoneNumber,
             payment,
+            amount,
+            total,
             sendAccNum,
             transactionId,
             user,
@@ -384,6 +449,14 @@ export default function Checkout() {
                   </div>
                 </div>
               </div>
+              <input
+                className="w-full px-3 lg:px-5 text-xs sm:text-sm lg:text-base py-2 lg:py-3 rounded-sm outline-none border border-gray-300"
+                placeholder="Sending amount *"
+                required
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
               <input
                 className="w-full px-3 lg:px-5 text-xs sm:text-sm lg:text-base py-2 lg:py-3 rounded-sm outline-none border border-gray-300"
                 placeholder="Sender's account number *"

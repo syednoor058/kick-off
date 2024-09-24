@@ -57,6 +57,14 @@ const buyerDetails = new mongoose.Schema({
     type: String,
     required: true,
   },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  total: {
+    type: Number,
+    required: true,
+  },
   sendAccNum: {
     type: Number,
     required: true,
@@ -78,7 +86,7 @@ const orderSchema = new mongoose.Schema({
   progress: {
     type: String,
     required: true,
-    default: "Order in progress",
+    default: "Order in review",
   },
   feedback: {
     type: String,
