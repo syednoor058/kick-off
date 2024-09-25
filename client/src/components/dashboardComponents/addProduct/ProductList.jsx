@@ -259,13 +259,13 @@ export default function ProductList() {
     fetchProducts();
   }, []);
   return (
-    <div>
-      <table className="min-w-full table-fixed bg-primaryColor border">
+    <div className="-ml-2 sm:ml-0">
+      <table className="min-w-full table-fixed bg-primaryColor border text-xs md:text-base">
         <thead>
           <tr className="w-full bg-gray-300 text-secondaryColor uppercase font-normal">
-            <th className="w-[10%]  py-2 px-4 border-b">Index</th>
+            <th className="w-[5%] md:w-[10%]  py-2 px-4 border-b">Index</th>
             <th className="w-[20%]  py-2 px-4 border-b">Photo</th>
-            <th className="w-[35%]  py-2 px-4 border-b">Product</th>
+            <th className="w-[40%] md:w-[35%]  py-2 px-4 border-b">Product</th>
             <th className="w-[35%]  py-2 px-4 border-b">Actions</th>
           </tr>
         </thead>
@@ -296,33 +296,33 @@ export default function ProductList() {
               {products.length > 0 ? (
                 products.map((product, index) => (
                   <tr key={product._id} className="border-b">
-                    <td className="w-[10%] py-2 px-4">
+                    <td className="w-[5%] md:w-[10%] py-2 px-4">
                       <div className="w-full h-full flex justify-center items-center">
                         {index + 1}
                       </div>
                     </td>
-                    <td className="w-[20%]  py-2 px-4 justify-center items-center">
-                      <div className="flex justify-center items-center">
+                    <td className="w-[20%] lg:w-[10%] py-2 px-4 justify-center items-center">
+                      <div className="w-full md:w-[60%] aspect-square flex justify-center items-center overflow-hidden">
                         <img
                           src={product.photo[0]}
                           alt={product.name}
-                          className="w-16 h-16 object-cover rounded"
+                          className="object-cover rounded"
                         />
                       </div>
                     </td>
-                    <td className="w-[35%]  py-2 px-4 text-center capitalize">
+                    <td className="w-[40%]  py-2 px-4 text-center capitalize">
                       {product.name}
                     </td>
 
                     <td className="w-[35%]  py-2 px-4">
                       {/* You can add Edit/Delete buttons here */}
-                      <div className="w-full flex flex-row gap-10 justify-center items-center">
+                      <div className="w-full flex flex-row gap-3 md:gap-10 justify-center items-center">
                         <button
                           className="text-blue-500 flex justify-center items-end leading-none"
                           onClick={() => handleEdit(product)}
                         >
                           <span className="px-1">
-                            <EditIcon fontSize="small" />
+                            <EditIcon fontSize="inherit" />
                           </span>
                           Edit
                         </button>
@@ -331,7 +331,7 @@ export default function ProductList() {
                           onClick={() => handleDelete(product)}
                         >
                           <span className="px-1">
-                            <DeleteIcon fontSize="small" />
+                            <DeleteIcon fontSize="inherit" />
                           </span>
                           Delete
                         </button>
@@ -392,16 +392,16 @@ export default function ProductList() {
                     onChange={(e) => setNewProductType(e.target.value)}
                     placeholder="Enter product type (optional)"
                   />
-                  <div className="flex flex-row gap-4 md:gap-10">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-10">
                     <input
                       type="number"
-                      className="w-[30%] md:w-[50%] p-2 border border-gray-300 rounded-sm outline-none"
+                      className="w-full md:w-[50%] p-2 border border-gray-300 rounded-sm outline-none"
                       value={newPrice}
                       onChange={(e) => setNewPrice(e.target.value)}
                       placeholder="Enter product price *"
                       required
                     />
-                    <div className="w-[70%] md:w-[50%] flex flex-col gap-3">
+                    <div className="md:w-[50%] flex flex-col gap-3">
                       <label className="block text-gray-700">Size *</label>
                       <div className="flex gap-5">
                         {["S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
@@ -532,7 +532,7 @@ export default function ProductList() {
                       className="h-60"
                     />
                   </div>
-                  <div className="flex flex-row justify-center gap-8 mt-10">
+                  <div className="flex flex-row justify-center gap-8 mt-14 md:mt-10">
                     <button
                       className="uppercase px-8 py-3 rounded-sm bg-blue-500 text-primaryColor"
                       onClick={() => setIsEditPopupOpen(false)}

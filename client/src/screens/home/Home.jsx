@@ -2,10 +2,11 @@
 import { useContext, useEffect } from "react";
 import Feature from "../../components/feature/Feature";
 import Hero from "../../components/hero/Hero";
-import Newsletter from "../../components/newsletter/Newsletter";
+// import Newsletter from "../../components/newsletter/Newsletter";
 import LatestProducts from "../../components/products/LatestProducts";
 import Products from "../../components/products/Products";
 import RecentProduct from "../../components/recentProduct/RecentProduct";
+import TopSales from "../../components/topSales/TopSales";
 import { ProductContext } from "../../context/ProductContext";
 export default function Home() {
   const { cartLoading, categoryLoading, productLoading } =
@@ -42,7 +43,8 @@ export default function Home() {
       <Feature />
       <RecentProduct />
       <Products />
-      <Newsletter />
+      {/* <Newsletter /> */}
+      <TopSales />
       <LatestProducts />
     </div>
   );

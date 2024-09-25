@@ -164,7 +164,7 @@ export default function CategoryTable() {
   }, []);
   return (
     <div>
-      <table className="min-w-full table-fixed bg-primaryColor border">
+      <table className="min-w-full table-fixed bg-primaryColor border text-xs md:text-base -ml-7 sm:-ml-5 md:ml-0">
         <thead>
           <tr className="w-full bg-gray-300 text-secondaryColor uppercase font-normal">
             <th className="w-[10%]  py-2 px-4 border-b">Index</th>
@@ -197,13 +197,13 @@ export default function CategoryTable() {
 
                 <td className="w-[35%]  py-2 px-4">
                   {/* You can add Edit/Delete buttons here */}
-                  <div className="w-full flex flex-row gap-10 justify-center items-center">
+                  <div className="w-full flex flex-row gap-5 lg:gap-10 justify-center items-center">
                     <button
                       className="text-blue-500 flex justify-center items-end leading-none"
                       onClick={() => handleEdit(category)}
                     >
                       <span className="px-1">
-                        <EditIcon fontSize="small" />
+                        <EditIcon fontSize="inherit" />
                       </span>
                       Edit
                     </button>
@@ -212,7 +212,7 @@ export default function CategoryTable() {
                       onClick={() => handleDelete(category)}
                     >
                       <span className="px-1">
-                        <DeleteIcon fontSize="small" />
+                        <DeleteIcon fontSize="inherit" />
                       </span>
                       Delete
                     </button>

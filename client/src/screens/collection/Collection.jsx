@@ -2,7 +2,7 @@
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Search from "@mui/icons-material/Search";
 import { useCallback, useContext, useEffect, useState } from "react";
-import horizontalBanner from "../../assets/banners/horizontal_banner.png";
+import horizontalBanner from "../../assets/banners/top_sales.jpg";
 import verticalBanner from "../../assets/banners/vertical_banner.webp";
 import ProductCard from "../../components/products/ProductCard";
 import { ProductContext } from "../../context/ProductContext";

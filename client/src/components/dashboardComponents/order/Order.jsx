@@ -195,7 +195,7 @@ export default function Order() {
                             <div className="capitalize">
                               Address: {o.buyer.address}
                             </div>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
                               <div>
                                 Appartment/House No: {o.buyer.appartment}
                               </div>
@@ -212,7 +212,7 @@ export default function Order() {
                           <div className="font-semibold text-base">Payment</div>
                           <div className="flex flex-col gap-2">
                             <div className="capitalize">
-                              Paymet Method: {o.buyer.payment}
+                              Payment Method: {o.buyer.payment}
                             </div>
                             <div>
                               Sender&apos;s Account Number: +880
@@ -247,18 +247,19 @@ export default function Order() {
                             <div>Paid: {o.buyer.amount} BDT</div>
                             <div>Due: {o.buyer.total - o.buyer.amount} BDT</div>
                           </div>
-                          <div className="w-full flex flex-row gap-10 pt-5 items-center justify-between">
+                          <div>Date: {o.createdAt.split("T")[0]}</div>
+                          <div className="w-full flex flex-row gap-10 pt-5 items-center">
                             <div className="uppercase text-sm md:text-xl font-semibold flex gap-5 items-center">
-                              <div>Status:</div>{" "}
                               <div className="px-3 py-2 rounded-sm bg-yellow-400 text-primaryColor">
                                 {o.progress}
                               </div>
                             </div>
-                            <div className="flex flex-row gap-2 items-center cursor-pointer">
-                              <EditIcon fontSize="small" />
-                              <div onClick={() => handleEditPopup(o)}>
-                                Edit Order Status
-                              </div>
+                            <div
+                              className="flex flex-row gap-1 items-center cursor-pointer p-4"
+                              onClick={() => handleEditPopup(o)}
+                            >
+                              <EditIcon fontSize="inherit" />
+                              <div>Edit</div>
                             </div>
                           </div>
                           <div className="capitalize">
@@ -411,7 +412,7 @@ export default function Order() {
                             <div className="capitalize">
                               Address: {o.buyer.address}
                             </div>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
                               <div>
                                 Appartment/House No: {o.buyer.appartment}
                               </div>
@@ -428,7 +429,7 @@ export default function Order() {
                           <div className="font-semibold text-base">Payment</div>
                           <div className="flex flex-col gap-2">
                             <div className="capitalize">
-                              Paymet Method: {o.buyer.payment}
+                              Payment Method: {o.buyer.payment}
                             </div>
                             <div>
                               Sender&apos;s Account Number: +880
@@ -463,18 +464,19 @@ export default function Order() {
                             <div>Paid: {o.buyer.amount} BDT</div>
                             <div>Due: {o.buyer.total - o.buyer.amount} BDT</div>
                           </div>
-                          <div className="w-full flex flex-row gap-10 pt-5 items-center justify-between">
+                          <div>Date: {o.createdAt.split("T")[0]}</div>
+                          <div className="w-full flex flex-row gap-10 pt-5 items-center">
                             <div className="uppercase text-sm md:text-xl font-semibold flex gap-5 items-center">
-                              <div>Status:</div>{" "}
                               <div className="px-3 py-2 rounded-sm bg-cyan-400 text-primaryColor">
                                 {o.progress}
                               </div>
                             </div>
-                            <div className="flex flex-row gap-2 items-center cursor-pointer">
-                              <EditIcon fontSize="small" />
-                              <div onClick={() => handleEditPopup(o)}>
-                                Edit Order Status
-                              </div>
+                            <div
+                              className="flex flex-row gap-1 p-4 items-center cursor-pointer"
+                              onClick={() => handleEditPopup(o)}
+                            >
+                              <EditIcon fontSize="inherit" />
+                              <div>Edit</div>
                             </div>
                           </div>
                           <div className="capitalize">
@@ -621,7 +623,7 @@ export default function Order() {
                             <div className="capitalize">
                               Address: {o.buyer.address}
                             </div>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
                               <div>
                                 Appartment/House No: {o.buyer.appartment}
                               </div>
@@ -638,7 +640,7 @@ export default function Order() {
                           <div className="font-semibold text-base">Payment</div>
                           <div className="flex flex-col gap-2">
                             <div className="capitalize">
-                              Paymet Method: {o.buyer.payment}
+                              Payment Method: {o.buyer.payment}
                             </div>
                             <div>
                               Sender&apos;s Account Number: +880
@@ -673,18 +675,19 @@ export default function Order() {
                             <div>Paid: {o.buyer.amount} BDT</div>
                             <div>Due: {o.buyer.total - o.buyer.amount} BDT</div>
                           </div>
-                          <div className="w-full flex flex-row gap-10 pt-5 items-center justify-between">
+                          <div>Date: {o.createdAt.split("T")[0]}</div>
+                          <div className="w-full flex flex-row gap-10 pt-5 items-center">
                             <div className="uppercase text-sm md:text-xl font-semibold flex gap-5 items-center">
-                              <div>Status:</div>{" "}
                               <div className="px-3 py-2 rounded-sm bg-blue-400 text-primaryColor">
                                 {o.progress}
                               </div>
                             </div>
-                            <div className="flex flex-row gap-2 items-center cursor-pointer">
-                              <EditIcon fontSize="small" />
-                              <div onClick={() => handleEditPopup(o)}>
-                                Edit Order Status
-                              </div>
+                            <div
+                              className="flex flex-row gap-1 items-center cursor-pointer p-4"
+                              onClick={() => handleEditPopup(o)}
+                            >
+                              <EditIcon fontSize="inherit" />
+                              <div>Edit</div>
                             </div>
                           </div>
                           <div className="capitalize">
@@ -837,7 +840,7 @@ export default function Order() {
                             <div className="capitalize">
                               Address: {o.buyer.address}
                             </div>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
                               <div>
                                 Appartment/House No: {o.buyer.appartment}
                               </div>
@@ -854,7 +857,7 @@ export default function Order() {
                           <div className="font-semibold text-base">Payment</div>
                           <div className="flex flex-col gap-2">
                             <div className="capitalize">
-                              Paymet Method: {o.buyer.payment}
+                              Payment Method: {o.buyer.payment}
                             </div>
                             <div>
                               Sender&apos;s Account Number: +880
@@ -889,18 +892,19 @@ export default function Order() {
                             <div>Paid: {o.buyer.amount} BDT</div>
                             <div>Due: {o.buyer.total - o.buyer.amount} BDT</div>
                           </div>
-                          <div className="w-full flex flex-row gap-10 pt-5 items-center justify-between">
+                          <div>Date: {o.createdAt.split("T")[0]}</div>
+                          <div className="w-full flex flex-row gap-10 pt-5 items-center">
                             <div className="uppercase text-sm md:text-xl font-semibold flex gap-5 items-center">
-                              <div>Status:</div>{" "}
                               <div className="px-3 py-2 rounded-sm bg-green-400 text-primaryColor">
                                 {o.progress}
                               </div>
                             </div>
-                            <div className="flex flex-row gap-2 items-center cursor-pointer">
-                              <EditIcon fontSize="small" />
-                              <div onClick={() => handleEditPopup(o)}>
-                                Edit Order Status
-                              </div>
+                            <div
+                              className="flex flex-row gap-1 items-center cursor-pointer"
+                              onClick={() => handleEditPopup(o)}
+                            >
+                              <EditIcon fontSize="inherit" />
+                              <div>Edit</div>
                             </div>
                           </div>
                           <div className="capitalize">
@@ -1053,7 +1057,7 @@ export default function Order() {
                             <div className="capitalize">
                               Address: {o.buyer.address}
                             </div>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
                               <div>
                                 Appartment/House No: {o.buyer.appartment}
                               </div>
@@ -1105,18 +1109,19 @@ export default function Order() {
                             <div>Paid: 0 BDT</div>
                             <div>Due: 0 BDT</div>
                           </div>
-                          <div className="w-full flex flex-row gap-10 pt-5 items-center justify-between">
+                          <div>Date: {o.createdAt.split("T")[0]}</div>
+                          <div className="w-full flex flex-row gap-10 pt-5 items-center">
                             <div className="uppercase text-sm md:text-xl font-semibold flex gap-5 items-center">
-                              <div>Status:</div>{" "}
                               <div className="px-3 py-2 rounded-sm bg-red-400 text-primaryColor">
                                 {o.progress}
                               </div>
                             </div>
-                            <div className="flex flex-row gap-2 items-center cursor-pointer">
-                              <EditIcon fontSize="small" />
-                              <div onClick={() => handleEditPopup(o)}>
-                                Edit Order Status
-                              </div>
+                            <div
+                              className="flex flex-row p-4 gap-2 items-center cursor-pointer"
+                              onClick={() => handleEditPopup(o)}
+                            >
+                              <EditIcon fontSize="inherit" />
+                              <div>Edit</div>
                             </div>
                           </div>
                           <div className="capitalize">

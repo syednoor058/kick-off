@@ -177,7 +177,7 @@ export default function AddProducts() {
           </div>
         </div>
       )}
-      <div className="flex flex-col gap-10 px-10 py-10">
+      <div className="flex flex-col gap-10 px-5 lg:px-10 py-10">
         <div className="text-xl uppercase">List a new Product</div>
         <div className="w-full flex flex-col md:flex-row gap-10">
           <div className="w-full md:w-[70%]">

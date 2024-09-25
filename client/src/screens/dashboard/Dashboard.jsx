@@ -7,6 +7,7 @@ import PieChartIcon from "@mui/icons-material/PieChart";
 import RoomServiceIcon from "@mui/icons-material/RoomService";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 import { useContext, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { TbLogout2 } from "react-icons/tb";
@@ -36,7 +37,7 @@ export default function Dashboard() {
       <div className="w-full min-h-screen top-0 bg-gray-200 flex flex-col gap-5">
         <div className="w-full flex flex-row justify-between items-center py-3 bg-primaryColor px-10 shadow-lg">
           <div className="w-full flex flex-col">
-            <div className="text-xl font-bold uppercase">Kick-Off</div>
+            <div className="text-xl font-bold capitalize">Kick-Off</div>
             <div className="text-xs text-gray-500">The Jersey Galleria</div>
           </div>
           <div className="w-full flex flex-row gap-10 justify-end">
@@ -72,10 +73,10 @@ export default function Dashboard() {
         </div>
         <div className="w-full h-full flex flex-col lg:flex-row gap-10">
           <div className="w-full lg:w-[20%] h-full rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
-            <div className="w-full flex flex-row lg:flex-col gap-1 lg:py-10 text-sm">
+            <div className="w-full flex flex-row lg:flex-col justify-between lg:gap-1 lg:py-10 text-sm ps-5 lg:ps-10 pe-5 lg:pe-0">
               <Link
                 to="/dashboard"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -88,7 +89,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to="add-category"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -101,7 +102,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to="add-product"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -114,7 +115,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to="add-admin"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -127,7 +128,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to="orders"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -140,7 +141,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to="messages"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -151,11 +152,24 @@ export default function Dashboard() {
                   </div>
                 </div>
               </Link>
+              <Link
+                to="banners"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+              >
+                <div className="w-full flex flex-row gap-5">
+                  <div className="w-[10%] text-xl h-auto">
+                    <ViewCarouselIcon />
+                  </div>
+                  <div className="w-[90%] hidden lg:flex items-center">
+                    Banners
+                  </div>
+                </div>
+              </Link>
             </div>
-            <div className="w-full flex flex-row lg:flex-col gap-1 lg:py-10 text-sm">
+            <div className="w-full flex flex-row lg:flex-col justify-between lg:gap-1 lg:py-10 text-sm ps-5 lg:ps-10 pe-5 lg:pe-0">
               <Link
                 to="/dashboard"
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
               >
                 <div className="w-full flex flex-row gap-5">
                   <div className="w-[10%] text-xl h-auto">
@@ -168,7 +182,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to=""
-                className="flex flex-row gap-2 items-center ps-10 hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
                 onClick={() => handleLogout()}
               >
                 <div className="w-full flex flex-row gap-5">

@@ -10,6 +10,7 @@ export const ProductContext = createContext();
 
 const ProductContextProvider = (props) => {
   // const navigate = useNavigate();
+  const [deleteCartLoading, setDeleteCartLoading] = useState(false);
   const [orderLoading, setOrderLoading] = useState(false);
   const [order, setOrder] = useState([]);
   const { auth } = useContext(AuthContext);
@@ -90,9 +91,9 @@ const ProductContextProvider = (props) => {
   };
 
   const deleteCartItem = async (productId, size) => {
-    setCartLoading(true);
+    setDeleteCartLoading(true);
     if (!auth.user) {
-      setCartLoading(false);
+      setDeleteCartLoading(false);
       toast.error("Login first before adding products!");
       return;
     }
@@ -115,10 +116,10 @@ const ProductContextProvider = (props) => {
       toast.success("Product is removed from cart!");
       setCartItem(res.data.cart);
       // navigate("/cart");
-      setCartLoading(false);
+      setDeleteCartLoading(false);
     } else {
       toast.error("Error removing product from cart!");
-      setCartLoading(false);
+      setDeleteCartLoading(false);
     }
   };
 
@@ -159,6 +160,7 @@ const ProductContextProvider = (props) => {
     productLoading,
     order,
     orderLoading,
+    deleteCartLoading,
   };
 
   // Fetch products from API

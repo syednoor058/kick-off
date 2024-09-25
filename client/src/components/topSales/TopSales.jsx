@@ -1,7 +1,4 @@
-// import React from "react";
-// import { useContext } from "react";
-// import { ProductContext } from "../../context/ProductContext";
-import verticalBanner from "../../assets/banners/new_arrival.jpg";
+import verticalBanner from "../../assets/banners/top_sales.jpg";
 export default function RecentProduct() {
   // const { products } = useContext(ProductContext);
   return (

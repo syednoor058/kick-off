@@ -7,20 +7,13 @@ import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
 
 export default function MyOrder() {
-  const [total, setTotal] = useState(0);
+  const [userOrder, setUserOrder] = useState([]);
   const { order } = useContext(ProductContext);
   const { auth } = useContext(AuthContext);
 
-  const totalOrder = () => {
-    let totalOrder = 0;
-    order.map((o) => {
-      console.log(o.user._id);
-      console.log(auth?.user?._id);
-      if (o.user._id === auth?.user?._id) {
-        totalOrder = totalOrder + 1;
-      }
-    });
-    setTotal(totalOrder);
+  const myOrder = () => {
+    const newOrder = order.filter((o) => o.user._id === auth?.user?._id);
+    setUserOrder(newOrder);
   };
 
   useEffect(() => {
@@ -29,21 +22,24 @@ export default function MyOrder() {
 
   useEffect(() => {
     if (order && auth?.user) {
-      totalOrder();
-      console.log(total);
+      myOrder();
+      console.log(userOrder);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth?.user, order]);
 
   return (
     <div className="w-full min-h-screen mt-[104px]">
-      {total > 0 ? (
-        <div>
-          {order.map((o, index) => {
-            o.user._id === auth?.user?._id && (
+      <div className="px-3 sm:px-10 md:px-16 lg:px-20 py-10 lg:py-20 flex flex-col gap-5 lg:gap-10">
+        <div className="w-ful text-center uppercase text-2xl sm:text-3xl md:text-4xl font-semibold">
+          My orders
+        </div>
+        {userOrder.length > 0 ? (
+          <div className="flex flex-col gap-5 lg:gap-7">
+            {userOrder.map((o, index) => (
               <div
                 key={index}
-                className="flex flex-col gap-3 text-xs md:text-sm p-5 border rounded-sm border-dashed border-secondaryColor"
+                className="flex flex-col gap-3 text-xs md:text-sm p-3 sm:p-5 border rounded-sm border-dashed border-secondaryColor"
               >
                 <div className="font-semibold text-base">
                   Buyer&apos;s Details
@@ -54,7 +50,7 @@ export default function MyOrder() {
                   </div>
                   <div>Email: {o.buyer.email}</div>
                   <div className="capitalize">Address: {o.buyer.address}</div>
-                  <div className="grid grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-5 gap-y-2">
                     <div>Appartment/House No: {o.buyer.appartment}</div>
                     <div className="capitalize">City: {o.buyer.city}</div>
                     <div>Postal Code: {o.buyer.postalCode}</div>
@@ -65,7 +61,7 @@ export default function MyOrder() {
                 <div className="font-semibold text-base">Payment</div>
                 <div className="flex flex-col gap-2">
                   <div className="capitalize">
-                    Paymet Method: {o.buyer.payment}
+                    Payment Method: {o.buyer.payment}
                   </div>
                   <div>
                     Sender&apos;s Account Number: +880
@@ -89,28 +85,37 @@ export default function MyOrder() {
                   ))}
                 </div>
                 <div className="flex gap-7">
-                  <div>Total: {o.buyer.total} BDT</div>
+                  <div>Total: {o.buyer.total} BDT (incld. delivery charge)</div>
                   <div>Paid: {o.buyer.amount} BDT</div>
                   <div>Due: {o.buyer.total - o.buyer.amount} BDT</div>
                 </div>
                 <div className="w-full flex flex-row gap-10 pt-5 items-center justify-between">
                   <div className="uppercase text-sm md:text-xl font-semibold flex gap-5 items-center">
-                    <div>Status:</div>{" "}
-                    <div className="px-3 py-2 rounded-sm bg-green-400 text-primaryColor">
+                    <div
+                      className={`px-3 py-2 rounded-sm ${
+                        o.progress === "Order in review" && "bg-yellow-400"
+                      } ${
+                        o.progress === "Order in progress" && "bg-cyan-400"
+                      } ${o.progress === "Shipped" && "bg-blue-400"} ${
+                        o.progress === "Received" && "bg-green-400"
+                      } ${
+                        o.progress === "Canceled" && "bg-red-400"
+                      } text-primaryColor`}
+                    >
                       {o.progress}
                     </div>
                   </div>
                 </div>
                 <div className="capitalize">Comment: {o.feedback}</div>
               </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="w-full h-screen text-2xl sm:text-3xl md:text-4xl uppercase font-semibold text-gray-400">
-          You haven&apos;t placed any order yet!
-        </div>
-      )}
+            ))}
+          </div>
+        ) : (
+          <div className="w-full h-screen text-2xl sm:text-3xl md:text-4xl uppercase font-semibold text-gray-400 flex justify-center items-center">
+            You haven&apos;t placed any order yet!
+          </div>
+        )}
+      </div>
     </div>
   );
 }
