@@ -50,7 +50,7 @@ export default function Navbar() {
     >
       <div className="w-full flex flex-row justify-between">
         <Link className="w-[33%] flex flex-col" to="/">
-          <div className="font-bold text-xl md:text-2xl uppercase">
+          <div className="font-bold text-xl md:text-2xl capitalize">
             Kick-Off
           </div>
           <div className="text-xs">The Jersey Galleria</div>
