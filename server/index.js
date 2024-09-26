@@ -5,6 +5,7 @@ import morgan from "morgan";
 import connectDB from "./config/db.js";
 import { isAdmin, requireSignIn } from "./middlewares/authMiddleware.js";
 import authRoute from "./routes/authRoute.js";
+import bannerRoute from "./routes/bannerRoute.js";
 import categoryRoute from "./routes/categoryRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import productRoute from "./routes/productRoute.js";
@@ -24,6 +25,7 @@ app.use("/api", productRoute);
 app.use("/api", categoryRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api", orderRoute);
+app.use("/api", bannerRoute)
 app.get("/api", requireSignIn, isAdmin, (req, res) => {
   res.send({
     message: "Welcome to Kick-off backend.",

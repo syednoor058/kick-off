@@ -6,6 +6,7 @@ import "./App.css";
 import AddAdmin from "./components/dashboardComponents/addAdmin/AddAdmin";
 import AddCategory from "./components/dashboardComponents/addCategory.jsx/AddCategory";
 import AddProducts from "./components/dashboardComponents/addProduct/AddProducts";
+import Banners from "./components/dashboardComponents/banners/Banners";
 import Message from "./components/dashboardComponents/message/Message";
 import Order from "./components/dashboardComponents/order/Order";
 import Overview from "./components/dashboardComponents/overview/Overview";
@@ -57,6 +58,7 @@ function App() {
               <Route exact path="add-admin" element={<AddAdmin />} />
               <Route exact path="orders" element={<Order />} />
               <Route exact path="messages" element={<Message />} />
+              <Route exact path="banners" element={<Banners />} />
             </Route>
           </Route>
 

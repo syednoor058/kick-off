@@ -20,9 +20,11 @@ const ProductContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [cartItem, setCartItem] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState({});
+  const [carausols, setCarausols] = useState([]);
   const [cartLoading, setCartLoading] = useState(false);
   const [categoryLoading, setCategoryLoading] = useState(true);
   const [productLoading, setProductLoading] = useState(true);
+  const [carLoading, setCarLoading] = useState(false);
 
   const cartItemData = localStorage.getItem("cartItem");
 
@@ -161,6 +163,26 @@ const ProductContextProvider = (props) => {
     order,
     orderLoading,
     deleteCartLoading,
+    carLoading,
+    carausols,
+  };
+
+  //Fetch carausol from API
+  const fetchCarausols = async () => {
+    setCarLoading(true);
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_API}/api/get-carausol`
+      );
+      if (res.data.carausols.length > 0) {
+        setCarausols(res.data.carausols);
+      }
+      setCarLoading(false);
+    } catch (error) {
+      setCarLoading(false);
+      console.log(error);
+      toast.error("Error fetching carausels!");
+    }
   };
 
   // Fetch products from API
@@ -256,6 +278,7 @@ const ProductContextProvider = (props) => {
   useEffect(() => {
     fetchProducts();
     fetchCategories();
+    fetchCarausols();
 
     if (!auth.user) {
       setCartItem([]);
