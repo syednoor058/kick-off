@@ -1,22 +1,9 @@
 // import React from 'react'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Slider from "react-slick";
-
+import { ProductContext } from "../../context/ProductContext";
 export default function HeroSlider() {
-  const slidersImg = [
-    {
-      url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2e80a037869665.574ef20d97dcf.jpg",
-    },
-    {
-      url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/908fe237869665.574ef20d98586.jpg",
-    },
-    {
-      url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9eab7337869665.574ef20d9bc4a.jpg",
-    },
-    {
-      url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8f60b837869665.574ef20d9976a.jpg",
-    },
-  ];
+  const { carausols } = useContext(ProductContext);
 
   const [dotActive, setDotActive] = useState(0);
 
@@ -75,10 +62,10 @@ export default function HeroSlider() {
   };
   return (
     <Slider {...settings}>
-      {slidersImg.map((img, index) => (
+      {carausols[0]?.url.map((img, index) => (
         <div key={index} className="w-full aspect-video  rounded">
           <img
-            src={img.url}
+            src={img}
             alt=""
             className="w-full h-full object-cover object-top"
           />

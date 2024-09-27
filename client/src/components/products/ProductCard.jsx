@@ -12,7 +12,7 @@ export default function ProductCard({ id, image, name, price, available }) {
     <Link
       to={`/product/${id}`}
       onClick={() => getRelatedProducts(name)}
-      className="w-full h-full flex flex-col gap-5 rounded overflow-hidden group"
+      className="w-full h-full flex flex-col gap-2 sm:gap-5 rounded overflow-hidden group"
     >
       <div className="w-full aspect-square shadow-md overflow-hidden relative">
         {available == 1 ? (
@@ -34,9 +34,9 @@ export default function ProductCard({ id, image, name, price, available }) {
           alt=""
         />
       </div>
-      <div className="flex flex-col gap-2 text-center leading-none">
-        <div className="text-lg font-medium leading-5">{name}</div>
-        <div>
+      <div className="flex flex-col gap-1 text-center leading-none">
+        <div className="text-base sm:text-lg font-medium leading-5">{name}</div>
+        <div className="text-sm sm:text-base">
           Price: {price} {currency}
         </div>
       </div>
