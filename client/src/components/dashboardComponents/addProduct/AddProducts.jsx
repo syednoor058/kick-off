@@ -10,6 +10,26 @@ import { AuthContext } from "../../../context/AuthContext";
 import ProductList from "./ProductList";
 
 export default function AddProducts() {
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ color: ["#000000", "#E53935"] }], // Color and background color
+      ["bold", "italic", "underline"], // Text styling options
+      [{ list: "ordered" }, { list: "bullet" }], // List options
+      ["link"], // Link option
+    ],
+  };
+
+  const formats = [
+    "header",
+    "color",
+    "bold",
+    "italic",
+    "underline",
+    "list",
+    "bullet",
+    "link",
+  ];
   const [isSpiner, setIsSpiner] = useState(false);
   const { auth } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
@@ -293,9 +313,11 @@ export default function AddProducts() {
                 <label className="block text-gray-700">Description *</label>
                 <ReactQuill
                   theme="snow"
+                  formats={formats}
+                  modules={modules}
                   value={desc}
                   onChange={setDesc}
-                  className="h-60"
+                  className="h-60 text-secondaryColor"
                 />
               </div>
 

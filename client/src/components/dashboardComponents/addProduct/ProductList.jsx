@@ -11,6 +11,26 @@ import { AuthContext } from "../../../context/AuthContext";
 
 export default function ProductList() {
   const { auth } = useContext(AuthContext);
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ color: ["#000000", "#E53935"] }], // Color and background color
+      ["bold", "italic", "underline"], // Text styling options
+      [{ list: "ordered" }, { list: "bullet" }], // List options
+      ["link"], // Link option
+    ],
+  };
+
+  const formats = [
+    "header",
+    "color",
+    "bold",
+    "italic",
+    "underline",
+    "list",
+    "bullet",
+    "link",
+  ];
   // const [deletePhoto, setDeletePhoto] = useState([]);
   const [isDeleteSpinner, setIsDeleteSpinner] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
@@ -529,6 +549,8 @@ export default function ProductList() {
                       theme="snow"
                       value={newDesc}
                       onChange={setNewDesc}
+                      modules={modules}
+                      formats={formats}
                       className="h-60"
                     />
                   </div>

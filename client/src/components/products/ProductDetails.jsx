@@ -202,7 +202,7 @@ export default function ProductDetails(props) {
         </div>
         <div className="w-full flex flex-col gap-7">
           <div className="text-2xl font-semibold uppercase">Description</div>
-          <div className="text-sm md:text-base product-description">
+          <div className="text-sm md:text-base product-description text-secondaryColor">
             <div dangerouslySetInnerHTML={{ __html: props.item.desc }} />
           </div>
         </div>

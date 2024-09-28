@@ -1,25 +1,30 @@
 /* Style for headers (h1, h2, h3, etc.) */
+
 .product-description h1,
 .product-description h2,
 .product-description h3 {
   font-family: "Poppins", sans-serif;
   margin: 1rem 0;
   font-weight: bold;
+  color: black;
 }
 
 .product-description h1 {
   font-size: 36px;
   line-height: 50px;
+  color: black;
 }
 
 .product-description h2 {
   font-size: 32px;
   line-height: 40px;
+  color: black;
 }
 
 .product-description h3 {
   font-size: 28px;
   line-height: 35px;
+  color: black;
 }
 
 /* Style for lists */
@@ -27,9 +32,11 @@
 .product-description ol {
   margin: 1rem 0;
   padding-left: 1.5rem;
+  color: black;
 }
 
 .product-description li {
   margin-bottom: 0.5rem;
   list-style-type: disc;
+  color: black;
 }
