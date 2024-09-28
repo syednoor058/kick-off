@@ -59,13 +59,25 @@ export default function Navbar() {
           <Link to="/" className="flex items-center">
             Home
           </Link>
-          <Link to="/collection" className="flex items-center gap-1">
+          <Link
+            activeClass="active-nav"
+            to="/collection"
+            className="flex items-center gap-1"
+          >
             Products
           </Link>
-          <Link to="/about-us" className="flex items-center gap-1">
+          <Link
+            activeClass="active-nav"
+            to="/about-us"
+            className="flex items-center gap-1"
+          >
             About
           </Link>
-          <Link to="/contact-us" className="flex items-center gap-1">
+          <Link
+            activeClass="active-nav"
+            to="/contact-us"
+            className="flex items-center gap-1"
+          >
             Contact
           </Link>
         </div>
