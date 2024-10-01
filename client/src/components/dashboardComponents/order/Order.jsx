@@ -889,8 +889,8 @@ export default function Order() {
                           </div>
                           <div className="flex gap-7">
                             <div>Total: {o.buyer.total} BDT</div>
-                            <div>Paid: {o.buyer.amount} BDT</div>
-                            <div>Due: {o.buyer.total - o.buyer.amount} BDT</div>
+                            <div>Paid: {o.buyer.total} BDT</div>
+                            <div>Due: 0 BDT</div>
                           </div>
                           <div>Date: {o.createdAt.split("T")[0]}</div>
                           <div className="w-full flex flex-row gap-10 pt-5 items-center">
