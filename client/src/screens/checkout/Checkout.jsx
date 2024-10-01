@@ -38,8 +38,7 @@ export default function Checkout() {
   const submitOrder = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const total =
-      cartTotalAmount() + deliveryCharge + cartTotalAmount() * (15 / 100);
+    const total = cartTotalAmount() + deliveryCharge;
     try {
       if (termsChecked) {
         const user = auth.user?._id;
