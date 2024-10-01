@@ -15,7 +15,7 @@ const ProductContextProvider = (props) => {
   const [order, setOrder] = useState([]);
   const { auth } = useContext(AuthContext);
   const currency = "BDT";
-  const deliveryCharge = 200;
+  const deliveryCharge = 120;
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [cartItem, setCartItem] = useState([]);

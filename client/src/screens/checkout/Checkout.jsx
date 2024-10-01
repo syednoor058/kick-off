@@ -509,18 +509,11 @@ export default function Checkout() {
                   <div>Shipping Cost</div>
                   <div>{deliveryCharge} BDT</div>
                 </div>
-                <div className="w-full flex flex-row gap-10 justify-between">
-                  <div>Taxes (Included 15%)</div>
-                  <div>{cartTotalAmount() * (15 / 100)} BDT</div>
-                </div>
               </div>
               <div className="w-full flex flex-row gap-10 justify-between">
                 <div className="text-lg font-semibold">Total</div>
                 <div className="font-bold text-xl">
-                  {cartTotalAmount() +
-                    deliveryCharge +
-                    cartTotalAmount() * (15 / 100)}{" "}
-                  BDT
+                  {cartTotalAmount() + deliveryCharge} BDT
                 </div>
               </div>
             </div>

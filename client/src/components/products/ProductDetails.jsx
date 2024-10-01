@@ -157,7 +157,7 @@ export default function ProductDetails(props) {
                   <span className="flex justify-center items-center">
                     <LocalShippingOutlinedIcon />
                   </span>
-                  Shipping cost: 200 BDT
+                  Shipping cost: 120 BDT
                 </div>
               </div>
               <div className="flex flex-row gap-2 capitalize text-sm items-center">
