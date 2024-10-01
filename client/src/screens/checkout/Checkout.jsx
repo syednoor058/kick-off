@@ -415,38 +415,30 @@ export default function Checkout() {
                   <div className="font-semibold text-red-500">
                     Payment Terms and Conditions
                   </div>
-                  <div className="flex flex-col gap-2 text-xs sm:text-sm">
-                    <div>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Itaque consequatur suscipit repudiandae, praesentium,
-                      sequi cum accusantium voluptates sunt facilis consequuntur
-                      laborum?
-                    </div>
-                    <div>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Itaque consequatur suscipit repudiandae, praesentium,
-                      sequi cum accusantium voluptates sunt facilis consequuntur
-                      laborum?
-                    </div>
-                    <div>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Itaque consequatur suscipit repudiandae, praesentium,
-                      sequi cum accusantium voluptates sunt facilis consequuntur
-                      laborum?
-                    </div>
-                    <div>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Itaque consequatur suscipit repudiandae, praesentium,
-                      sequi cum accusantium voluptates sunt facilis consequuntur
-                      laborum?
-                    </div>
-                    <div>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Itaque consequatur suscipit repudiandae, praesentium,
-                      sequi cum accusantium voluptates sunt facilis consequuntur
-                      laborum?
-                    </div>
-                  </div>
+                  <ul className="flex flex-col gap-2 text-xs sm:text-sm list-disc ps-5">
+                    <li>অর্ডার কনফার্ম করতে ২০০ টাকা অ্যাডভান্স করতে হবে।</li>
+                    <li>
+                      অ্যাডভান্স টাকা উপরোক্ত বিকাশ অথবা নগদ একাউন্টে সেন্ড মানি
+                      করতে হবে। সেন্ড মানি ব্যাতিত অন্য কোন পেমেন্ট মেথড ব্যবহার
+                      করলে অর্ডার গ্রহনযোগ্য হবে না।
+                    </li>
+                    <li>
+                      সেন্ড মানি করার পর যে নম্বর থেকে সেন্ড মানি করা হয়েছে সেই
+                      নম্বর এবং ট্রানসেকশন আইডি ফিলআপ বক্সে প্রবেশ করাতে হবে।
+                    </li>
+                    <li>
+                      ট্রান্সেকশন আইডিটি বিকাশের ফিরতি ম্যাসেজে TrxID এবং নগদে
+                      TxnID হিসেবে উল্লেখ থাকবে।
+                    </li>
+                    <li>
+                      অর্ডার কনফার্ম হলে ৭ দিনের মধ্যে আপনার পণ্য পাঠাও এর
+                      মাধ্যমে হোম ডেলিভারি পেয়ে যাবেন।
+                    </li>
+                    <li>
+                      পণ্য হাতে পাবার পর বাকি টাকা ডেলিভারি ম্যানকে পরিশোধ
+                      করবেন।
+                    </li>
+                  </ul>
                 </div>
               </div>
               <input
