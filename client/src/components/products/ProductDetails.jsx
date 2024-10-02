@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react'
+import ClearSharpIcon from "@mui/icons-material/ClearSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import StraightenOutlinedIcon from "@mui/icons-material/StraightenOutlined";
@@ -8,6 +9,9 @@ import { FaHome } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
+import asianSizeChart from "../../assets/sizeCharts/asian_size.webp";
+import fanEditionNRetroSizeChart from "../../assets/sizeCharts/fan_edition_retro_size.webp";
+import playerEditionSizeChart from "../../assets/sizeCharts/player_edition_size.webp";
 import { ProductContext } from "../../context/ProductContext";
 import RelatedProducts from "../relatedProducts/RelatedProducts";
 import "./product_details.css";
@@ -18,6 +22,7 @@ export default function ProductDetails(props) {
   const [qty, setQty] = useState(1);
   const { addToCart, products } = useContext(ProductContext);
   const [relatedProducts, setRelatedProducts] = useState({});
+  const [msrPopOpen, setMsrPopOpen] = useState(false);
 
   useEffect(() => {
     if (props.item.photo && props.item.photo.length > 0) {
@@ -147,7 +152,10 @@ export default function ProductDetails(props) {
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <div className="flex flex-row gap-2 capitalize text-sm">
+                <div
+                  className="flex flex-row gap-2 capitalize text-sm cursor-pointer"
+                  onClick={() => setMsrPopOpen(true)}
+                >
                   <span className="flex justify-center items-center">
                     <StraightenOutlinedIcon />
                   </span>
@@ -210,6 +218,31 @@ export default function ProductDetails(props) {
           <RelatedProducts products={relatedProducts} />
         </div>
       </div>
+      {msrPopOpen && (
+        <div className="w-full h-screen top-14 bottom-0 left-0 right-0 fixed bg-secondaryColor bg-opacity-70 backdrop-blur-[2px] flex justify-center items-center z-[2000]">
+          <div className="w-[80%] sm:w-[70%] md:w-[50%] h-[70%] relative flex justify-center items-center bg-primaryColor">
+            {props.item.productType.toLowerCase() === "player edition" && (
+              <img
+                className="w-full h-full object-contain"
+                src={playerEditionSizeChart}
+                alt=""
+              />
+            )}
+            {props.item.productType.toLowerCase() === "asian edition" && (
+              <img src={asianSizeChart} alt="" />
+            )}
+            {props.item.productType.toLowerCase() === "fan edition" && (
+              <img src={fanEditionNRetroSizeChart} alt="" />
+            )}
+            <div
+              className="text-primaryColor bg-red-600 w-8 aspect-square rounded-full flex justify-center items-center absolute right-[-6px] top-[-6px] cursor-pointer"
+              onClick={() => setMsrPopOpen(false)}
+            >
+              <ClearSharpIcon fontSize="inherit" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
