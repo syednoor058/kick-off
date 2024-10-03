@@ -2,3 +2,14 @@
   margin: 0px;
   padding: 0px;
 }
+
+.active {
+  font-weight: 600;
+  transition-duration: 200ms;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dashboard-active {
+  background-color: black;
+}

@@ -7,8 +7,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
+import { BiSolidMessageAltDetail } from "react-icons/bi";
+import { FaFacebookF, FaHome } from "react-icons/fa";
+import { MdPermContactCalendar } from "react-icons/md";
+import { RiInstagramFill, RiShoppingBag4Fill } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
 
@@ -56,30 +60,18 @@ export default function Navbar() {
           <div className="text-xs">The Jersey Galleria</div>
         </Link>
         <div className="w-[33%] hidden lg:visible lg:flex flex-row gap-10">
-          <Link to="/" className="flex items-center">
+          <NavLink to="/" className="flex items-center">
             Home
-          </Link>
-          <Link
-            activeClass="active-nav"
-            to="/collection"
-            className="flex items-center gap-1"
-          >
+          </NavLink>
+          <NavLink to="/collection" className="flex items-center gap-1">
             Products
-          </Link>
-          <Link
-            activeClass="active-nav"
-            to="/about-us"
-            className="flex items-center gap-1"
-          >
+          </NavLink>
+          <NavLink to="/about-us" className="flex items-center gap-1">
             About
-          </Link>
-          <Link
-            activeClass="active-nav"
-            to="/contact-us"
-            className="flex items-center gap-1"
-          >
+          </NavLink>
+          <NavLink to="/contact-us" className="flex items-center gap-1">
             Contact
-          </Link>
+          </NavLink>
         </div>
         <div className="w-[33%] flex flex-row gap-4 justify-end">
           <Link to="/cart" className="flex items-center gap-1">
@@ -148,19 +140,19 @@ export default function Navbar() {
                       </div>
                       <div className="cursor-pointer mt-8">
                         {auth.user.role === 1 ? (
-                          <Link
+                          <NavLink
                             to="/dashboard"
                             onClick={() => handleUserMenuToggle()}
                           >
                             Dashboard
-                          </Link>
+                          </NavLink>
                         ) : (
-                          <Link
+                          <NavLink
                             to="/my-order"
                             onClick={() => handleUserMenuToggle()}
                           >
                             My Order
-                          </Link>
+                          </NavLink>
                         )}
                       </div>
                       <div
@@ -197,39 +189,81 @@ export default function Navbar() {
             initial={{ x: "100%", opacity: 1 }}
             animate={{ x: 0, opacity: 1, transition: { duration: 0.5 } }}
             exit={{ x: "100%", opacity: 1, transition: { duration: 0.5 } }}
-            className="h-screen bg-secondaryColor ps-28 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-primaryColor pt-16 flex flex-col items-end justify-start gap-5 lg:gap-7 text-xl sm:text-lg lg:text-2xl md:text-xl"
+            className="h-screen bg-secondaryColor ps-28 sm:ps-20 lg:ps-40 pe-7 sm:pe-10 lg:pe-20 absolute top-0 right-0 text-gray-400 pt-16 flex flex-col items-end justify-start gap-7 text-xl sm:text-lg lg:text-2xl md:text-xl lg:hidden"
           >
-            <div onClick={() => handleToggle()} className="cursor-pointer">
-              <CloseIcon fontSize="" />
+            <div
+              onClick={() => handleToggle()}
+              className="cursor-pointer w-6 aspect-square flex justify-center items-center border rounded-sm"
+            >
+              <CloseIcon fontSize="inherit" />
             </div>
-            <Link
+            <NavLink
               to="/"
               onClick={() => handleToggle()}
-              className="cursor-pointer"
+              className={({ isActive }) =>
+                isActive
+                  ? "cursor-pointer flex flex-row gap-3 justify-center items-center text-primaryColor underline underline-offset-[4px]"
+                  : "cursor-pointer flex flex-row gap-3 justify-center items-center"
+              }
             >
-              Home
-            </Link>
-            <Link
+              Home{" "}
+              <span>
+                <FaHome />
+              </span>
+            </NavLink>
+            <NavLink
               to="/collection"
               onClick={() => handleToggle()}
-              className="cursor-pointer"
+              className={({ isActive }) =>
+                isActive
+                  ? "cursor-pointer flex flex-row gap-3 justify-center items-center text-primaryColor underline underline-offset-[4px]"
+                  : "cursor-pointer flex flex-row gap-3 justify-center items-center"
+              }
             >
-              Products
-            </Link>
-            <Link
+              Products{" "}
+              <span>
+                <RiShoppingBag4Fill />
+              </span>
+            </NavLink>
+            <NavLink
               to="/about-us"
-              className="cursor-pointer"
+              className={({ isActive }) =>
+                isActive
+                  ? "cursor-pointer flex flex-row gap-3 justify-center items-center text-primaryColor underline underline-offset-[4px]"
+                  : "cursor-pointer flex flex-row gap-3 justify-center items-center"
+              }
               onClick={() => handleToggle()}
             >
-              About
-            </Link>
-            <Link
+              About{" "}
+              <span>
+                <BiSolidMessageAltDetail />
+              </span>
+            </NavLink>
+            <NavLink
               to="/contact-us"
-              className="cursor-pointer"
+              className={({ isActive }) =>
+                isActive
+                  ? "cursor-pointer flex flex-row gap-3 justify-center items-center text-primaryColor underline underline-offset-[4px]"
+                  : "cursor-pointer flex flex-row gap-3 justify-center items-center"
+              }
               onClick={() => handleToggle()}
             >
-              Contact
-            </Link>
+              Contact{" "}
+              <span>
+                <MdPermContactCalendar />
+              </span>
+            </NavLink>
+            <div className="flex flex-col gap-3 pt-10">
+              <div>Find Us:</div>
+              <div className="flex flex-row gap-5 justify-end items-center">
+                <Link>
+                  <FaFacebookF />
+                </Link>
+                <Link>
+                  <RiInstagramFill />
+                </Link>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

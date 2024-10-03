@@ -11,7 +11,7 @@ import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 import { useContext, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { TbLogout2 } from "react-icons/tb";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/AuthContext";
 
 export default function Dashboard() {
@@ -35,9 +35,11 @@ export default function Dashboard() {
   return (
     <div className="w-full h-full">
       <div className="w-full min-h-screen top-0 bg-gray-200 flex flex-col gap-5">
-        <div className="w-full flex flex-row justify-between items-center py-3 bg-primaryColor px-10 shadow-lg">
+        <div className="w-full flex flex-row justify-between items-center py-3 bg-primaryColor px-5 sm:px-10 md:px-16 lg:px-20 shadow-lg">
           <div className="w-full flex flex-col">
-            <div className="text-xl font-bold capitalize">Kick-Off</div>
+            <div className="text-xl md:text-2xl font-bold capitalize">
+              Kick-Off
+            </div>
             <div className="text-xs text-gray-500">The Jersey Galleria</div>
           </div>
           <div className="w-full flex flex-row gap-10 justify-end">
@@ -46,17 +48,17 @@ export default function Dashboard() {
                 {auth?.user?.name[0]}
               </div>
               <div className="flex flex-col">
-                <div className="text-lg uppercase font-semibold leading-none">
+                <div className="text-base md:text-lg uppercase font-semibold leading-none">
                   {auth?.user?.name}
                 </div>
-                <div className="flex text-sm text-gray-500">
+                <div className="flex text-xs md:text-sm text-gray-500">
                   {"@" + auth?.user?.email.split("@")[0]}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-row gap-2 px-10">
+        <div className="flex flex-row gap-2 px-5 sm:px-10 md:px-16 lg:px-20">
           <Link
             to="/"
             className="flex flex-row gap-2 justify-center items-center"
@@ -73,125 +75,139 @@ export default function Dashboard() {
         </div>
         <div className="w-full h-full flex flex-col lg:flex-row gap-10">
           <div className="w-full lg:w-[20%] h-full rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
-            <div className="w-full flex flex-row lg:flex-col justify-between lg:gap-1 lg:py-10 text-sm ps-5 lg:ps-10 pe-5 lg:pe-0">
-              <Link
+            <div className="w-full grid grid-cols-3 lg:grid-cols-1 justify-between lg:gap-1 lg:py-10 text-sm">
+              <NavLink
                 to="/dashboard"
-                className="flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <PieChartIcon />
                   </div>
-                  <div className="w-[90%] lg:flex items-center hidden">
-                    Overview
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Overview</div>
                 </div>
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="add-category"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <AutoAwesomeMotionIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Categories
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Categories</div>
                 </div>
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="add-product"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <LocalMallIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Products
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Products</div>
                 </div>
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="add-admin"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <SupervisorAccountIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Admins
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Admins</div>
                 </div>
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="orders"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <RoomServiceIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Orders
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Orders</div>
                 </div>
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="messages"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <ChatIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Messages
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Messages</div>
                 </div>
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="banners"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <ViewCarouselIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Banners
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Banners</div>
                 </div>
-              </Link>
+              </NavLink>
             </div>
-            <div className="w-full flex flex-row lg:flex-col justify-between lg:gap-1 lg:py-10 text-sm ps-5 lg:ps-10 pe-5 lg:pe-0">
-              <Link
-                to="/dashboard"
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+            <div className="w-full flex flex-row lg:flex-col justify-between lg:gap-1 lg:py-10 text-sm">
+              <NavLink
+                to="settings"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                }
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <SettingsIcon />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Settings
-                  </div>
+                  <div className="w-[90%] lg:flex items-center ">Settings</div>
                 </div>
-              </Link>
+              </NavLink>
               <Link
                 to=""
-                className="flex flex-row gap-2 items-center hover:bg-secondaryColor duration-300 py-3"
+                className="flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
                 onClick={() => handleLogout()}
               >
-                <div className="w-full flex flex-row gap-5">
+                <div className="w-full flex flex-row gap-5 items-center">
                   <div className="w-[10%] text-xl h-auto">
                     <TbLogout2 />
                   </div>
-                  <div className="w-[90%] hidden lg:flex items-center">
-                    Logout
-                  </div>
+                  <div className="w-[90%] lg:flex items-center">Logout</div>
                 </div>
               </Link>
             </div>
