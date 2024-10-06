@@ -181,7 +181,7 @@ const ProductContextProvider = (props) => {
     } catch (error) {
       setCarLoading(false);
       console.log(error);
-      toast.error("Error fetching carausels!");
+      // toast.error("Error fetching carausels!");
     }
   };
 

@@ -57,6 +57,10 @@ export default function ProductDetails(props) {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.title = `${props.item.name} | KICK-OFF`;
+  }, [props.item.name]);
+
   return (
     <div>
       <div className="w-full h-full px-5 sm:px-10 md:px-10 lg:px-20 pt-10 md:pt-10 flex flex-col gap-10 md:gap-20">

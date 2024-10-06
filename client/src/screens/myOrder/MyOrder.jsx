@@ -28,6 +28,10 @@ export default function MyOrder() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth?.user, order]);
 
+  useEffect(() => {
+    document.title = "My Order | KICK-OFF";
+  }, []);
+
   return (
     <div className="w-full min-h-screen mt-[104px]">
       <div className="px-3 sm:px-10 md:px-16 lg:px-20 py-10 lg:py-20 flex flex-col gap-5 lg:gap-10">

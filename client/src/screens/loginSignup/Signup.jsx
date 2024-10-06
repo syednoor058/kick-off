@@ -39,6 +39,9 @@ export default function Signup() {
       toast.error("Something went wrong!");
     }
   };
+  useEffect(() => {
+    document.title = "Register a New Account | KICK-OFF";
+  }, []);
   return (
     <div className="w-full flex flex-col gap-10 relative">
       {isLoading && (

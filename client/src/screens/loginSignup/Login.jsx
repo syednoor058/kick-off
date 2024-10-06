@@ -43,6 +43,9 @@ export default function Login() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    document.title = "Log In to Your Account | KICK-OFF";
+  }, []);
   return (
     <div className="w-full flex flex-col gap-10 relative">
       {isLoading && (

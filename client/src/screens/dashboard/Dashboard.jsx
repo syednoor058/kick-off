@@ -32,6 +32,9 @@ export default function Dashboard() {
       navigate("/account/login");
     }
   }, [auth?.user, navigate]);
+  useEffect(() => {
+    document.title = "Dashboard | KICK-OFF";
+  }, []);
   return (
     <div className="w-full h-full">
       <div className="w-full min-h-screen top-0 bg-gray-200 flex flex-col gap-5">

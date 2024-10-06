@@ -155,6 +155,10 @@ export default function Checkout() {
     }
   }, [cartItem]);
 
+  useEffect(() => {
+    document.title = "Checkout | KICK-OFF";
+  }, []);
+
   if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">

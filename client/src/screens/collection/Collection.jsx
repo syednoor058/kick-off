@@ -93,6 +93,11 @@ export default function Collection() {
   }, [applyFilter]);
 
   useEffect(() => {
+    document.title =
+      "Collection | Best Sportswear in Affordable Price | KICK-OFF";
+  }, []);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     if (products.length > 0) {
       setIsLoading(false);

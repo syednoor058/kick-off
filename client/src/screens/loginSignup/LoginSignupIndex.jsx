@@ -1,7 +1,11 @@
 // import React from 'react'
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function LoginSignupIndex() {
+  useEffect(() => {
+    document.title = "Log In or Sign Up | KICK-OFF";
+  }, []);
   return (
     <div className="flex flex-col gap-10">
       <div className="text-2xl font-semibold uppercase text-center">

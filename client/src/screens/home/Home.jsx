@@ -15,6 +15,10 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.title = "KICK-OFF | The Jersey Galleria";
+  }, []);
+
   if (cartLoading || productLoading || categoryLoading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">

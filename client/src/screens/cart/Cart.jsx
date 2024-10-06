@@ -13,7 +13,9 @@ export default function Cart() {
   const { products, cartItem, cartTotalAmount, cartLoading } =
     useContext(ProductContext);
   const [isLoading, setIsLoading] = useState(true);
-
+  useEffect(() => {
+    document.title = "My Cart | KICK-OFF";
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
     if (products.length > 0 && !cartLoading) {
