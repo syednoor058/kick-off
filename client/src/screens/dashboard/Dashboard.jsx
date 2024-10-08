@@ -36,7 +36,7 @@ export default function Dashboard() {
     document.title = "Dashboard | KICK-OFF";
   }, []);
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full relative">
       <div className="w-full min-h-screen top-0 bg-gray-200 flex flex-col gap-5">
         <div className="w-full flex flex-row justify-between items-center py-3 bg-primaryColor px-5 sm:px-10 md:px-16 lg:px-20 shadow-lg">
           <div className="w-full flex flex-col">
@@ -61,13 +61,13 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row gap-2 px-5 sm:px-10 md:px-16 lg:px-20">
+        <div className="flex flex-row gap-2 px-5 sm:px-10 md:px-16 lg:px-20 text-xs items-center">
           <Link
             to="/"
-            className="flex flex-row gap-2 justify-center items-center"
+            className="flex flex-row gap-2 justify-center items-center hover:underline underline-offset-2"
           >
             <span className="mt-[-3px]">
-              <HomeIcon />
+              <HomeIcon fontSize="small" />
             </span>
             Home
           </Link>
@@ -77,14 +77,14 @@ export default function Dashboard() {
           <div>Dashboard</div>
         </div>
         <div className="w-full h-full flex flex-col lg:flex-row gap-10">
-          <div className="w-full lg:w-[20%] h-full rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
-            <div className="w-full grid grid-cols-3 lg:grid-cols-1 justify-between lg:gap-1 lg:py-10 text-sm">
+          <div className="w-full lg:w-[20%] h-full lg:h-screen rounded-sm bg-accentColor text-primaryColor flex flex-col justify-between">
+            <div className="w-full grid grid-cols-1 justify-between text-sm">
               <NavLink
                 to="/dashboard"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400 border-t"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400 border-t"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -98,8 +98,8 @@ export default function Dashboard() {
                 to="add-category"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -113,8 +113,8 @@ export default function Dashboard() {
                 to="add-product"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -128,8 +128,8 @@ export default function Dashboard() {
                 to="add-admin"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -143,8 +143,8 @@ export default function Dashboard() {
                 to="orders"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -158,8 +158,8 @@ export default function Dashboard() {
                 to="messages"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -173,8 +173,8 @@ export default function Dashboard() {
                 to="banners"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -185,13 +185,13 @@ export default function Dashboard() {
                 </div>
               </NavLink>
             </div>
-            <div className="w-full flex flex-row lg:flex-col justify-between lg:gap-1 lg:py-10 text-sm">
+            <div className="w-full flex flex-col justify-between text-sm">
               <NavLink
                 to="settings"
                 className={({ isActive }) =>
                   isActive
-                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
-                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                    ? "flex flex-row gap-2 items-center bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400 lg:border-t"
+                    : "flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400 lg:border-t"
                 }
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -203,7 +203,7 @@ export default function Dashboard() {
               </NavLink>
               <Link
                 to=""
-                className="flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0"
+                className="flex flex-row gap-2 items-center  hover:bg-secondaryColor duration-300 py-3 ps-5 lg:ps-10 pe-5 lg:pe-0 border-b border-gray-400"
                 onClick={() => handleLogout()}
               >
                 <div className="w-full flex flex-row gap-5 items-center">
@@ -215,7 +215,7 @@ export default function Dashboard() {
               </Link>
             </div>
           </div>
-          <div className="w-full lg:w-[80%] h-full bg-primaryColor rounded-sm relative">
+          <div className="w-full lg:w-[80%] h-screen overflow-y-auto bg-primaryColor rounded-sm relative">
             <Outlet />
           </div>
         </div>

@@ -1,6 +1,8 @@
 // import React from 'react'
 
+import HomeIcon from "@mui/icons-material/Home";
 import { useContext, useEffect, useState } from "react";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartList from "../../components/cartList/CartList";
 import LatestProducts from "../../components/products/LatestProducts";
@@ -48,7 +50,25 @@ export default function Cart() {
     );
   }
   return (
-    <div className="min-h-screen  py-10 md:py-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
+    <div className="min-h-screen  pb-10 md:pb-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
+      <div className="w-ful text-center uppercase text-3xl sm:text-4xl md:text-5xl font-semibold bg-secondaryColor text-primaryColor py-10 lg:py-20 flex flex-col gap-3 lg:gap-5">
+        My Cart
+        <div className="flex flex-row gap-2 text-xs w-full justify-center items-center font-normal text-gray-400">
+          <Link
+            to="/"
+            className="flex flex-row gap-2 justify-center items-center hover:underline underline-offset-2 duration-300"
+          >
+            <span className="mt-[-3px]">
+              <HomeIcon fontSize="small" />
+            </span>
+            Home
+          </Link>
+          <div className="text-xl flex justify-center items-center">
+            <MdOutlineKeyboardArrowRight />
+          </div>
+          <div>Cart</div>
+        </div>
+      </div>
       {auth.user ? (
         <div>
           {cartItem && cartItem.length > 0 ? (

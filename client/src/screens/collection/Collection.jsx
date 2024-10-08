@@ -1,7 +1,10 @@
 // import React from 'react'
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import HomeIcon from "@mui/icons-material/Home";
 import Search from "@mui/icons-material/Search";
 import { useCallback, useContext, useEffect, useState } from "react";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 import horizontalBanner from "../../assets/banners/top_sales.jpg";
 import verticalBanner from "../../assets/banners/vertical_banner.webp";
 import ProductCard from "../../components/products/ProductCard";
@@ -135,8 +138,26 @@ export default function Collection() {
   }
 
   return (
-    <div className="w-full h-full px-5 sm:px-10 md:px-16 lg:px-20 py-10 md:py-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
-      <div className="w-full flex flex-col gap-4 md:gap-8">
+    <div className="w-full h-full  pb-10 md:pb-20 flex flex-col gap-10 md:gap-20 mt-[104px]">
+      <div className="w-ful text-center uppercase text-3xl sm:text-4xl md:text-5xl font-semibold bg-secondaryColor text-primaryColor py-10 lg:py-20 flex flex-col gap-3 lg:gap-5">
+        Collections
+        <div className="flex flex-row gap-2 text-xs w-full justify-center items-center font-normal text-gray-400">
+          <Link
+            to="/"
+            className="flex flex-row gap-2 justify-center items-center hover:underline underline-offset-2 duration-300"
+          >
+            <span className="mt-[-3px]">
+              <HomeIcon fontSize="small" />
+            </span>
+            Home
+          </Link>
+          <div className="text-xl flex justify-center items-center">
+            <MdOutlineKeyboardArrowRight />
+          </div>
+          <div>Products</div>
+        </div>
+      </div>
+      <div className="w-full flex flex-col gap-4 md:gap-8 px-5 sm:px-10 md:px-16 lg:px-20">
         <div className="text-center w-full text-2xl sm:text-3xl md:text-4xl uppercase font-bold">
           Explore Our Premium Sportswear Collection
         </div>
@@ -163,7 +184,7 @@ export default function Collection() {
           </span>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8 px-5 sm:px-10 md:px-16 lg:px-20">
         <div className="md:max-w-60 uppercase flex flex-col gap-5 ">
           <p
             className="flex flex-row gap-1 items-center cursor-pointer sm:cursor-default"

@@ -1,9 +1,11 @@
 // import React from 'react'
 import CancelSharpIcon from "@mui/icons-material/CancelSharp";
+import HomeIcon from "@mui/icons-material/Home";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import bKash from "../../assets/bkash.webp";
 import nagad from "../../assets/nagad.webp";
@@ -183,7 +185,25 @@ export default function Checkout() {
   }
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative mt-[104px]">
+      <div className="w-ful text-center uppercase text-3xl sm:text-4xl md:text-5xl font-semibold bg-secondaryColor text-primaryColor py-10 lg:py-20 flex flex-col gap-3 md:gap-5">
+        Checkout
+        <div className="flex flex-row gap-2 text-xs w-full justify-center items-center font-normal text-gray-400">
+          <Link
+            to="/"
+            className="flex flex-row gap-2 justify-center items-center hover:underline underline-offset-2 duration-300"
+          >
+            <span className="mt-[-3px]">
+              <HomeIcon fontSize="small" />
+            </span>
+            Home
+          </Link>
+          <div className="text-xl flex justify-center items-center">
+            <MdOutlineKeyboardArrowRight />
+          </div>
+          <div>Checkout</div>
+        </div>
+      </div>
       {popup && (
         <div className="w-full h-full fixed bg-secondaryColor bg-opacity-75 backdrop-blur-[2px] flex justify-center items-center z-[100000] bottom-0 top-0">
           <div className="w-[60%] p-3 md:p-5 bg-primaryColor flex flex-col gap-2 md:gap-3 items-center">
@@ -212,7 +232,7 @@ export default function Checkout() {
         </div>
       )}
       {cartItem.length > 0 ? (
-        <div className="w-full h-full flex flex-col-reverse gap-7 lg:gap-0 lg:flex-row mt-[104px]">
+        <div className="w-full h-full flex flex-col-reverse gap-7 lg:gap-0 lg:flex-row">
           <div className=" w-full lg:w-[55%] px-4 sm:px-6 md:px-10 py-10 md:py-20">
             <form
               className="w-full flex flex-col gap-5 lg:gap-7"

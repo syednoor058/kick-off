@@ -1,8 +1,9 @@
 // import React from 'react'
 
-import { useEffect, useState } from "react";
-// import UnderConstruction from "../../components/underConstruction/UnderConstruction";
-import { useContext } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import { useContext, useEffect, useState } from "react";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
 
@@ -34,12 +35,27 @@ export default function MyOrder() {
 
   return (
     <div className="w-full min-h-screen mt-[104px]">
-      <div className="px-3 sm:px-10 md:px-16 lg:px-20 py-10 lg:py-20 flex flex-col gap-5 lg:gap-10">
-        <div className="w-ful text-center uppercase text-2xl sm:text-3xl md:text-4xl font-semibold">
+      <div className="pb-10 lg:pb-20 flex flex-col gap-5 lg:gap-10">
+        <div className="w-ful text-center uppercase text-3xl sm:text-4xl md:text-5xl font-semibold bg-secondaryColor text-primaryColor py-10 lg:py-20 flex flex-col gap-3 md:gap-5">
           My orders
+          <div className="flex flex-row gap-2 text-xs w-full justify-center items-center font-normal text-gray-400">
+            <Link
+              to="/"
+              className="flex flex-row gap-2 justify-center items-center hover:underline underline-offset-2 duration-300"
+            >
+              <span className="mt-[-3px]">
+                <HomeIcon fontSize="small" />
+              </span>
+              Home
+            </Link>
+            <div className="text-xl flex justify-center items-center">
+              <MdOutlineKeyboardArrowRight />
+            </div>
+            <div>My Order</div>
+          </div>
         </div>
         {userOrder.length > 0 ? (
-          <div className="flex flex-col gap-5 lg:gap-7">
+          <div className="flex flex-col gap-5 lg:gap-7 px-3 sm:px-10 md:px-16 lg:px-20">
             {userOrder.map((o, index) => (
               <div
                 key={index}
@@ -115,7 +131,7 @@ export default function MyOrder() {
             ))}
           </div>
         ) : (
-          <div className="w-full h-screen text-2xl sm:text-3xl md:text-4xl uppercase font-semibold text-gray-400 flex justify-center items-center">
+          <div className="w-full h-screen text-2xl sm:text-3xl md:text-4xl uppercase font-semibold text-gray-400 flex justify-center items-center px-3 sm:px-10 md:px-16 lg:px-20 text-center">
             You haven&apos;t placed any order yet!
           </div>
         )}
