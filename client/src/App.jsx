@@ -35,7 +35,7 @@ function App() {
       <div className="w-full fixed z-[100000]">
         <Header />
         <Navbar />
-        <ToastContainer />
+        <ToastContainer autoClose={3000} transition:Slide />
       </div>
       <div className="w-full h-full">
         <Routes>
